@@ -1,0 +1,256 @@
+body {
+    font-family: 'Tilt Neon', sans-serif;
+    /* margin: 0;
+    padding: 0; */
+    background: #f5f5f5;
+    color: #333;
+
+
+}
+.header {
+    display: flex;
+   
+    margin-bottom: 20px;
+    justify-content: center;
+        align-items: center;
+}
+
+
+.header-center input {
+    width: 900px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.header-right .icon {
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.header-right .username {
+    font-size: 14px;
+
+}
+
+.main-content {
+    display: flex;
+    
+   
+}
+
+
+aside li {
+    margin: 20px 0;
+    
+   
+}
+.icon{
+    justify-content: center;
+        align-items: center;
+}
+.Vector_167{
+  
+    position: absolute;
+    pointer-events: none; /* Иконка не кликабельна */
+    z-index: 0; /* На задний план */
+    top: 10px;
+    left: 0px;
+    
+}
+.icon-TeamSpace{
+font-size: 23px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+padding: 0px 0px 0px 30px;
+gap: 0px;
+
+}
+
+ 
+
+    aside li.Overview a {
+        background: #0C0B19;
+        width: Fixed (412px)px;
+    height: Fixed (100px)px;
+    padding: 10px 30px 10px 10px;
+        gap: 20px;
+        border-radius: 10px 20px 50px 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        position: relative;
+        right: 20px;
+    }
+  
+
+aside li.My_Projects a {
+    width: Fixed (412px)px;
+    height: Fixed (100px)px;
+    top: 145px;
+    padding: 10px 30px 10px 10px;
+    gap: 20px;
+    border-radius: 10px 20px 50px 10px;
+    opacity: 0px;
+    right: 20px;
+    
+}
+
+aside li.My_Tasks a {
+    width: Fixed (412px)px;
+height: Fixed (100px)px;
+top: 285px;
+padding: 10px 30px 10px 10px;
+gap: 20px;
+border-radius: 10px 0px 0px 0px;
+opacity: 0px;
+right: 20px;
+}
+
+aside li.Schedule a {
+    width: Fixed (412px)px;
+    height: Fixed (100px)px;
+    top: 425px;
+    padding: 10px 30px 10px 10px;
+    gap: 20px;
+    border-radius: 10px 0px 0px 0px;
+    opacity: 0px;
+    
+}
+
+aside li.Recruiters a {
+    width: Fixed (412px)px;
+    height: Fixed (100px)px;
+    top: 565px;
+    padding: 10px 30px 10px 10px;
+    gap: 20px;
+    border-radius: 10px 0px 0px 0px;
+    opacity: 0px;
+    
+}
+
+aside li.Blog a {
+    width: Fixed (412px)px;
+    height: Fixed (100px)px;
+    top: 285px;
+    padding: 10px 30px 10px 10px;
+    gap: 20px;
+    border-radius: 10px 0px 0px 0px;
+    opacity: 0px;
+   
+}
+
+aside li.Setting a {
+    width: Fixed (412px)px;
+    height: Fixed (100px)px;
+    top: 285px;
+    padding: 10px 30px 10px 10px;
+    gap: 20px;
+    border-radius: 10px 0px 0px 0px;
+    opacity: 0px;
+    
+}
+
+aside a {
+    text-decoration: none;
+    color: #91918F;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+.stats {
+    display: flex;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 24px;
+} 
+
+
+.stat svg{
+    width: 154px;
+    height: 154px;
+    gap: 0px;
+    opacity: 0px;
+    
+
+}
+
+
+.stat-item_tasks {
+    background: #7A6EFE;
+    padding: 20px;
+    border-radius: 20px;
+
+    flex: 1;
+    margin: 0 20px;
+    justify-content: space-evenly;
+    display: flex;
+}
+
+.stat-item_friends {
+    background: #FF5363;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    flex: 1;
+    margin: 0 20px;
+}
+
+.stat-item_projects {
+    background: #24A8FA;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    flex: 1;
+    margin: 0 20px;
+}
+
+
+
+
+
+.projects-overview {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.projects-column,
+.colleagues-column,
+.requests-column {
+    width: 32%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.recent-tasks {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.awaiting {
+    color: orange;
+}
+
+.declined {
+    color: red;
+}
+
+.accepted {
+    color: green;
+}
