@@ -174,7 +174,7 @@
                 </div>
             </section>
 
-            <section class="projects-overview">
+            <!-- <section class="projects-overview">
                 <div class="projects-column">
                     <h3>Active Projects</h3>
                     <% data.activeProjects.forEach(project => { %>
@@ -183,7 +183,25 @@
                         <span><%= project.progress %>%</span>
                     </div>
                     <% }) %>
-                </div>
+                </div> -->
+
+                <section class="projects-overview">
+                    <div class="projects-column">
+                        <h3> </h3>
+                        <% data.activeProjects.forEach(project => { %>
+                        <div class="project">
+                            <div class="project-details">
+                                <p class="project-name"><%= project.name %></p>
+                                <p class="project-deadline">
+                                    <%= project.members %> members, <%= project.deadline %>
+                                </p>
+                            </div>
+                            <span class="project-progress" data-progress="<%= project.progress %>">
+                                <%= project.progress %>%
+                            </span>
+                        </div>
+                        <% }) %>
+                    </div>
 
                 <div class="colleagues-column">
                     <h3>Colleagues</h3>
@@ -205,7 +223,7 @@
                     <% }) %>
                 </div>
             </section>
-
+            <script src="/js/script.js"></script>
             <section class="recent-tasks">
                 <h3>Recent Tasks</h3>
                 <% data.recentTasks.forEach(task => { %>

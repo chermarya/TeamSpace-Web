@@ -254,3 +254,35 @@ main {
 .accepted {
     color: green;
 }
+
+.projects-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Расстояние между строками в колонке */
+}
+
+.project {
+    display: flex;
+    align-items: center; /* Вертикальное центрирование элементов */
+}
+
+
+
+.project-progress { 
+    text-align: center ;
+    flex: none; /* Проценты занимают фиксированное пространство */
+    background: rgba(255, 133, 26, 0.4);
+    border-radius: 20px;
+    padding: 5px 20px; /* Уменьшенные отступы */
+    width: 56px; 
+    height: 27px; 
+    font-size: 17px;
+}
+
+
+.project-deadline { 
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px; /* Размер текста для дедлайна */
+    margin: 0; /* Убираем отступы */
+} 
