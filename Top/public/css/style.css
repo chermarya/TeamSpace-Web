@@ -1,11 +1,7 @@
-body {
+body { 
     font-family: 'Tilt Neon', sans-serif;
-    /* margin: 0;
-    padding: 0; */
     background: #f5f5f5;
     color: #333;
-
-
 }
 .header {
     display: flex;
@@ -67,10 +63,7 @@ padding: 0px 0px 0px 30px;
 gap: 0px;
 
 }
-
- 
-
-    aside li.Overview a {
+aside li.Overview a {
         background: #0C0B19;
         width: Fixed (412px)px;
     height: Fixed (100px)px;
@@ -86,8 +79,6 @@ gap: 0px;
         position: relative;
         right: 20px;
     }
-  
-
 aside li.My_Projects a {
     width: Fixed (412px)px;
     height: Fixed (100px)px;
@@ -164,71 +155,119 @@ main {
     flex: 1;
     padding: 20px;
 }
-
+.stat-icon path {
+    stroke: #FFFFFF;
+}
 .stats {
     display: flex;
-    margin-bottom: 20px;
-    color: #fff;
-    font-size: 24px;
-} 
-
-
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 50px;
+    width: 100%;
+    
+}
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+    width: 233px;
+    height: 100px;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-family: 'Tilt Neon', sans-serif;
+    
+}
 .stat svg{
-    width: 154px;
-    height: 154px;
+    
     gap: 0px;
     opacity: 0px;
     
 
 }
 
-
+.stat-icon circle {
+    fill: rgba(217, 217, 217, 0.4);
+}
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
 .stat-item_tasks {
     background: #7A6EFE;
-    padding: 20px;
-    border-radius: 20px;
-
-    flex: 1;
-    margin: 0 20px;
-    justify-content: space-evenly;
+}
+.stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+.stat-label {
+    font-size: 14px;
+    margin: 0;
+}
+.stat-content {
     display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .stat-item_friends {
     background: #FF5363;
-    padding: 20px;
-    border-radius: 20px;
-    text-align: center;
-    flex: 1;
-    margin: 0 20px;
 }
 
 .stat-item_projects {
     background: #24A8FA;
-    padding: 20px;
-    border-radius: 20px;
-    text-align: center;
-    flex: 1;
-    margin: 0 20px;
 }
-
-
-
-
 
 .projects-overview {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     margin-bottom: 20px;
+    gap: 20px; 
+}
+.projects-column {
+    flex: 3; 
+    padding: 25px;
+    border-radius: 8px;
+    background: #fff; 
 }
 
-.projects-column,
-.colleagues-column,
-.requests-column {
-    width: 32%;
-    background: #fff;
-    padding: 20px;
+.colleagues-column {
+    flex: 1.5; 
+    padding: 25px;
     border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.awaiting {
+    background: rgba(255, 133, 26, 0.4);
+}
+
+.declined {
+    background: rgba(255, 26, 26, 0.4);
+}
+
+.accepted {
+    background: rgba(45, 255, 26, 0.4);
+}
+
+.request-status {
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: #000;
+}
+.requests-column {
+    flex: 2; 
+    padding: 25px;
+    border-radius: 8px;
+    background: #fff;
 }
 
 .recent-tasks {
@@ -236,53 +275,94 @@ main {
     padding: 20px;
     border-radius: 8px;
 }
+.colleague-project{
+    margin: 0;
+    font-size: 12px;
+}
 
 .task {
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
-}
-
-.awaiting {
-    color: orange;
-}
-
-.declined {
-    color: red;
-}
-
-.accepted {
-    color: green;
+   
 }
 
 .projects-column {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Расстояние между строками в колонке */
+
 }
 
-.project {
+.project-progress {
+    
     display: flex;
-    align-items: center; /* Вертикальное центрирование элементов */
-}
-
-
-
-.project-progress { 
-    text-align: center ;
-    flex: none; /* Проценты занимают фиксированное пространство */
+  
+    justify-content: center;
+    align-items: center;
+    padding: 3px 10px;
+    
+    width: 57px;
+    height: 27px;
     background: rgba(255, 133, 26, 0.4);
-    border-radius: 20px;
-    padding: 5px 20px; /* Уменьшенные отступы */
-    width: 56px; 
-    height: 27px; 
-    font-size: 17px;
-}
+    border-radius: 10px;
+   
+    font-style: normal;
+    text-align: center; 
+    color: #000000;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+  
 
+    font-size: 20px;
+}
 
 .project-deadline { 
     font-style: normal;
     font-weight: 400;
-    font-size: 12px; /* Размер текста для дедлайна */
-    margin: 0; /* Убираем отступы */
+    font-size: 12px; 
+    margin: 0; 
 } 
+.Active_Projects {
+    margin-left: 25px; /* Альтернативный вариант: сдвиг только текста внутри Active Projects */
+}
+
+.Active_Colleagues {
+    margin-left: 25px; /* Відступ усередині колонки */
+}
+.project-info,
+.colleague-info,
+.request-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.project-name,
+.colleague-name,
+.request-name {
+    margin: 0;
+    font-size: 17px;
+    color: #000;
+}
+
+.project,
+.colleague,
+.request {
+    display: flex;
+    justify-content: space-between;  /* Distribute items evenly */
+    align-items: center;  /* Align items vertically */
+    margin-bottom: 15px;
+}
+.project-details,
+.colleague-details,
+.request-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.colleague-project {
+    font-size: 12px;
+    
+    margin: 0;
+}

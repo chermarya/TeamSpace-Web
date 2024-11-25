@@ -8,19 +8,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Устанавливаем цвет фона в зависимости от значения процентов
         if (progress >= 0 && progress <= 25) {
-            element.style.background = "#FF1A1A"; // Красный фон
+            element.style.background = "rgba(255, 26, 26, 0.4)"; // Красный с прозрачностью
         } else if (progress > 25 && progress <= 50) {
-            element.style.background = "#FF851A"; // Оранжевый фон
+            element.style.background = "rgba(255, 133, 26, 0.4)"; // Оранжевый с прозрачностью
         } else if (progress > 50 && progress <= 100) {
-            element.style.background = "#2DFF1A"; // Зеленый фон
-        }
+            element.style.background = "rgba(45, 255, 26, 0.4)"; // Зеленый с прозрачностью
+        }  
+        
     });
 });
 
-if (progress >= 0 && progress <= 25) {
-    element.style.background = "rgba(255, 26, 26, 0.4)"; // Красный с прозрачностью
-} else if (progress > 25 && progress <= 50) {
-    element.style.background = "rgba(255, 133, 26, 0.4)"; // Оранжевый с прозрачностью
-} else if (progress > 50 && progress <= 100) {
-    element.style.background = "rgba(45, 255, 26, 0.4)"; // Зеленый с прозрачностью
-}
+
+
+
