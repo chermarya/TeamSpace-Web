@@ -1,4 +1,3 @@
-console.log("Heroku PORT:", process.env.PORT);
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -12,7 +11,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Дані для відображення
 const data = {
-  username: "Yehor Sotnykov",
+  username: "login",
   tasks: 2056,
   friends: 25,
   doneProjects: 12,
@@ -41,9 +40,18 @@ const data = {
 app.get("/", (req, res) => {
   res.render("index", { data });
 });
-console.log("Heroku PORT:", process.env.PORT);
-const PORT = process.env.PORT ; //|| 3000
+app.get('/login', (req, res) => {
+  res.render('login'); 
+});
+
+
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Сервер працює на порті ${PORT}`);
 });
+// Запуск серверу
+
+// app.listen(3000, () => {
+//   console.log("Сервер працює на http://localhost:3000");
+// });

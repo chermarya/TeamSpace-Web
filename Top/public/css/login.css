@@ -1,0 +1,141 @@
+
+/* General Reset */
+body, h1, p, label, input, button, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Tilt Neon', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #FFEDE9;
+    color: #4E4E4E;
+}
+
+/* Container */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 2560px;
+    height: 1440px;
+    padding: 50px;
+}
+
+/* Illustration Section */
+.illustration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 50%;
+}
+.skeleton {
+    position: relative;
+}
+.skeleton svg {
+    /* width: 1200px; */
+    height: auto;
+}
+.speech-bubble {
+    position: absolute;
+    background: #7F265B;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+.speech-bubble.left {
+    top: 20%;
+    left: -50px;
+}
+.speech-bubble.right {
+    top: 20%;
+    right: -50px;
+}
+.tagline {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 24px;
+    color: #525252;
+}
+
+/* Login Section */
+.login-section {
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 40%;
+}
+.header h1 {
+    font-size: 48px;
+    color: #525252;
+}
+.header p {
+    font-size: 24px;
+    color: #525252;
+}
+.social-login {
+    margin-top: 20px;
+}
+.google-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.separator {
+    text-align: center;
+    margin: 20px 0;
+    color: #919191;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.login-form label {
+    font-size: 20px;
+}
+.login-form input {
+    padding: 10px;
+    border: 1px solid #DED2D9;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.options label {
+    font-size: 16px;
+}
+.options .forgot-password {
+    color: #7F265B;
+    font-size: 16px;
+}
+.login-button {
+    background: #7F265B;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.register {
+    text-align: center;
+    margin-top: 20px;
+}
+.register a {
+    color: #7F265B;
+    font-weight: bold;
+    text-decoration: none;
+}

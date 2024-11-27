@@ -2,31 +2,61 @@ body {
     font-family: 'Tilt Neon', sans-serif;
     background: #f5f5f5;
     color: #333;
+    height: 100vh; /* Висота сторінки = висота вікна браузера */
+ 
 }
-.header {
-    display: flex;
+html, body {
+    height: 100%; /* Робимо сторінку на всю висоту вікна браузера */
+  
    
-    margin-bottom: 20px;
-    justify-content: center;
-        align-items: center;
 }
 
-
-.header-center input {
-    width: 900px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+.header {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
 }
+
+.search-container input {
+    border: none; /* Прибираємо рамку вводу */
+    outline: none; /* Прибираємо обводку при фокусі */
+    font-size: 16px; /* Розмір тексту */
+    color: #292929; /* Колір тексту */
+    flex-grow: 1; /* Займає всю доступну ширину */
+    background: none; /* Фон прозорий */
+}
+
 
 .header-right .icon {
-    margin: 0 10px;
-    font-size: 18px;
+    display: flex; /* Включаємо flexbox */
+    justify-content: center; /* Центрування */
+    align-items: center; /* Центрування */
+   
+ 
+   
+    cursor: pointer; /* Курсор-рука */
+}
+.search-container .search-icon {
+    position: absolute; /* Абсолютне позиціонування */
+    left: 15px; /* Відступ від лівого краю контейнера */
+    top: 50%; /* Вирівнюємо по вертикалі */
+    transform: translateY(-50%); /* Центруємо іконку */
+    
 }
 
 .header-right .username {
-    font-size: 14px;
-
+    font-size: 18px; /* Розмір шрифту */
+    color: #292929; /* Колір тексту */
+    display: flex; /* Включаємо flexbox */
+    align-items: center; /* Центруємо */
+    gap: 10px; /* Відстань між іменем і іконкою */
+}
+.header-right {
+    display: flex; /* Включаємо flexbox */
+    flex-direction: row; /* Елементи в ряд */
+    align-items: center; /* Вирівнювання по центру */
+    gap: 20px; /* Проміжок між елементами */
 }
 
 .main-content {
@@ -34,126 +64,99 @@ body {
     
    
 }
-
-
-aside li {
-    margin: 20px 0;
-    
-   
-}
-.icon{
+.name_firma {
+    display: flex;
     justify-content: center;
-        align-items: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    padding: 0px 0px 40px 0px;
+}
+.search-container {
+    position: relative; /* Включаємо відносне позиціонування */
+    display: flex; /* Вирівнювання елементів в одному рядку */
+    align-items: center; /* Центруємо по вертикалі */
+    width: 700px; /* Ширина пошукового рядка */
+    height: 56px; /* Висота */
+   
+
+    padding-left: 60px; /* Відступ для тексту, щоб не перекривало іконку */
+
+}
+
+
+aside .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+}
+aside li a:hover {
+    background-color: #e2e6ea; /* Колір при наведенні */
+    transform: translateY(-2px);
 }
 .Vector_167{
   
     position: absolute;
     pointer-events: none; /* Иконка не кликабельна */
     z-index: 0; /* На задний план */
-    top: 10px;
-    left: 0px;
+    top: 16.5px;
+    left: -15px;
     
 }
-.icon-TeamSpace{
-font-size: 23px;
-text-align: left;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-padding: 0px 0px 0px 30px;
-gap: 0px;
-
-}
-aside li.Overview a {
-        background: #0C0B19;
-        width: Fixed (412px)px;
-    height: Fixed (100px)px;
-    padding: 10px 30px 10px 10px;
-        gap: 20px;
-        border-radius: 10px 20px 50px 10px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-decoration: none;
-        position: relative;
-        right: 20px;
-    }
-aside li.My_Projects a {
-    width: Fixed (412px)px;
-    height: Fixed (100px)px;
-    top: 145px;
-    padding: 10px 30px 10px 10px;
-    gap: 20px;
-    border-radius: 10px 20px 50px 10px;
-    opacity: 0px;
-    right: 20px;
+.icon-TeamSpace {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    padding-left: 0px;
     
 }
-
-aside li.My_Tasks a {
-    width: Fixed (412px)px;
-height: Fixed (100px)px;
-top: 285px;
-padding: 10px 30px 10px 10px;
-gap: 20px;
-border-radius: 10px 0px 0px 0px;
-opacity: 0px;
-right: 20px;
-}
-
-aside li.Schedule a {
-    width: Fixed (412px)px;
-    height: Fixed (100px)px;
-    top: 425px;
-    padding: 10px 30px 10px 10px;
-    gap: 20px;
-    border-radius: 10px 0px 0px 0px;
-    opacity: 0px;
-    
-}
-
-aside li.Recruiters a {
-    width: Fixed (412px)px;
-    height: Fixed (100px)px;
-    top: 565px;
-    padding: 10px 30px 10px 10px;
-    gap: 20px;
-    border-radius: 10px 0px 0px 0px;
-    opacity: 0px;
-    
-}
-
-aside li.Blog a {
-    width: Fixed (412px)px;
-    height: Fixed (100px)px;
-    top: 285px;
-    padding: 10px 30px 10px 10px;
-    gap: 20px;
-    border-radius: 10px 0px 0px 0px;
-    opacity: 0px;
+aside {
+    display: flex;
+    flex-direction: column;
    
-}
-
-aside li.Setting a {
-    width: Fixed (412px)px;
-    height: Fixed (100px)px;
-    top: 285px;
-    padding: 10px 30px 10px 10px;
-    gap: 20px;
-    border-radius: 10px 0px 0px 0px;
-    opacity: 0px;
     
+    
+    padding: 20px;
+    box-sizing: border-box;
+}
+aside li a {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Проміжок між іконкою та текстом */
+    width: 100%;
+    padding: 5px 20px;
+    border-radius: 10px;
+    background-color: #f8f9fa; /* Змінити на ваш колір */
+    color: #292929;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
+aside ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Відстань між елементами */
+    align-items: flex-start; /* Вирівнювання по лівому краю */
+    width: 100%; /* Ширина займає весь доступний простір */
+}
 aside a {
     text-decoration: none;
     color: #91918F;
 }
-
+aside li.Overview a {
+    background: #0C0B19;
+    color: white;
+}
 main {
     flex: 1;
     padding: 20px;
+  
 }
 .stat-icon path {
     stroke: #FFFFFF;
@@ -165,8 +168,11 @@ main {
     align-items: flex-start;
     padding: 20px;
     gap: 50px;
-    width: 100%;
-    
+}
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: column; /* Stack the items vertically on smaller screens */
+    }
 }
 .stat-item {
     display: flex;
@@ -175,12 +181,11 @@ main {
     align-items: center;
     padding: 15px;
     gap: 15px;
-    width: 233px;
-    height: 100px;
+    width: 20vw; /* Makes it responsive */
+    height: 70px;
     border-radius: 10px;
     color: #FFFFFF;
     font-family: 'Tilt Neon', sans-serif;
-    
 }
 .stat svg{
     
@@ -270,21 +275,13 @@ main {
     background: #fff;
 }
 
-.recent-tasks {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-}
+
 .colleague-project{
     margin: 0;
     font-size: 12px;
 }
 
-.task {
-    display: flex;
-    justify-content: space-between;
-   
-}
+
 
 .projects-column {
     display: flex;
@@ -366,3 +363,93 @@ main {
     
     margin: 0;
 }
+/* Заголовок секції */
+.recent-tasks h3 {
+    font-family: 'Tilt Neon', sans-serif;
+    font-size: 19px;
+    margin-bottom: 13px;
+    color: #000000;
+}
+
+/* Контейнер задач */
+.task {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Статусний індикатор */
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 50%;
+}
+
+/* Деталі задачі */
+.task-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-title {
+    font-family: 'Tilt Neon', sans-serif;
+    font-size: 18px;
+    margin: 0;
+    color: #000000;
+}
+
+.task-subtitle {
+    font-family: 'Tilt Neon', sans-serif;
+    font-size: 18px;
+    margin: 0;
+    color: #6e6e6e;
+}
+
+/* Вертикальні лінії */
+.separator {
+    width: 2px;
+    height: 60px;
+    background: #000000;
+}
+
+/* Опис задачі */
+.task-description {
+    font-family: 'Tilt Neon', sans-serif;
+    font-size: 12px;
+    color: #000000;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* Прогрес задачі */
+.task-progress .progress-container {
+    padding: 5px 20px;
+    background: #ffe3c2;
+    border-radius: 8px;
+    font-family: 'Tilt Neon', sans-serif;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    width: 100%; /* забезпечує однакову ширину для обох контейнерів */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 118px; /* Додає мінімальну ширину, щоб уникнути зміщення при зменшенні */
+    box-sizing: border-box; /* Додає відступи в ширину */
+}
+
+/* Стиль для виконаних задач */
+.task-progress .progress-container.completed {
+    background: #abffa3;
+    color: black;
+}
+
+
