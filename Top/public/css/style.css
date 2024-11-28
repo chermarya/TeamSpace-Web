@@ -91,18 +91,24 @@ aside .icon {
     align-items: center;
     width: 30px;
     height: 30px;
+    color: #000;
 }
-aside li a:hover {
-    background-color: #e2e6ea; /* Колір при наведенні */
-    transform: translateY(-2px);
+aside ul a:hover {
+    background-color: #0C0B19; 
+    color: white;
 }
+aside li a:hover .icon svg path {
+    stroke: white; /* Колір обведення іконки */
+}
+
+
 .Vector_167{
   
     position: absolute;
     pointer-events: none; /* Иконка не кликабельна */
     z-index: 0; /* На задний план */
-    top: 16.5px;
-    left: -15px;
+    top: 19px;
+    left: -7px;
     
 }
 .icon-TeamSpace {
@@ -125,14 +131,13 @@ aside {
 aside li a {
     display: flex;
     align-items: center;
-    gap: 10px; /* Проміжок між іконкою та текстом */
+    gap: 10px;
     width: 100%;
     padding: 5px 20px;
     border-radius: 10px;
-    background-color: #f8f9fa; /* Змінити на ваш колір */
+    background-color: #f8f9fa; /* Колір фону */
     color: #292929;
     text-decoration: none;
-    transition: background-color 0.3s, transform 0.3s;
 }
 
 aside ul {
@@ -141,9 +146,9 @@ aside ul {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Відстань між елементами */
-    align-items: flex-start; /* Вирівнювання по лівому краю */
-    width: 100%; /* Ширина займає весь доступний простір */
+    gap: 10px;
+    align-items: flex-start;
+    width: 100%;
 }
 aside a {
     text-decoration: none;

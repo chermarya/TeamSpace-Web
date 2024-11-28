@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-app.get('/login', (req, res) => {
-    res.render('/Top/views/login.ejs'); 
-});
 
+
+
+
+ 
