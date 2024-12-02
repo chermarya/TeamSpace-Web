@@ -3,13 +3,9 @@ body {
     background: #f5f5f5;
     color: #333;
     height: 100vh; /* Висота сторінки = висота вікна браузера */
- 
+    width: 100%; 
 }
-html, body {
-    height: 100%; /* Робимо сторінку на всю висоту вікна браузера */
-  
-   
-}
+
 
 .header {
     display: flex; 
@@ -61,8 +57,7 @@ html, body {
 
 .main-content {
     display: flex;
-    
-   
+    width: 100%; 
 }
 .name_firma {
     display: flex;
@@ -94,7 +89,7 @@ aside .icon {
     color: #000;
 }
 aside ul a:hover {
-    background-color: #0C0B19; 
+    background-color: #0a091779; 
     color: white;
 }
 aside li a:hover .icon svg path {
@@ -125,7 +120,7 @@ aside {
    
     
     
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
 }
 aside li a {
