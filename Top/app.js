@@ -42,6 +42,20 @@ const data = {
     { email: "email@gmail.com", phone: "+380111111111", status: "php-programmer" },
     { tasks_completed: "150", tasks_left: "30" },
   ],
+  job: [
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
+  ]  
 
 };
 
@@ -51,7 +65,7 @@ app.get("/", (req, res) => {
 });
 
 // Створення маршруту для інших сторінок
-const routes = ['login', 'my_projects', 'my_tasks', 'schedule', 'index'];
+const routes = ['login', 'my_projects', 'my_tasks', 'schedule', 'index', 'recruiters'];
 
 routes.forEach(route => {
   app.get(`/${route}`, (req, res) => {
@@ -63,4 +77,21 @@ routes.forEach(route => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Сервер працює на порті ${PORT}`);
+});
+
+// Функція для перемішування масиву
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// Доступні кольори для карток
+const colors = ["blue", "orange", "pink", "yellow"];
+
+// Додаємо кольори до карток без повторень у рядку
+data.job = data.job.map((job, index) => {
+  if (index % colors.length === 0) shuffleArray(colors); // Перемішати кольори на кожному ряду
+  return { ...job, color: colors[index % colors.length] }; // Вибирати кольори по індексу
 });
