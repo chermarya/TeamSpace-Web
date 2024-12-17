@@ -8,18 +8,54 @@
     <title>TeamSpace</title>
 </head>
 <body>
-    <div class="main-content">
+    
+        <div class="main-content">
+        <!-- <div class="main-content1"> -->
         <aside>
-            <li class="name_firma">
-                <a  href="index" class="index">
-                    <span class="icon-TeamSpace">
-                        <svg width="33" height="33" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="50" fill="#D9D9D9"/>
-                        </svg>
-                    </span>
+            <header class="header">
+                <div class="header-left">
+                    <div class="logo">
+                        <span class="icon-TeamSpace">
+                            <svg width="33" height="33" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="50" fill="#D9D9D9"/>
+                            </svg>
+                        </span>
                         TeamSpace
+                    </div>
+                    <div class="search-container">
+                        <svg class="search-icon" width="30" height="30" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M53 53L40.9357 40.9357M40.9357 40.9357C44.9571 36.9143 47.4444 31.3587 47.4444 25.2222C47.4444 12.9492 37.4952 3 25.2222 3C12.9492 3 3 12.9492 3 25.2222C3 37.4952 12.9492 47.4444 25.2222 47.4444C31.3587 47.4444 36.9143 44.9571 40.9357 40.9357Z" stroke="#292929" stroke-opacity="0.3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>   
+                        <input type="text" placeholder="Search Tasks, People...">
+                    </div>
+                </div>
+                <div class="header-right">
+                    <span class="icon">
+                        <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M35 11C35.8284 11 36 10.855 36 10.5C36 10.145 35.8284 9 35 9C34.1716 9 34 10.145 34 10.5C34 10.855 34.1716 11 35 11Z" stroke="#292929" stroke-opacity="0.7" stroke-width="3"/>
+                            <path d="M20.75 50V21C20.75 17.6863 23.4363 15 26.75 15H43.25C46.5637 15 49.25 17.6863 49.25 21V50M20.75 50H49.25M20.75 50H16M49.25 50H54" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M34 59L38 59" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="35" cy="35" r="31" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg> 
+                    </span>
+                </span> 
+                <span class="icon">
+                    <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M66 35C66 41.3961 64.0629 47.3397 60.7435 52.2763C55.1775 60.5539 45.7247 66 35 66C24.2753 66 14.8225 60.5539 9.25653 52.2763C5.93705 47.3397 4 41.3961 4 35C4 17.8792 17.8792 4 35 4C52.1208 4 66 17.8792 66 35Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                        <path d="M41 21C41 24.3137 38.3137 27 35 27C31.6863 27 29 24.3137 29 21C29 17.6863 31.6863 15 35 15C38.3137 15 41 17.6863 41 21Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                        <path d="M44.4989 38H26.5011C21.0665 38 16.4757 41.6135 15 46.5692C19.9513 52.3424 27.2985 56 35.5 56C43.7015 56 51.0487 52.3424 56 46.5692C54.5243 41.6135 49.9335 38 44.4989 38Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                        </svg>                                                                                                                  
+                </span> 
+                <a href="login" class="username">
+                    <%= data.username %>
+                   
                 </a>
-            </li>
+                </div>
+            </header>
+            
+            
+               
+           
                 <span class="Vector_167">
                     <svg width="220" height="900" viewBox="0 0 428 1945" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M-11.5 0C4.83333 9.16667 39.5 42.5 52 90.5C60.3402 122.526 58 170.5 61 189.5L58.2515 342.5L56.8749 403.5L55.4984 464.5C55.4984 464.5 58 475.833 62 480C66 484.167 74.8 490 76 490C77.2 490 75 558.167 74.5 590C74.5 590 65.4608 596.365 60.5 603C57.2138 607.395 53.1881 615 53.1881 615C53.1077 624.771 53.0445 634.31 53 643.5C51.1416 746.629 52.9005 804.673 61 907.5C71.4691 1040.41 78.9566 1115.61 109 1245.5C177.218 1540.44 428 1952 428 1952H-24L-11.5 0Z" fill="#0C0B19"/>
@@ -115,92 +151,227 @@
                     </li>
                 </ul>                
         </aside>
+    
             <main>
-                <section class="header">
-                <div class="header-center">
-                    <div class="search-container">                    
-                        <svg class="search-icon" width="30" height="30" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M53 53L40.9357 40.9357M40.9357 40.9357C44.9571 36.9143 47.4444 31.3587 47.4444 25.2222C47.4444 12.9492 37.4952 3 25.2222 3C12.9492 3 3 12.9492 3 25.2222C3 37.4952 12.9492 47.4444 25.2222 47.4444C31.3587 47.4444 36.9143 44.9571 40.9357 40.9357Z" stroke="#292929" stroke-opacity="0.3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>                   
-                        <input type="text" placeholder="Search Tasks, People...">
-                    </div>
-                </div>
-            <div class="header-right">               
-                <span class="icon">
-                    <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M35 11C35.8284 11 36 10.855 36 10.5C36 10.145 35.8284 9 35 9C34.1716 9 34 10.145 34 10.5C34 10.855 34.1716 11 35 11Z" stroke="#292929" stroke-opacity="0.7" stroke-width="3"/>
-                        <path d="M20.75 50V21C20.75 17.6863 23.4363 15 26.75 15H43.25C46.5637 15 49.25 17.6863 49.25 21V50M20.75 50H49.25M20.75 50H16M49.25 50H54" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M34 59L38 59" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="35" cy="35" r="31" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>                                                                                            
-                </span> 
-                <span class="icon">
-                    <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M66 35C66 41.3961 64.0629 47.3397 60.7435 52.2763C55.1775 60.5539 45.7247 66 35 66C24.2753 66 14.8225 60.5539 9.25653 52.2763C5.93705 47.3397 4 41.3961 4 35C4 17.8792 17.8792 4 35 4C52.1208 4 66 17.8792 66 35Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
-                        <path d="M41 21C41 24.3137 38.3137 27 35 27C31.6863 27 29 24.3137 29 21C29 17.6863 31.6863 15 35 15C38.3137 15 41 17.6863 41 21Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
-                        <path d="M44.4989 38H26.5011C21.0665 38 16.4757 41.6135 15 46.5692C19.9513 52.3424 27.2985 56 35.5 56C43.7015 56 51.0487 52.3424 56 46.5692C54.5243 41.6135 49.9335 38 44.4989 38Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
-                        </svg>                                                                                                                  
-                </span> 
-                <a href="login" class="username">
-                    <%= data.username %>
-                    <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.417 29.1667L35.0003 43.75" stroke="#292929" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M35 43.75L49.5833 29.1667" stroke="#292929" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
-        </section>
+                
         <base>
-        <div class="index-back-home-button">
-            <a href="index" class="index">
-                <button class="back-home-button">
-                    <svg width="30" height="30" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M30.8987 40.5L37.5163 40.5C38.5193 40.5 39.4811 40.1049 40.1903 39.4017C40.8994 38.6984 41.2979 37.7446 41.2979 36.75L41.2979 14.25C41.2979 13.2554 40.8994 12.3016 40.1903 11.5984C39.4811 10.8951 38.5193 10.5 37.5163 10.5L30.8987 10.5M30.4287 25.5L9.00014 25.5M9.00014 25.5L17.1879 34.0714M9.00014 25.5L17.1879 16.9286" 
-                              stroke="black" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>BACK HOME</span>
-                </button>
-            </a>
-        </div>   
+   
         <div class="filters">
-            <div class="filter-button active">Php</div>
-            <div class="filter-button">Ui</div>
-            <div class="filter-button">C#</div>
-            <div class="filter-button">html/css</div>
-            <div class="filter-button">Manager</div>
+            <div class="filter-button active" data-filter="Php">Php</div>
+            <div class="filter-button" data-filter="Ui">Ui</div>
+            <div class="filter-button" data-filter="C#">C#</div>
+            <div class="filter-button" data-filter="html/css">html/css</div>
+            <div class="filter-button" data-filter="Manager">Manager</div>
           </div>
-        
+          <div class="search-bar">
+            <div class="search-input">
+              <span class="search-icon">
+                <svg width="18" height="18" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.2918 29.7502C23.7247 29.7502 29.7502 23.7247 29.7502 16.2918C29.7502 8.859 23.7247 2.8335 16.2918 2.8335C8.859 2.8335 2.8335 8.859 2.8335 16.2918C2.8335 23.7247 8.859 29.7502 16.2918 29.7502Z" stroke="white" stroke-width="1.58463" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M31.1666 31.1668L28.3333 28.3335" stroke="white" stroke-width="1.58463" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <input type="text" placeholder="Search for name or roles...">
+            </div>
+            <button class="filter-button-icon">
+              <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g filter="url(#filter0_b_797_1702)">
+                  <rect x="10" y="10" width="80" height="80" rx="20" fill="#2B2B2B"/>
+                  <path d="M38.3337 36.0007H61.6671L49.9771 50.7006L38.3337 36.0007ZM31.9171 35.0907C36.6304 41.134 45.3337 52.334 45.3337 52.334V66.334C45.3337 67.6173 46.3837 68.6673 47.6671 68.6673H52.3337C53.6171 68.6673 54.6671 67.6173 54.6671 66.334V52.334C54.6671 52.334 63.3471 41.134 68.0604 35.0907C69.2504 33.5507 68.1537 31.334 66.2171 31.334H33.7604C31.8237 31.334 30.7271 33.5507 31.9171 35.0907Z" fill="white"/>
+                </g>
+                <defs>
+                  <filter id="filter0_b_797_1702" x="-31.3744" y="-31.3744" width="162.749" height="162.749" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feGaussianBlur in="BackgroundImageFix" stdDeviation="20.6872"/>
+                    <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_797_1702"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_797_1702" result="shape"/>
+                  </filter>
+                </defs>
+              </svg>
+            </button>
+          </div>
+          
+       
           <!-- Контейнер для карток вакансій -->
           <div class="cards-container">
             <% data.job.forEach(job => { %>
               <div class="card <%= job.color %>">
+                <!-- Верхня частина картки -->
                 <div class="card-header">
                   <div class="card-logo">G</div>
-                  <div>
-                    <h3><%= job.title %></h3>
-                    <p><%= job.company %></p>
+                  <div class="card-info">
+                    <h3 class="card-title"><%= job.title %></h3>
+                    <p class="card-company"><%= job.company %></p>
                   </div>
                 </div>
-                <div class="card-details">
-                  <span><%= job.location %></span>
-                  <span><%= job.experience %></span>
-                  <span><%= job.type %></span>
+          
+                <!-- Теги -->
+                <div class="card-tags">
+                  <div class="tag"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_797_2298)">
+                    <path d="M7.99992 1.3335C5.41992 1.3335 3.33325 3.42016 3.33325 6.00016C3.33325 9.50016 7.99992 14.6668 7.99992 14.6668C7.99992 14.6668 12.6666 9.50016 12.6666 6.00016C12.6666 3.42016 10.5799 1.3335 7.99992 1.3335ZM4.66659 6.00016C4.66659 4.16016 6.15992 2.66683 7.99992 2.66683C9.83992 2.66683 11.3333 4.16016 11.3333 6.00016C11.3333 7.92016 9.41325 10.7935 7.99992 12.5868C6.61325 10.8068 4.66659 7.90016 4.66659 6.00016Z" fill="white"/>
+                    <path d="M7.99992 7.66683C8.92039 7.66683 9.66658 6.92064 9.66658 6.00016C9.66658 5.07969 8.92039 4.3335 7.99992 4.3335C7.07944 4.3335 6.33325 5.07969 6.33325 6.00016C6.33325 6.92064 7.07944 7.66683 7.99992 7.66683Z" fill="white"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_797_2298">
+                    <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                    </svg>
+                     <%= job.location %></div>
+                  <div class="tag"> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_797_2304)">
+                    <path d="M8.00008 2L0.666748 6L3.33341 7.45333V11.4533L8.00008 14L12.6667 11.4533V7.45333L14.0001 6.72667V11.3333H15.3334V6L8.00008 2ZM12.5467 6L8.00008 8.48L3.45341 6L8.00008 3.52L12.5467 6ZM11.3334 10.66L8.00008 12.48L4.66675 10.66V8.18L8.00008 10L11.3334 8.18V10.66Z" fill="white"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_797_2304">
+                    <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                    </svg>
+                    <%= job.experience %></div>
+                  <div class="tag"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_797_2309)">
+                    <path d="M7.99325 1.3335C4.31325 1.3335 1.33325 4.32016 1.33325 8.00016C1.33325 11.6802 4.31325 14.6668 7.99325 14.6668C11.6799 14.6668 14.6666 11.6802 14.6666 8.00016C14.6666 4.32016 11.6799 1.3335 7.99325 1.3335ZM7.99992 13.3335C5.05325 13.3335 2.66659 10.9468 2.66659 8.00016C2.66659 5.0535 5.05325 2.66683 7.99992 2.66683C10.9466 2.66683 13.3333 5.0535 13.3333 8.00016C13.3333 10.9468 10.9466 13.3335 7.99992 13.3335ZM7.85325 4.66683H7.81325C7.54659 4.66683 7.33325 4.88016 7.33325 5.14683V8.2935C7.33325 8.52683 7.45325 8.74683 7.65992 8.86683L10.4266 10.5268C10.6533 10.6602 10.9466 10.5935 11.0799 10.3668C11.2199 10.1402 11.1466 9.84016 10.9133 9.70683L8.33325 8.1735V5.14683C8.33325 4.88016 8.11992 4.66683 7.85325 4.66683Z" fill="white"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_797_2309">
+                    <rect width="16" height="16" fill="white"/>
+                    </clipPath>
+                    </defs>
+                    </svg>
+                     <%= job.type %></div>
                 </div>
+          
+                <!-- Опис -->
                 <p class="card-description">
                   <%= job.description %>
+                  <a href="#">Read More</a>
                 </p>
+          
+                <!-- Нижня частина картки -->
                 <div class="card-footer">
-                  <span>Posted <%= job.posted %></span>
+                  <span><svg width="15" height="15" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_797_2207)">
+                    <path d="M13.8124 3.25803C8.5103 3.1122 4.16656 7.37261 4.16656 12.633H2.30197C1.83322 12.633 1.60406 13.1955 1.93739 13.5184L4.84364 16.4351C5.05197 16.6434 5.37489 16.6434 5.58322 16.4351L8.48947 13.5184C8.81239 13.1955 8.58322 12.633 8.11447 12.633H6.24989C6.24989 8.57053 9.56239 5.28928 13.6457 5.34136C17.5207 5.39345 20.7811 8.65386 20.8332 12.5289C20.8853 16.6018 17.6041 19.9247 13.5416 19.9247C11.8645 19.9247 10.3124 19.3518 9.08322 18.383C8.66655 18.0601 8.08322 18.0914 7.70822 18.4664C7.27072 18.9039 7.30197 19.6434 7.79155 20.0184C9.37489 21.2684 11.3645 22.008 13.5416 22.008C18.802 22.008 23.0624 17.6643 22.9165 12.3622C22.7811 7.47678 18.6978 3.39345 13.8124 3.25803ZM13.2811 8.46636C12.8541 8.46636 12.4999 8.82053 12.4999 9.24761V13.0809C12.4999 13.4455 12.6978 13.7893 13.0103 13.9768L16.2603 15.9039C16.6353 16.1226 17.1145 15.9976 17.3332 15.633C17.552 15.258 17.427 14.7789 17.0624 14.5601L14.0624 12.7789V9.2372C14.0624 8.82053 13.7082 8.46636 13.2811 8.46636Z" fill="black"/>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_797_2207">
+                    <rect width="25" height="25" fill="white" transform="translate(0 0.132812)"/>
+                    </clipPath>
+                    </defs>
+                    </svg>
+                     Posted <%= job.posted %></span>
                   <span><%= job.salary %></span>
                 </div>
+          
+                <!-- Кнопка "View" -->
+                <button class="card-button">
+                  View <svg width="15" height="15" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.6936 15.1729H2.36027" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.6936 2.83984L3.36027 12.1732" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.6936 9.68651V2.83984H5.84694" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    
+                    </span>
+                </button>
               </div>
             <% }) %>
           </div>
-        
+        <!-- Модальне вікно профілю -->
+<!-- Модальне вікно для профілю -->
+<div id="profileModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="profile-card">
+        <!-- Фото профілю -->
+        <div class="profile-pic">
+            <svg width="100" height="100" viewBox="0 0 152 152" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect x="1.5" y="1.5" width="149" height="149" rx="74.5" fill="url(#pattern0_803_580)" stroke="white" stroke-width="3"/>
+                <defs>
+                <pattern id="pattern0_803_580" patternContentUnits="objectBoundingBox" width="1" height="1">
+                <use xlink:href="#image0_803_580" transform="scale(0.005)"/>
+                </pattern>
+                <image id="image0_803_580" width="200" height="200" xlink:href="data:image/jpeg;base64,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"/>
+                </defs>
+                </svg>   
+        </div>
+        <!-- Ім'я та верифікація -->
+        <div class="profile-name">
+          <h2 id="profile-name">gavalerka</h2>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0L13.971 2.72716L16.8808 1.03745L17.5722 4.33052L20.9177 3.97043L20.2099 7.26L23.4127 8.2918L21.4281 11.0091L23.9343 13.2543L21.016 14.9295L22.3923 18L19.045 18.3434L19.0534 21.7082L15.8559 20.6604L14.4949 23.7378L12 21.48L9.50506 23.7378L8.14414 20.6604L4.94658 21.7082L4.95499 18.3434L1.6077 18L2.98398 14.9295L0.0657377 13.2543L2.57193 11.0091L0.587322 8.2918L3.79008 7.26L3.08226 3.97043L6.4278 4.33052L7.11916 1.03745L10.029 2.72716L12 0Z" fill="#3597F0"/>
+            <path d="M8.00049 11.932L10.6582 15L17.0005 9" stroke="white"/>
+            </svg>
+            
+        </div>
+        <!-- Теги -->
+        <div class="profile-tags">
+          <div class="tag1">php</div>
+          <div class="tag1">design</div>
+          <div class="tag1">web</div>
+          <div class="tag1">c#</div>
+          <div class="tag1">js</div>
+        </div>
+        <!-- Соціальні посилання -->
+        <div class="profile-links">
+          <div class="link">
+            <svg width="40" height="40" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <circle cx="43" cy="43" r="41.5" fill="url(#pattern0_803_598)" stroke="white" stroke-width="3"/>
+                <defs>
+                <pattern id="pattern0_803_598" patternContentUnits="objectBoundingBox" width="1" height="1">
+                <use xlink:href="#image0_803_598" transform="scale(0.01)"/>
+                </pattern>
+                <image id="image0_803_598" width="100" height="100" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAATYSURBVHgB7ZxdaE5xHMd/83LBhjL2rIzYEGOmUNbiwphLcam4m9iFEi5WahQpWWoukJSQUprmzlAiLLnwUl7bM4XsUWxsz9Zs4XxPzjrn2Xlelp3z/H7/5/e5WTv77+35PP/z/f/+LydvyeLyP6SwYQIprFAhzFAhzFAhzFAhzFAhzFAhzFAhzFAhzFAhzFAhzFAhzFAhzFAhzFAhzFAhzFAhzFAhzFAhzBAhJBKZQrvrltKmmjlkOpNIACePr6Xioqkjn9+++5lMhX0PQe9wy6ismEUmoxnCDBXCjKwIiRRNofz84OMrrN8znoT+1yKgKysKqSvWTwca2in2dYCCYMf2RbRz+2Lqiw9R49Gn9OLld5JAqD0EAQ0ZoDgy1ZaDd/F448gABfmTqbZmLkkhVCHxvmFPjwhCiluGQ0fnD5JCqEJw+9jf8DgwKX4yLl19RzdaP5AUQg/1WGxgTFLQ3t32xctvvj83mYzLV9+TJPKydRwBedJ0vMojIVnQo21tTYkdzM99hJgiA0ycVTj7MGWBeHyYHrZ3UXVVsR28oKBgsv3i37v/ZVRbyPAbkVVWzKSD+1Z6rkmVAbJaGPrdvhD8Y6Ev7m0vWQbIWg9xcHpKWel0azTUSxcuvrGvZUp396AtFL2s5WYnXbseJcnk6ZE2XuhcFjNUCDMCn8tKV/AFNZcllcCEYPiauNLnB2qP3XsfpA1yhD7qjYXWxy5rdHbrzkcjVw4DG2WhUFuzqihtO9Qe33sG6c3bnqRtVli1xummappXUmCPplDZo34BUmZxMyWwDOno/Jlx23S1x8F9lb7XIf3woVXi1jxSEdh/0nbnk/1xxfLClO0wN9V291PSr9s9IsVtr3ptMZU1Tw90bSVM2NchyKIrFzaMfH7LEh23Zo23bVngaYcsajz2lKLRXpKMyGHvmfOv7CkSN8iVc83raeuW+SQZsXUI5quwNJs4l1Vft8wejUlFdGH4qD1mDZnvj8oOyWEvvlJ3Zow7ot5RHcL+bPO6QNbsg8SIqRNIQXHZ0trpue6sRJaWTiMpGDWXZULYGze5KD3sjZztlRz2xk6/Sw17o9dDJIZ9TixQSQr7nFkxlBL2ObWEKyHsc25NnXvY5+QmB85hn9O7TjiGfc5vA+IW9rovi3iFvQr5R6qwb7JyJSwpKsRFsrAvK51BtRtLKAzM2T+TAry7sXsFGyYywdmN7xxQBWULZlAYGCsEErAzZbP1zo6k2T2ZCfH4LwoDI4Vsqimh+l3lIyezxoO2kLatGifE77zh/4JaJTHsg8IoIVutW5SfDBwUxQuKY9ljARvA8X3Pk5z8DQJjhGBDdn1duecaXkwUfZK2mBohBKOnI4dWe65BBuqKsZxX5ID4OsQ5h+IOcNQT6BnSZADRQjC0TTwU5HfUWhKiheA25ZaBHiFZBhArZI8V4O5KGpw49Uz8GRGRQlBrJJ4PQa2AWVvpiBtlVVdFRlXg0h+n4YZ9D0FIuxePEmW0tEaNkQFE3LLwovuBWuPM+ddkEll/+EwmOEef3SGO6YyGxic0NPSbTELUw2dQdyy0Fou67KfM9ZOJ6NOAmKFLuMxQIcxQIcxQIcxQIcxQIcxQIcxQIcxQIcxQIcxQIcxQIcxQIcxQIcxQIcxQIcxQIcxQIcz4CyvHI4L2Ayr9AAAAAElFTkSuQmCC"/>
+                </defs>
+                </svg>
+                
+            <p>GitHub</p>
+          </div>
+          <div class="link">
+            <svg width="40" height="40" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <circle cx="43" cy="43" r="41.5" fill="url(#pattern0_803_602)" stroke="white" stroke-width="3"/>
+                <defs>
+                <pattern id="pattern0_803_602" patternContentUnits="objectBoundingBox" width="1" height="1">
+                <use xlink:href="#image0_803_602" transform="scale(0.01)"/>
+                </pattern>
+                <image id="image0_803_602" width="100" height="100" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHfSURBVHgB7d07TgJRGEDhHyMFj1howlBrYoyJjxJDZ+sWtNHF2FC4ATuXYGeilbHVuAmGxA6hoFCpRUMxjzPhfCUFueGEH+beIdT2dve/QhhrIRSDwBgExiAwBoExCIxBYAwCYxAYg8AYBMYgMAaBMQiMQWAMAmMQGIPAGATGIDAGgTEIjEFgDAJjEJj1yEHSacSqSEfTyFLmQZKkEXe3p7Eqzi8fM43iyIIxCIxBYAwCYxAYg8AYBMYgMAaBMQiMQWAMAmMQmFy23xcZf87i+SWNMrTb9ej3kl+Pp+k0Xt8/lnmK6J90o93K/+UqLsh4FoObtyjD/EhgUZDhaLL0mo4PNwsJ4siCMQiMQWAMAmMQGIPAGATGIDAGgSnsSr2bNOPh/iz0P98hMAaBMQiMQWAK+1CfS3+2u8uSdJpRBYUFGaaTuLh6ijJU6ScSjiwYg8AYBMYgMAaBMQiMQWAMAmMQmMKu1Oe3cw6ue1GGv+443NneWHpNRW29FBekVY+jg60gIa7JkQVjEBiDwBgEppbHP31W5TAoC1kfuuXyLavMk8Gqc2TBGATGIDAGgTEIjEFgDAJjEBiDwBgExiAwBoExCIxBYAwCYxAYg8AYBMYgMAaBMQiMQWAMAmMQmG8pmDjE3nMoWwAAAABJRU5ErkJggg=="/>
+                </defs>
+                </svg>
+                
+            <p>LinkedIn</p>
+          </div>
+          <div class="link">
+            <svg width="40" height="40" viewBox="0 0 86 86" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <circle cx="43" cy="43" r="41.5" fill="url(#pattern0_803_606)" stroke="white" stroke-width="3"/>
+                <defs>
+                <pattern id="pattern0_803_606" patternContentUnits="objectBoundingBox" width="1" height="1">
+                <use xlink:href="#image0_803_606" transform="scale(0.00769231)"/>
+                </pattern>
+                <image id="image0_803_606" width="130" height="130" xlink:href="data:image/png;base64,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"/>
+                </defs>
+                </svg>
+                
+            <p>Telegram</p>
+          </div>
+        </div>
+        <!-- Опис -->
+        <div class="profile-description">
+          <h3>Student</h3>
+          <p>Ukraine</p>
+          <p>
+            A PHP developer specializes in building dynamic web applications and back-end services using PHP as their primary programming language. They are skilled in server-side logic, creating and managing databases, and ensuring seamless integration of front-end and back-end components. A PHP developer specializes in building dynamic web applications and back-end services using PHP as their primary programming language. They are skilled in server-side logic, creating and managing databases, and ensuring seamless integration of front-end and back-end components. A PHP developer specializes in building dynamic web applications and back-end services using PHP as their primary programming language. They are skilled in server-side logic, creating and managing databases, and ensuring seamless integration of front-end and back-end components. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
         
        
         
-            <script src="/js/script.js"></script>
+          <script src="\js\script.js"></script>
             </main>
     </base> </div>
 </body>

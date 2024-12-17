@@ -55,7 +55,7 @@ const data = {
       { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
       { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
       { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-  ]  
+  ]  ,
 
 };
 
@@ -87,11 +87,22 @@ function shuffleArray(array) {
   }
 }
 
-// Доступні кольори для карток
+// Масив кольорів
 const colors = ["blue", "orange", "pink", "yellow"];
+
+// Функція для перемішування масиву кольорів
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Обмін елементів
+  }
+}
 
 // Додаємо кольори до карток без повторень у рядку
 data.job = data.job.map((job, index) => {
-  if (index % colors.length === 0) shuffleArray(colors); // Перемішати кольори на кожному ряду
-  return { ...job, color: colors[index % colors.length] }; // Вибирати кольори по індексу
+  if (index % colors.length === 0) shuffleArray(colors); // Перемішати кольори на початку кожного ряду
+  return { ...job, color: colors[index % colors.length] }; // Додаємо кольори по індексу
 });
+
+
+
