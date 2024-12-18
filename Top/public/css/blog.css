@@ -1,0 +1,421 @@
+body { 
+    font-family: 'Tilt Neon', sans-serif;
+    background: #f5f5f5;
+    color: #000;
+    height: 100vh; 
+    width: 100%; 
+    
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; /* Вирівнювання між елементами */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+
+.search-container input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: 250px;
+    font-size: 14px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #292929;
+    gap: 10px;
+}
+
+.search-container .search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    stroke: #292929;
+}
+
+.header-right .username {
+    font-size: 18px; 
+    color: #292929;
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.main-content {
+    position: fixed;
+    top: 40px; /* Відступ нижче header */
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Розтягуємо на всю ширину */
+    display: flex;
+    /* overflow: hidden;  */
+    background-color: #f5f5f5;
+}
+.main-content aside {
+    position: fixed;
+    top: 80px; /* Висота header */
+    left: 0;
+    bottom: 0;
+    width: 250px; /* Ширина aside */
+    background-color: #fff;
+    /* overflow-y: auto;  */
+    border-right: 1px solid #e0e0e0;
+}
+
+.name_firma {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    padding: 0px 0px 40px 0px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    overflow: hidden;
+   left: 50px;
+    width: 900px; 
+    height: 40px; 
+    padding-left: 60px;
+}
+
+aside .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    color: #000;
+}
+
+aside ul a:hover {
+    background-color: #0a091779; 
+    color: white;
+}
+
+aside li a:hover .icon svg path {
+    stroke: white; 
+}
+
+.Vector_167{
+    position: absolute;
+    pointer-events: none;
+    z-index: 0; 
+    top: -20px;
+    left: -7px;
+}
+
+.icon-TeamSpace {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    padding-left: 0px;
+    
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden; /* Прибирає прокручування */
+    position: fixed; /* Фіксоване положення */
+}
+
+aside li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 5px 20px;
+    border-radius: 10px;
+    background-color: #f8f9fa; 
+    color: #292929;
+    text-decoration: none;
+}
+
+aside ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+aside a {
+    text-decoration: none;
+    color: #91918F;
+    
+}
+
+aside li.Blog a {
+    background: #0C0B19;
+    color: white;
+    width: 100%;
+}
+main {
+    margin-left: 250px; /* Відступ для aside */
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto; /* Дозволяємо прокручування тільки всередині */
+    background-color: #f8f8f8;
+    height: calc(100vh - 80px); /* Висота сторінки без header */
+}
+.filters {
+    display: flex;
+    flex-direction: row;
+    padding: 15px 28px;
+    gap: 20px;
+}
+
+
+
+/*  */
+/* Основний контейнер фільтрів */
+/* Фільтри */
+
+  .filter-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 16px;
+    background: #D5D5D5;
+    border-radius: 24px;
+    font-family: 'Tilt Neon', sans-serif;
+    font-size: 20px;
+    color: #000;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .filter-button.active {
+    background: #5424FD;
+    color: #FFFFFF;
+  }
+  
+  .filter-button:hover {
+    background: #7C5FF4;
+    color: #FFFFFF;
+  }
+  
+  
+
+  /* Кнопка фільтра */
+  .filter-button-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2B2B2B;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .filter-button-icon:hover {
+    background: #444444;
+  }
+  
+/* Main Content */
+.main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+    height: calc(100vh - 80px);
+    background: #f5f5f5;
+}
+
+/* Blog Card Container */
+.blog-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    max-width: 1440px;
+    margin: 0 auto ;
+}
+
+/* Single Blog Card */
+.card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 20px;
+
+    width: 300px;
+    height: 400px;
+
+    background: #FFFFFF;
+    border-bottom: 1px solid #000000;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+/* Card Image */
+.card img {
+    width: 430px;
+    height: 300px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Card Title */
+.card h3 {
+    width: 100%;
+    font-family: 'Tilt Neon', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: #3E3232;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+/* Card Description */
+.card p {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(62, 50, 50, 0.75);
+    margin: 0;
+    text-transform: capitalize;
+}
+
+/* Card Info */
+.card .info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 16px;
+    background: #F5F5F5;
+    border-radius: 12px;
+}
+
+/* Avatar */
+.card .info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Info Text */
+.card .info .text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    margin-left: 10px;
+}
+
+.card .info .text .header {
+    font-size: 16px;
+    line-height: 22px;
+    color: #3E3232;
+}
+
+.card .info .text .subhead {
+    font-size: 14px;
+    color: rgba(62, 50, 50, 0.75);
+}
+
+/* Icon */
+.card .info .icon {
+    font-family: 'Font Awesome 6 Free';
+    font-size: 18px;
+    color: rgba(62, 50, 50, 0.5);
+    margin-left: auto;
+}
+
+/* Responsive Adjustments for 1440x900 */
+@media screen and (max-width: 1440px) {
+    .main-content {
+        padding: 10px;
+    }
+
+    .blog-cards {
+        gap: 20px;
+    }
+
+    .card {
+        width: 400px;
+        height: 520px;
+    }
+
+    .card img {
+        width: 380px;
+        height: 280px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .card p {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .card .info img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .card .info .text .header {
+        font-size: 14px;
+    }
+
+    .card .info .text .subhead {
+        font-size: 12px;
+    }
+
+    .card .info .icon {
+        font-size: 16px;
+    }
+}
+

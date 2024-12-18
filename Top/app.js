@@ -1,108 +1,47 @@
 const express = require("express");
 const path = require("path");
 const app = express();
+const { data, blogData } = require("./data"); // Correctly importing data and blogData
 
-// Встановлення шляху до директорії з шаблонами
+// Set up EJS as the template engine
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// Використовуємо статичні файли (CSS, зображення, JS)
+// Serve static files (CSS, JS, Images)
 app.use(express.static(path.join(__dirname, "public")));
-
-// Дані для відображення (можна перенести в окремий файл, наприклад, data.js)
-const data = {
-  username: "login",
-  tasks: 2056,
-  friends: 25,
-  doneProjects: 12,
-  activeProjects: [
-    { name: "TeamSpace", members: 12, progress: 50, deadline: "12 September 2024" },
-    { name: "TeamSpace", members: 12, progress: 25, deadline: "12 September 2024" },
-    { name: "TeamSpace", members: 12, progress: 75, deadline: "12 September 2024" },
-  ],
-  colleagues: [
-    { name: "Tony", project: "TeamSpace" },
-    { name: "Kirill", project: "TeamSpace" },
-    { name: "Momo", project: "TeamSpace" },
-  ],
-  requests: [
-    { name: "TeamSpace",  status: "awaiting" },
-    { name: "TeamSpace",  status: "declined" },
-    { name: "TeamSpace", status: "accepted" },
-  ],
-  recentTasks: [
-    { title: "Pre-loader and white space UI design", status: "Completed" },
-    { title: "Pre-loader and white space UI design", status: "50%" },
-  ],activeProjects: [
-    { name: "TeamSpace",join_at: "12 July 2024, 15:30", progress: 75 }, 
-    { name: "TeamSpace",join_at: "12 July 2024, 15:30", progress: 50 }, 
-    { name: "TeamSpace",join_at: "12 July 2024, 15:30", progress: 100 }, 
-    { name: "TeamSpace",join_at: "12 July 2024, 15:30", progress: 25 }, 
-  ],UserInfo: [
-    { email: "email@gmail.com", phone: "+380111111111", status: "php-programmer" },
-    { tasks_completed: "150", tasks_left: "30" },
-  ],
-  job: [
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-      { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
-  ]  ,
-
-};
-
-// Головна сторінка
-app.get("/", (req, res) => {
-  res.render("index", { data });
-});
-
-// Створення маршруту для інших сторінок
-const routes = ['login', 'my_projects', 'my_tasks', 'schedule', 'index', 'recruiters'];
-
-routes.forEach(route => {
-  app.get(`/${route}`, (req, res) => {
-    res.render(route, { data });
-  });
-});
-
-// Запуск серверу
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Сервер працює на порті ${PORT}`);
-});
-
-// Функція для перемішування масиву
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-// Масив кольорів
+// Додаємо папку images як статичну
+app.use('/images', express.static(path.join(__dirname, 'images')));
+// Array of colors for jobs
 const colors = ["blue", "orange", "pink", "yellow"];
 
-// Функція для перемішування масиву кольорів
+// Shuffle colors function
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Обмін елементів
+    [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
-// Додаємо кольори до карток без повторень у рядку
-data.job = data.job.map((job, index) => {
-  if (index % colors.length === 0) shuffleArray(colors); // Перемішати кольори на початку кожного ряду
-  return { ...job, color: colors[index % colors.length] }; // Додаємо кольори по індексу
+// Add colors to job cards
+if (Array.isArray(data.job)) {
+  data.job = data.job.map((job, index) => {
+    if (index % colors.length === 0) shuffleArray(colors);
+    return { ...job, color: colors[index % colors.length] };
+  });
+} else {
+  console.error("data.job is not defined or not an array");
+}
+
+// Routes
+app.get("/index", (req, res) => res.render("index", { data }));
+app.get("/blog", (req, res) => res.render("blog", { data, blogData }));
+app.get("/my_projects", (req, res) => res.render("my_projects", { data }));
+app.get("/my_tasks", (req, res) => res.render("my_tasks", { data }));
+app.get("/schedule", (req, res) => res.render("schedule", { data }));
+app.get("/recruiters", (req, res) => res.render("recruiters", { data }));
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
-
-
-

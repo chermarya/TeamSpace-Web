@@ -1,4 +1,5 @@
 
+const { data } = require("/data.js");
 
 document.addEventListener("DOMContentLoaded", () => {
     const progressElements = document.querySelectorAll(".project-progress");
@@ -81,8 +82,59 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-  
-  
+
+  // Масив кольорів
+const colors = ["blue", "orange", "pink", "yellow"];
+
+// Функція для перемішування масиву кольорів
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Обмін елементів
+  }
+}
+
+// Додаємо кольори до карток без повторень у рядку
+data.job = data.job.map((job, index) => {
+  if (index % colors.length === 0) shuffleArray(colors); // Перемішати кольори на початку кожного ряду
+  return { ...job, color: colors[index % colors.length] }; // Додаємо кольори по індексу
+});
+
+ // Створення маршруту для інших сторінок
+const routes = ['login', 'my_projects', 'my_tasks', 'schedule', 'index', 'recruiters','blog'];
+
+routes.forEach(route => {
+  app.get(`/${route}`, (req, res) => {
+    res.render(route, { data });
+  });
+});
 
 
- 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const blogContainer = document.querySelector(".blog-cards");
+
+  // Генерація карток
+  blogData.forEach((post) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
+      <img src="${post.image}" alt="Post Image">
+      <div class="content">
+        <div class="title">${post.title}</div>
+        <div class="description">${post.description}</div>
+        <div class="info">
+          <div class="profile">
+            <img src="${post.avatar}" alt="Profile Picture">
+            <div class="profile-text">
+              <div class="name">${post.author}</div>
+              <div class="date">${post.date}</div>
+            </div>
+          </div>
+          <div class="icon">★</div>
+        </div>
+      </div>
+    `;
+    blogContainer.appendChild(card);
+  });
+});

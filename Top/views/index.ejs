@@ -96,7 +96,7 @@
                         </a>
                     </li>
                     <li class="Blog">
-                        <a href="#">
+                        <a href="blog" class="blog">
                             <span class="icon">                              
                                 <svg width="20" height="20" viewBox="0 0 67 63" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M38 20.5L19 20.5" stroke="#292929" stroke-opacity="0.5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -290,7 +290,7 @@
                 </div>
             </section>
             
-            <script src="/js/script.js"></script>
+           
             <section class="recent-tasks">
                 <h3>Recent Tasks</h3>
                 <div class="task">
@@ -335,4 +335,21 @@
         </main>
     </div>
 </body>
+
+<script src="\js\script.js">
+</script>
+<script>
+    // Зберігаємо позицію скролу перед закриттям сторінки
+    window.addEventListener("beforeunload", function () {
+        localStorage.setItem("scrollPosition", window.scrollY);
+    });
+    
+    // Відновлюємо позицію скролу після завантаження сторінки
+    window.addEventListener("load", function () {
+        const scrollPosition = localStorage.getItem("scrollPosition");
+        if (scrollPosition !== null) {
+            window.scrollTo(0, parseInt(scrollPosition));
+        }
+    });
+    </script>
 </html>
