@@ -1,64 +1,95 @@
 body { 
     font-family: 'Tilt Neon', sans-serif;
     background: #f5f5f5;
-    color: #333;
-    height: 100vh; /* Висота сторінки = висота вікна браузера */
-    width: 100%; 
+    color: #000;
+    height: 100vh; 
+   
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
-
 
 .header {
-    display: flex; 
-    flex-direction: row; 
-    justify-content: space-between; 
-    align-items: center; 
+    display: flex;
+    justify-content: space-between; /* Вирівнювання між елементами */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
+
 
 .search-container input {
-    border: none; /* Прибираємо рамку вводу */
-    outline: none; /* Прибираємо обводку при фокусі */
-    font-size: 16px; /* Розмір тексту */
-    color: #292929; /* Колір тексту */
-    flex-grow: 1; /* Займає всю доступну ширину */
-    background: none; /* Фон прозорий */
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: 250px;
+    font-size: 14px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #292929;
+    gap: 10px;
 }
 
-
-.header-right .icon {
-    display: flex; /* Включаємо flexbox */
-    justify-content: center; /* Центрування */
-    align-items: center; /* Центрування */
-   
- 
-   
-    cursor: pointer; /* Курсор-рука */
-}
 .search-container .search-icon {
-    position: absolute; /* Абсолютне позиціонування */
-    left: 15px; /* Відступ від лівого краю контейнера */
-    top: 50%; /* Вирівнюємо по вертикалі */
-    transform: translateY(-50%); /* Центруємо іконку */
-    
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    stroke: #292929;
 }
 
 .header-right .username {
-    font-size: 18px; /* Розмір шрифту */
-    color: #292929; /* Колір тексту */
-    display: flex; /* Включаємо flexbox */
-    align-items: center; /* Центруємо */
-    gap: 10px; /* Відстань між іменем і іконкою */
+    font-size: 18px; 
+    color: #292929;
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
 }
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .header-right {
-    display: flex; /* Включаємо flexbox */
-    flex-direction: row; /* Елементи в ряд */
-    align-items: center; /* Вирівнювання по центру */
-    gap: 20px; /* Проміжок між елементами */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
 }
 
 .main-content {
+    position: fixed;
+    top: 40px; /* Відступ нижче header */
+    bottom: 0;
+    left:250px;
+    width: 100%; /* Розтягуємо на всю ширину */
     display: flex;
-    width: 100%; 
+    /* overflow: hidden;  */
+    background-color: #f5f5f5;
 }
+.main-content aside {
+    position: fixed;
+    top: 80px; /* Висота header */
+    left: 0;
+    bottom: 0;
+    width: 250px; /* Ширина aside */
+    background-color: #fff;
+    /* overflow-y: auto;  */
+   
+}
+
 .name_firma {
     display: flex;
     justify-content: center;
@@ -67,18 +98,19 @@ body {
     font-size: 24px;
     padding: 0px 0px 40px 0px;
 }
+
 .search-container {
-    position: relative; /* Включаємо відносне позиціонування */
-    display: flex; /* Вирівнювання елементів в одному рядку */
-    align-items: center; /* Центруємо по вертикалі */
-    width: 700px; /* Ширина пошукового рядка */
-    height: 56px; /* Висота */
-   
-
-    padding-left: 60px; /* Відступ для тексту, щоб не перекривало іконку */
-
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    overflow: hidden;
+   left: 50px;
+    width: 900px; 
+    height: 40px; 
+    padding-left: 60px;
 }
-
 
 aside .icon {
     display: flex;
@@ -88,24 +120,24 @@ aside .icon {
     height: 30px;
     color: #000;
 }
+
 aside ul a:hover {
     background-color: #0a091779; 
     color: white;
 }
-aside li a:hover .icon svg path {
-    stroke: white; /* Колір обведення іконки */
-}
 
+aside li a:hover .icon svg path {
+    stroke: white; 
+}
 
 .Vector_167{
-  
     position: absolute;
-    pointer-events: none; /* Иконка не кликабельна */
-    z-index: 0; /* На задний план */
-    top: 19px;
+    pointer-events: none;
+    z-index: 0; 
+    top: -20px;
     left: -7px;
-    
 }
+
 .icon-TeamSpace {
     display: flex;
     align-items: center;
@@ -114,15 +146,18 @@ aside li a:hover .icon svg path {
     padding-left: 0px;
     
 }
+
 aside {
+    background-color: #0C0B19;
+    color: white;
+    width: 280px;
+    height: 100%;
     display: flex;
     flex-direction: column;
-   
-    
-    
-    padding: 10px;
-    box-sizing: border-box;
+    align-items: center;
+    padding-top: 20px;
 }
+
 aside li a {
     display: flex;
     align-items: center;
@@ -130,9 +165,10 @@ aside li a {
     width: 100%;
     padding: 5px 20px;
     border-radius: 10px;
-    background-color: #f8f9fa; /* Колір фону */
+    background-color: #f8f9fa; 
     color: #292929;
     text-decoration: none;
+    
 }
 
 aside ul {
@@ -145,13 +181,17 @@ aside ul {
     align-items: flex-start;
     width: 100%;
 }
+
 aside a {
     text-decoration: none;
     color: #91918F;
+    
 }
+
 aside li.Overview a {
     background: #0C0B19;
     color: white;
+    width: 100%;
 }
 main {
     flex: 1;
@@ -169,11 +209,7 @@ main {
     padding: 20px;
     gap: 50px;
 }
-@media (max-width: 768px) {
-    .stats {
-        flex-direction: column; /* Stack the items vertically on smaller screens */
-    }
-}
+
 .stat-item {
     display: flex;
     flex-direction: column;

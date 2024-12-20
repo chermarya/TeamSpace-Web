@@ -44,6 +44,13 @@ const data = {
         { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
         { title: "Sr. UX Designer", company: "Google", location: "New York", experience: "3 Years Exp.", type: "Fulltime", description: "UX Designers are the synthesis of design and development...", posted: "2 days ago", salary: "$50K/mo",  },
     ]  ,
+    jobs: [
+      { title: "Senior PHP Developer", category: "Php", company: "Google", location: "New York" },
+      { title: "UI Designer", category: "Ui", company: "Microsoft", location: "Seattle" },
+      { title: "C# Developer", category: "C#", company: "Amazon", location: "Austin" },
+      { title: "Frontend Developer", category: "html/css", company: "Facebook", location: "San Francisco" },
+      { title: "Project Manager", category: "Manager", company: "Apple", location: "Remote" },
+    ]
   
   };
   const blogData = [
@@ -64,7 +71,55 @@ const data = {
       avatar: "img_avatar_01.png",
     },
     {
+      image: "image3.png",
+      title: "How we built the first real self-driving car",
+      description: "Electric self-driving cars will save millions of lives and significantly accelerate the world’s transition to sustainable energy, but only when",
+      author: "Louis Hoebregts",
+      date: "July 25, 2022",
+      avatar: "img_avatar_01.png",
+    },
+    {
+      image: "image4.png",
+      title: "How we built the first real self-driving car",
+      description: "Electric self-driving cars will save millions of lives and significantly accelerate the world’s transition to sustainable energy, but only when",
+      author: "Louis Hoebregts",
+      date: "July 25, 2022",
+      avatar: "img_avatar_01.png",
+    },
+    {
+      image: "image.png",
+      title: "How we built the first real self-driving car",
+      description: "Electric self-driving cars will save millions of lives and significantly accelerate the world’s transition to sustainable energy, but only when",
+      author: "Louis Hoebregts",
+      date: "July 25, 2022",
+      avatar: "img_avatar_01.png",
+    },
+    {
       image: "image2.png",
+      title: "How we built the first real self-driving car",
+      description: "Electric self-driving cars will save millions of lives and significantly accelerate the world’s transition to sustainable energy, but only when",
+      author: "Louis Hoebregts",
+      date: "July 25, 2022",
+      avatar: "img_avatar_01.png",
+    },
+    {
+      image: "image3.png",
+      title: "How we built the first real self-driving car",
+      description: "Electric self-driving cars will save millions of lives and significantly accelerate the world’s transition to sustainable energy, but only when",
+      author: "Louis Hoebregts",
+      date: "July 25, 2022",
+      avatar: "img_avatar_01.png",
+    },
+    {
+      image: "image4.png",
+      title: "How we built the first real self-driving car",
+      description: "Electric self-driving cars will save millions of lives and significantly accelerate the world’s transition to sustainable energy, but only when",
+      author: "Louis Hoebregts",
+      date: "July 25, 2022",
+      avatar: "img_avatar_01.png",
+    },
+    {
+      image: "image.png",
       title: "How we built the first real self-driving car",
       description: "Electric self-driving cars will save millions of lives and significantly accelerate the world’s transition to sustainable energy, but only when",
       author: "Louis Hoebregts",

@@ -9,19 +9,50 @@
 </head>
 <body>
    
-
     <div class="main-content">
+        <!-- <div class="main-content1"> -->
         <aside>
-            <li class="name_firma">
-                <a  href="index" class="index">
-                    <span class="icon-TeamSpace">
-                        <svg width="33" height="33" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="50" fill="#D9D9D9"/>
-                        </svg>
+            <header class="header">
+                <div class="header-left">
+                    <div class="logo">
+                        <span class="icon-TeamSpace">
+                            <svg width="33" height="33" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="50" fill="#D9D9D9"/>
+                            </svg>
+                        </span>
+                        TeamSpace
+                    </div>
+                    <div class="search-container">
+                        <svg class="search-icon" width="30" height="30" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M53 53L40.9357 40.9357M40.9357 40.9357C44.9571 36.9143 47.4444 31.3587 47.4444 25.2222C47.4444 12.9492 37.4952 3 25.2222 3C12.9492 3 3 12.9492 3 25.2222C3 37.4952 12.9492 47.4444 25.2222 47.4444C31.3587 47.4444 36.9143 44.9571 40.9357 40.9357Z" stroke="#292929" stroke-opacity="0.3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>   
+                        <input type="text" placeholder="Search Tasks, People...">
+                    </div>
+                </div>
+                <div class="header-right">
+                    <span class="icon">
+                        <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M35 11C35.8284 11 36 10.855 36 10.5C36 10.145 35.8284 9 35 9C34.1716 9 34 10.145 34 10.5C34 10.855 34.1716 11 35 11Z" stroke="#292929" stroke-opacity="0.7" stroke-width="3"/>
+                            <path d="M20.75 50V21C20.75 17.6863 23.4363 15 26.75 15H43.25C46.5637 15 49.25 17.6863 49.25 21V50M20.75 50H49.25M20.75 50H16M49.25 50H54" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M34 59L38 59" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="35" cy="35" r="31" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg> 
                     </span>
-                    TeamSpace
+                </span> 
+                <span class="icon">
+                    <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M66 35C66 41.3961 64.0629 47.3397 60.7435 52.2763C55.1775 60.5539 45.7247 66 35 66C24.2753 66 14.8225 60.5539 9.25653 52.2763C5.93705 47.3397 4 41.3961 4 35C4 17.8792 17.8792 4 35 4C52.1208 4 66 17.8792 66 35Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                        <path d="M41 21C41 24.3137 38.3137 27 35 27C31.6863 27 29 24.3137 29 21C29 17.6863 31.6863 15 35 15C38.3137 15 41 17.6863 41 21Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                        <path d="M44.4989 38H26.5011C21.0665 38 16.4757 41.6135 15 46.5692C19.9513 52.3424 27.2985 56 35.5 56C43.7015 56 51.0487 52.3424 56 46.5692C54.5243 41.6135 49.9335 38 44.4989 38Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                        </svg>                                                                                                                  
+                </span> 
+                <a href="login" class="username">
+                    <%= data.username %>
+                   
                 </a>
-            </li>
+                </div>
+            </header>
+    
                 <span class="Vector_167">
                     
                         <svg width="200" height="800" viewBox="0 0 428 1945" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,7 +141,7 @@
                         </a>
                     </li>
                     <li class="Settings">
-                        <a href="#">
+                        <a href="settings" class="settings">
                             <span class="icon">                              
                                 <svg width="20" height="20" viewBox="0 0 59 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="31" cy="30" r="5" stroke="#292929" stroke-opacity="0.5" stroke-width="5"/>
@@ -124,44 +155,7 @@
                 
         </aside>
 
-        <main><section class="header">
-            <div class="header-center">
-                <div class="search-container">
-                    <!-- Іконка -->
-                    <svg class="search-icon" width="30" height="30" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M53 53L40.9357 40.9357M40.9357 40.9357C44.9571 36.9143 47.4444 31.3587 47.4444 25.2222C47.4444 12.9492 37.4952 3 25.2222 3C12.9492 3 3 12.9492 3 25.2222C3 37.4952 12.9492 47.4444 25.2222 47.4444C31.3587 47.4444 36.9143 44.9571 40.9357 40.9357Z" stroke="#292929" stroke-opacity="0.3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <!-- Поле вводу -->
-                    <input type="text" placeholder="Search Tasks, People...">
-                </div>
-            </div>
-            <div class="header-right">
-                
-                <span class="icon">
-                    <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M35 11C35.8284 11 36 10.855 36 10.5C36 10.145 35.8284 9 35 9C34.1716 9 34 10.145 34 10.5C34 10.855 34.1716 11 35 11Z" stroke="#292929" stroke-opacity="0.7" stroke-width="3"/>
-                        <path d="M20.75 50V21C20.75 17.6863 23.4363 15 26.75 15H43.25C46.5637 15 49.25 17.6863 49.25 21V50M20.75 50H49.25M20.75 50H16M49.25 50H54" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M34 59L38 59" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="35" cy="35" r="31" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>                                                                                            
-                </span> 
-                <span class="icon">
-                    <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M66 35C66 41.3961 64.0629 47.3397 60.7435 52.2763C55.1775 60.5539 45.7247 66 35 66C24.2753 66 14.8225 60.5539 9.25653 52.2763C5.93705 47.3397 4 41.3961 4 35C4 17.8792 17.8792 4 35 4C52.1208 4 66 17.8792 66 35Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
-                        <path d="M41 21C41 24.3137 38.3137 27 35 27C31.6863 27 29 24.3137 29 21C29 17.6863 31.6863 15 35 15C38.3137 15 41 17.6863 41 21Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
-                        <path d="M44.4989 38H26.5011C21.0665 38 16.4757 41.6135 15 46.5692C19.9513 52.3424 27.2985 56 35.5 56C43.7015 56 51.0487 52.3424 56 46.5692C54.5243 41.6135 49.9335 38 44.4989 38Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
-                        </svg>
-                                                                                                                   
-                </span> 
-                <a href="login" class="username">
-                    <%= data.username %>
-                    <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.417 29.1667L35.0003 43.75" stroke="#292929" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M35 43.75L49.5833 29.1667" stroke="#292929" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
-        </section>
+        <main>
         <section class="stats">
             <!-- Tasks -->
             <div class="stat-item stat-item_tasks">

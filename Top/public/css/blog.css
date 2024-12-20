@@ -256,51 +256,53 @@ main {
 /* Main Content */
 .main-content {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-wrap: wrap; /* Дозволяє переносити рядок, якщо карток більше ніж вміщається */
+    justify-content: space-between; /* Простір між картками */
     align-items: flex-start;
     padding: 20px;
     gap: 20px;
     height: calc(100vh - 80px);
     background: #f5f5f5;
+    margin: 0 auto; /* Центрує контейнер по горизонталі */
+   
 }
 
 /* Blog Card Container */
 .blog-cards {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 32px;
-    max-width: 1440px;
-    margin: 0 auto ;
+    flex-wrap: wrap; /* Дозволяє переносити картки на новий ряд */
+    justify-content: center; /* Центрування карток */
+    gap: 20px; /* Проміжок між картками */
+    margin: 20px auto; /* Відступи для верхньої та нижньої частини */
+    padding: 10px;
+    max-width: 1200px; /* Обмежує ширину контейнера */
 }
 
 /* Single Blog Card */
 .card {
-    box-sizing: border-box;
+    flex: 0 1 calc(33.33% - 20px); /* Три картки в ряд */
+    box-sizing: border-box; /* Гарантує, що padding враховується у ширину */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 10px;
-    gap: 20px;
-
-    width: 300px;
-    height: 400px;
-
     background: #FFFFFF;
-    border-bottom: 1px solid #000000;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px; /* Згладжені кути */
     box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
+    margin: 0; /* Прибираємо зайвий margin */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Ефект наведення */
 }
+
 
 /* Card Image */
 .card img {
-    width: 430px;
-    height: 300px;
+    width: 100%;
+    height: auto;
     border-radius: 12px;
     object-fit: cover;
+    margin-bottom: 15px;
 }
-
 /* Card Title */
 .card h3 {
     width: 100%;
@@ -326,13 +328,10 @@ main {
 /* Card Info */
 .card .info {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 12px 16px;
-    background: #F5F5F5;
-    border-radius: 12px;
+    margin-top: auto; /* Відштовхує елементи вверх */
 }
 
 /* Avatar */
@@ -370,52 +369,21 @@ main {
     color: rgba(62, 50, 50, 0.5);
     margin-left: auto;
 }
+.card:hover {
+    transform: scale(1.05); /* Збільшення на 5% при наведенні */
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.2);
+}
 
 /* Responsive Adjustments for 1440x900 */
-@media screen and (max-width: 1440px) {
-    .main-content {
-        padding: 10px;
-    }
 
-    .blog-cards {
-        gap: 20px;
-    }
-
+@media (max-width: 768px) {
     .card {
-        width: 400px;
-        height: 520px;
-    }
-
-    .card img {
-        width: 380px;
-        height: 280px;
-    }
-
-    .card h3 {
-        font-size: 18px;
-        line-height: 26px;
-    }
-
-    .card p {
-        font-size: 12px;
-        line-height: 18px;
-    }
-
-    .card .info img {
-        width: 36px;
-        height: 36px;
-    }
-
-    .card .info .text .header {
-        font-size: 14px;
-    }
-
-    .card .info .text .subhead {
-        font-size: 12px;
-    }
-
-    .card .info .icon {
-        font-size: 16px;
+        flex: 0 1 calc(50% - 20px); /* Дві картки в ряд на планшетах */
     }
 }
 
+@media (max-width: 480px) {
+    .card {
+        flex: 0 1 100%; /* Одна картка в ряд на мобільних пристроях */
+    }
+}
