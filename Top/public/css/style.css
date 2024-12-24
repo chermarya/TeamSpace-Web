@@ -74,7 +74,7 @@ body {
     top: 40px; /* Відступ нижче header */
     bottom: 0;
     left:250px;
-    width: 100%; /* Розтягуємо на всю ширину */
+   
     display: flex;
     /* overflow: hidden;  */
     background-color: #f5f5f5;
@@ -202,12 +202,12 @@ main {
     stroke: #FFFFFF;
 }
 .stats {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
+    display: flex; /* Enable Flexbox for layout */
+    gap: 20px; /* Add equal spacing between items */
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    justify-content: space-between; /* Distribute items evenly */
     padding: 20px;
-    gap: 50px;
+  
 }
 
 .stat-item {
@@ -222,6 +222,8 @@ main {
     border-radius: 10px;
     color: #FFFFFF;
     font-family: 'Tilt Neon', sans-serif;
+ 
+    
 }
 .stat svg{
     
@@ -273,14 +275,14 @@ main {
 }
 .projects-column {
     flex: 3; 
-    padding: 25px;
+    /* padding: 25px; */
     border-radius: 8px;
     background: #fff; 
 }
 
 .colleagues-column {
     flex: 1.5; 
-    padding: 25px;
+    /* padding: 25px; */
     border-radius: 8px;
     background: #f9f9f9;
 }
@@ -306,7 +308,7 @@ main {
 }
 .requests-column {
     flex: 2; 
-    padding: 25px;
+    /* padding: 25px; */
     border-radius: 8px;
     background: #fff;
 }
@@ -368,8 +370,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    justify-content: center; /* Center align vertically */
 }
-
 .project-name,
 .colleague-name,
 .request-name {
@@ -382,8 +384,9 @@ main {
 .colleague,
 .request {
     display: flex;
-    justify-content: space-between;  /* Distribute items evenly */
-    align-items: center;  /* Align items vertically */
+    justify-content: space-between;
+    align-items: center;
+    height: 60px; /* Ensure uniform height */
     margin-bottom: 15px;
 }
 .project-details,
@@ -391,8 +394,10 @@ main {
 .request-details {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    flex-grow: 1; /* Ensure consistent stretching */
 }
+
 
 .colleague-project {
     font-size: 12px;
@@ -488,4 +493,71 @@ main {
     color: black;
 }
 
+
+@media (max-width: 1370px) {
+    .search-container {
+        width: 800px;  
+    }
+}
+@media (max-width: 1267px) {
+    .search-container {
+        width: 700px;  
+    }
+   
+}
+@media (max-width: 1169px) {
+    .search-container {
+        width: 600px;  
+    }
+}
+@media (max-width: 1150px) {
+
+    .stat-item {
+        width: 19vw; /* Makes it responsive */
+    }
+    .project-name,
+    .colleague-name,
+    .request-name {
+       
+        font-size: 12px;
+        
+    }
+    .project-progress {
+    
+      
+        padding: 3px 5px;
+        
+        width: 40px;
+        height: 25px;
+      
+        
+    
+        font-size: 16px;
+    }
+}
+@media (max-width: 1096px) {
+
+    .request-status {
+        padding: 8px 10px;
+      
+        font-size: 10px;
+      
+    }
+    .requests-column {
+       
+        padding: 10px;
+      
+    }
+    
+}
+@media (max-width: 1070px) {
+
+    .stat-item {
+        width: 18vw; /* Makes it responsive */
+    }
+    .search-container {
+        width: 550px;  
+    }
+   
+}
 

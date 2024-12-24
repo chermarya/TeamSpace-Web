@@ -159,96 +159,154 @@
        
             <div class="main-container">
                 <div class="tab-bar">
-                    <span class="tab active">Edit Profile</span>
-                    <span class="tab">Preferences</span>
-                    <span class="tab">Security</span>
-                </div>
-        
-                <div class="profile-section">
+                    <span class="tab active" onclick="showTab('edit-profile')">Edit Profile</span>
+                    <span class="tab" onclick="showTab('preferences')">Preferences</span>
+                    <span class="tab" onclick="showTab('security')">Security</span>
+                  </div>
+                  <div id="edit-profile" class="section active">
+                    <div class="profile-section">
+                  <!-- Profile Picture -->
                     <div class="profile-picture">
-                        <svg width="241" height="241" viewBox="0 0 241 241" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <rect width="241" height="241" rx="120.5" fill="url(#paint0_linear_810_1278)"/>
-                            <rect x="10.5" y="10.5" width="220" height="220" rx="110" fill="url(#pattern0_810_1278)" stroke="white" stroke-width="3"/>
-                            <ellipse cx="193.764" cy="204.764" rx="35.7642" ry="35.7642" fill="#1814F3"/>
-                            <g clip-path="url(#clip0_810_1278)">
-                            <path d="M211.051 195.577L207.831 198.797C207.503 199.125 206.972 199.125 206.643 198.797L198.89 191.044C198.562 190.715 198.562 190.184 198.89 189.856L202.11 186.636C203.416 185.33 205.54 185.33 206.853 186.636L211.051 190.834C212.364 192.14 212.364 194.264 211.051 195.577ZM196.124 192.622L177.781 210.965L176.3 219.452C176.097 220.598 177.096 221.59 178.242 221.394L186.729 219.906L205.072 201.563C205.4 201.235 205.4 200.704 205.072 200.376L197.318 192.622C196.983 192.294 196.452 192.294 196.124 192.622ZM184.94 209.394C184.556 209.01 184.556 208.395 184.94 208.011L195.698 197.253C196.082 196.869 196.696 196.869 197.081 197.253C197.465 197.638 197.465 198.252 197.081 198.636L186.323 209.394C185.939 209.778 185.325 209.778 184.94 209.394ZM182.419 215.268H185.772V217.804L181.266 218.593L179.094 216.421L179.883 211.915H182.419V215.268Z" fill="white"/>
-                            </g>
-                            <defs>
-                            <pattern id="pattern0_810_1278" patternContentUnits="objectBoundingBox" width="1" height="1">
-                            <use xlink:href="#image0_810_1278" transform="scale(0.005)"/>
-                            </pattern>
-                            <linearGradient id="paint0_linear_810_1278" x1="241" y1="0" x2="0" y2="241" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#8A3BEE"/>
-                            <stop offset="0.390044" stop-color="#F200B7"/>
-                            <stop offset="0.916667" stop-color="#FE9402"/>
-                            </linearGradient>
-                            <clipPath id="clip0_810_1278">
-                            <rect width="35.7642" height="35.7642" fill="white" transform="translate(176.271 185.651)"/>
-                            </clipPath>
-                            <image id="image0_810_1278" width="200" height="200" xlink:href="data:image/jpeg;base64,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"/>
-                            </defs>
-                            </svg>
-                            
-                        <div class="edit-icon">
-                           
-                            </svg>
-                        </div>
+                    <svg width="241" height="241" viewBox="0 0 241 241" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="241" height="241" rx="120.5" fill="url(#paint0_linear_810_1278)"/>
+                        <rect x="10.5" y="10.5" width="220" height="220" rx="110" fill="url(#pattern0_810_1278)" stroke="white" stroke-width="3"/>
+                        <ellipse cx="193.764" cy="204.764" rx="35.7642" ry="35.7642" fill="#1814F3"/>
+                        <g clip-path="url(#clip0_810_1278)">
+                        <path d="M211.051 195.577L207.831 198.797C207.503 199.125 206.972 199.125 206.643 198.797L198.89 191.044C198.562 190.715 198.562 190.184 198.89 189.856L202.11 186.636C203.416 185.33 205.54 185.33 206.853 186.636L211.051 190.834C212.364 192.14 212.364 194.264 211.051 195.577ZM196.124 192.622L177.781 210.965L176.3 219.452C176.097 220.598 177.096 221.59 178.242 221.394L186.729 219.906L205.072 201.563C205.4 201.235 205.4 200.704 205.072 200.376L197.318 192.622C196.983 192.294 196.452 192.294 196.124 192.622ZM184.94 209.394C184.556 209.01 184.556 208.395 184.94 208.011L195.698 197.253C196.082 196.869 196.696 196.869 197.081 197.253C197.465 197.638 197.465 198.252 197.081 198.636L186.323 209.394C185.939 209.778 185.325 209.778 184.94 209.394ZM182.419 215.268H185.772V217.804L181.266 218.593L179.094 216.421L179.883 211.915H182.419V215.268Z" fill="white"/>
+                        </g>
+                        <defs>
+                        <pattern id="pattern0_810_1278" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_810_1278" transform="scale(0.005)"/>
+                        </pattern>
+                        <linearGradient id="paint0_linear_810_1278" x1="241" y1="0" x2="0" y2="241" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#8A3BEE"/>
+                        <stop offset="0.390044" stop-color="#F200B7"/>
+                        <stop offset="0.916667" stop-color="#FE9402"/>
+                        </linearGradient>
+                        <clipPath id="clip0_810_1278">
+                        <rect width="35.7642" height="35.7642" fill="white" transform="translate(176.271 185.651)"/>
+                        </clipPath>
+                        <image id="image0_810_1278" width="200" height="200" xlink:href="data:image/jpeg;base64,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"/>
+                        </defs>
+                        </svg>
+                        
+                  </div>
+              
+                  <!-- Profile Form -->
+                  <form class="profile-form">
+                    <div class="form-group">
+                      <label for="name">Your Name</label>
+                      <input type="text" id="name" value="Charlene Reed">
                     </div>
+                    <div class="form-group">
+                      <label for="username">User Name</label>
+                      <input type="text" id="username" value="Charlene Reed">
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" id="email" value="charlenereed@gmail.com">
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" id="password" value="**********">
+                    </div>
+                    <div class="form-group">
+                      <label for="dob">Date of Birth</label>
+                      <input type="text" id="dob" value="25 January 1990">
+                    </div>
+                    <div class="form-group">
+                      <label for="verified">Verified</label>
+                      <div class="verification">
+                        <span>No</span>
+                        <a href="#">Get verification</a>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="address">Permanent Address</label>
+                      <input type="text" id="address" value="San Jose, California, USA">
+                    </div>
+                    <div class="form-group">
+                      <label for="city">City</label>
+                      <input type="text" id="city" value="San Jose">
+                    </div>
+                    <div class="form-group">
+                      <label for="postal">Postal Code</label>
+                      <input type="text" id="postal" value="45962">
+                    </div>
+                    <div class="form-group">
+                      <label for="country">Country</label>
+                      <input type="text" id="country" value="USA">
+                    </div>
+                  </form>
                 </div>
-        
-                <form class="profile-form">
-                    <div class="form-group">
-                        <label for="your-name">Your Name</label>
-                        <input type="text" id="your-name" value="Charlene Reed">
-                    </div>
-                    <div class="form-group">
-                        <label for="user-name">User Name</label>
-                        <input type="text" id="user-name" value="charlenereed@gmail.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" value="charlenereed@gmail.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" value="**********">
-                    </div>
-                    <div class="form-group">
-                        <label for="dob">Date of Birth</label>
-                        <input type="text" id="dob" value="25 January 1990">
-                    </div>
-                    <div class="form-group">
-                        <label for="verified">Verified</label>
-                        <input type="text" id="verified" value="No">
-                    </div>
-                    <div class="form-group">
-                        <label for="permanent-address">Permanent Address</label>
-                        <input type="text" id="permanent-address" value="San Jose, California, USA">
-                    </div>
-                    <div class="form-group">
-                        <label for="city">City</label>
-                        <input type="text" id="city" value="San Jose">
-                    </div>
-                    <div class="form-group">
-                        <label for="postal-code">Postal Code</label>
-                        <input type="text" id="postal-code" value="45962">
-                    </div>
-                    <div class="form-group">
-                        <label for="country">Country</label>
-                        <input type="text" id="country" value="USA">
-                    </div>
-                </form>
+              
                 
-        
+              </div>
+            
+
+            <div id="preferences" class="section">
+                <div class="time-zone">
+                    <span class="time-zone-label">Time Zone</span>
+                    <div class="time-zone-value">(GMT-12:00) International Date Line West</div>
+                </div>
+            
+                <div class="notification">Notification</div>
+            
+                <div class="notification-item">
+                    <div class="switch on" onclick="toggleSwitch(this)">
+                        <div class="toggle"></div>
+                    </div>
+                    <div class="notification-label">When I submit an assignment for review</div>
+                </div>
+            
+                <div class="notification-item">
+                    <div class="switch" onclick="toggleSwitch(this)">
+                        <div class="toggle"></div>
+                    </div>
+                    <div class="notification-label">When I get a task</div>
+                </div>
+            
+                <div class="notification-item">
+                    <div class="switch on" onclick="toggleSwitch(this)">
+                        <div class="toggle"></div>
+                    </div>
+                    <div class="notification-label">There are recommendations for my account</div>
+                </div>
+          
+              <!-- Save Button -->
+             
+              </div>
+
+
+
+
+
+
+              <div id="security" class="section ">
+                <div class="section-title">Two-factor Authentication</div>
+                <div class="toggle-container">
+                    <div class="switch on" onclick="toggleSwitch(this)">
+                        <div class="toggle"></div>
+                    </div>
+                    <span>Enable or disable two-factor authentication</span>
+                </div>
+               
+                    <div class="section-title">Change Password</div>
+                    <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" id="current-password" placeholder="**********">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">New Password</label>
+                        <input type="password" id="new-password" placeholder="**********">
+                    </div>
+               
+            
+            </div>
+            <div class="save-button-container">
                 <button class="save-button">Save</button>
             </div>
-           
-
-           
-        </main>
-    </div>
-</body>
-
+        
 <script src="\js\script.js">
 </script>
 

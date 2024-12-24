@@ -4,9 +4,9 @@ const data = {
     friends: 25,
     doneProjects: 12,
     activeProjects: [
-      { name: "TeamSpace", members: 12, progress: 50, deadline: "12 September 2024" },
-      { name: "TeamSpace", members: 12, progress: 25, deadline: "12 September 2024" },
-      { name: "TeamSpace", members: 12, progress: 75, deadline: "12 September 2024" },
+      { name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 100, deadline: "12 September 2024" },
+      { name: "TeamSpace", members: 12,join_at: "12 July 2024, 15:30", progress: 25, deadline: "12 September 2024" },
+      { name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 75, deadline: "12 September 2024" },
     ],
     colleagues: [
       { name: "Tony", project: "TeamSpace" },
@@ -21,11 +21,6 @@ const data = {
     recentTasks: [
       { title: "Pre-loader and white space UI design", status: "Completed" },
       { title: "Pre-loader and white space UI design", status: "50%" },
-    ],activeProjects: [
-      { name: "TeamSpace",join_at: "12 July 2024, 15:30", progress: 75 }, 
-      { name: "TeamSpace",join_at: "12 July 2024, 15:30", progress: 50 }, 
-      { name: "TeamSpace",join_at: "12 July 2024, 15:30", progress: 100 }, 
-      { name: "TeamSpace",join_at: "12 July 2024, 15:30", progress: 25 }, 
     ],UserInfo: [
       { email: "email@gmail.com", phone: "+380111111111", status: "php-programmer" },
       { tasks_completed: "150", tasks_left: "30" },

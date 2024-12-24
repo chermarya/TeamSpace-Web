@@ -189,21 +189,21 @@
                     </svg>
                 </div>
             </div>
-            <button class="clear-all">
-                <span>Clear All</span>
-            </button>
-        </div>     
-    <section class="dashboard">     
-        <div class="project-table">
-        <h2>Your Projects</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Join at</th>
-                    <th>Progress</th>
-                </tr>
-            </thead>
+                <button class="clear-all">
+                    <span>Clear All</span>
+                 </button>
+            </div>     
+            <section class="dashboard">
+                <div class="project-table">
+                    <h2>Your Projects</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Join at</th>
+                                <th>Progress</th>
+                            </tr>
+                        </thead>
             <tbody>
                 <% data.activeProjects.forEach((project) => { %>
                 <tr>
@@ -251,21 +251,21 @@
                 </tr>
                 <% }); %>
             </tbody>
-        </table>
-        </div>
-        <div class="right-panel">
-            <div class="user-info">
-                <div class="profile">
-                    <div class="avatar"></div>
-                    <h3><%= data.username %></h3>
-                    <p class="status-1"><%= data.UserInfo[0].status %></p>
-                </div>
-                <div class="details">
-                    <p><span>Email</span></p><p><%= data.UserInfo[0].email %></p>
-                    <p><span>Phone</span></p><p><%= data.UserInfo[0].phone %></p>
-                    <p><span>Status</span></p><p><%= data.UserInfo[0].status %></p>
-                </div>
+         </table>
             </div>
+            <div class="right-panel">
+                <div class="user-info">
+                    <div class="profile">
+                        <div class="avatar"></div>
+                        <h3><%= data.username %></h3>
+                        <p class="status-1"><%= data.UserInfo[0].status %></p>
+                    </div>
+                    <div class="details">
+                        <p><span>Email:</span> <%= data.UserInfo[0].email %></p>
+                        <p><span>Phone:</span> <%= data.UserInfo[0].phone %></p>
+                        <p><span>Status:</span> <%= data.UserInfo[0].status %></p>
+                    </div>
+                </div>
         
             <div class="t_panels">
                 <div class="card red1">
@@ -410,8 +410,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-     </section>
+            </div>
+            </section>
             <script src="/js/script.js"></script>
             </main>
     </base> </div>
