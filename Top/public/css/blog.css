@@ -275,12 +275,12 @@ main {
     gap: 20px; /* Проміжок між картками */
     margin: 20px auto; /* Відступи для верхньої та нижньої частини */
     padding: 10px;
-    max-width: 1200px; /* Обмежує ширину контейнера */
+   
 }
 
 /* Single Blog Card */
 .card {
-    flex: 0 1 calc(33.33% - 20px); /* Три картки в ряд */
+    flex: 0 1 calc(25% - 20px); /* Три картки в ряд */
     box-sizing: border-box; /* Гарантує, що padding враховується у ширину */
     display: flex;
     flex-direction: column;
@@ -381,9 +381,39 @@ main {
         flex: 0 1 calc(50% - 20px); /* Дві картки в ряд на планшетах */
     }
 }
+@media (max-width: 1578px) {
+    .card {
+        flex: 0 1 calc(33.33% - 20px); /* Дві картки в ряд на планшетах */
+    }
+}
 
 @media (max-width: 480px) {
     .card {
         flex: 0 1 100%; /* Одна картка в ряд на мобільних пристроях */
     }
+}
+@media (max-width: 1370px) {
+    .search-container {
+        width: 800px;  
+    }
+}
+@media (max-width: 1267px) {
+    .search-container {
+        width: 700px;  
+    }
+   
+}
+@media (max-width: 1169px) {
+    .search-container {
+        width: 600px;  
+    }
+}
+
+@media (max-width: 1070px) {
+
+   
+    .search-container {
+        width: 550px;  
+    }
+   
 }

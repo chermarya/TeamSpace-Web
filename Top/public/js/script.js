@@ -1,6 +1,7 @@
 
-const { data, blogData } = require("./data");
-
+const { data, blogData, settings  } = require('./data.js');
+console.log("Settings object loaded:", settings);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 document.addEventListener("DOMContentLoaded", () => {
     const progressElements = document.querySelectorAll(".project-progress");
@@ -19,88 +20,31 @@ document.addEventListener("DOMContentLoaded", () => {
         
     });
 });
+console.log("script.js loaded successfully!");
 
-
-
-  // Масив кольорів
-const colors = ["blue", "orange", "pink", "yellow"];
-
-// Функція для перемішування масиву кольорів
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Обмін елементів
-  }
-}
-
-// Додаємо кольори до карток без повторень у рядку
-data.job = data.job.map((job, index) => {
-  if (index % colors.length === 0) shuffleArray(colors); // Перемішати кольори на початку кожного ряду
-  return { ...job, color: colors[index % colors.length] }; // Додаємо кольори по індексу
-});
-
- // Створення маршруту для інших сторінок
-const routes = ['login', 'my_projects', 'my_tasks', 'schedule', 'index', 'recruiters','blog'];
-
-routes.forEach(route => {
-  app.get(`/${route}`, (req, res) => {
-    res.render(route, { data });
-  });
-});
-
-console.log(document.getElementById("profileModal"));
 document.addEventListener("DOMContentLoaded", () => {
-  const blogContainer = document.querySelector(".blog-cards");
+  const verifyLink = document.getElementById("verify-link");
+  const modal = document.getElementById("email-confirmation-modal");
+  const confirmButton = document.getElementById("confirm-button");
 
-  // Генерація карток
-  blogData.forEach((post) => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.innerHTML = `
-      <img src="${post.image}" alt="Post Image">
-      <div class="content">
-        <div class="title">${post.title}</div>
-        <div class="description">${post.description}</div>
-        <div class="info">
-          <div class="profile">
-            <img src="${post.avatar}" alt="Profile Picture">
-            <div class="profile-text">
-              <div class="name">${post.author}</div>
-              <div class="date">${post.date}</div>
-            </div>
-          </div>
-          <div class="icon">★</div>
-        </div>
-      </div>
-    `;
-    blogContainer.appendChild(card);
-  });
-});
-
-function initializeViewButtons() {
-  const viewButtons = document.querySelectorAll(".card-button");
-  const modal = document.getElementById("profileModal");
-  const closeButton = modal.querySelector(".close");
-
-  viewButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-          modal.style.display = "block"; // Показуємо модальне вікно
-      });
+  // Show the modal when the "Get verification" link is clicked
+  verifyLink.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent default link behavior
+    modal.style.display = "flex"; // Show modal
   });
 
-  closeButton.addEventListener("click", () => {
-      modal.style.display = "none"; // Закриваємо модальне вікно
+  // Close the modal when the confirm button is clicked
+  confirmButton.addEventListener("click", () => {
+    modal.style.display = "none"; // Hide modal
+    alert("Email confirmed!"); // Optional: Confirmation action
   });
 
+  // Close the modal when clicking outside of it
   window.addEventListener("click", (event) => {
-      if (event.target === modal) {
-          modal.style.display = "none"; // Закриваємо при натисканні за межами модального вікна
-      }
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
   });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  initializeViewButtons();
 });
 
 function showTab(tabId) {
@@ -128,9 +72,45 @@ function showTab(tabId) {
 }
 
 // Ініціалізація: показуємо вкладку 'edit-profile' за замовчуванням
-window.onload = () => {
-  showTab('edit-profile');
-};
+// window.onload = () => {
+//   showTab('edit-profile');
+// };
 function toggleSwitch(element) {
-  element.classList.toggle('on');
+  element.classList.toggle("on");
 }
+
+
+// Set up EJS as the template engine
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+
+// Serve static files (CSS, JS, Images)
+app.use(express.static(path.join(__dirname, "public")));
+// Додаємо папку images як статичну
+app.use('/images', express.static(path.join(__dirname, 'images')));
+// Array of colors for jobs
+// const colors = ["blue", "orange", "pink", "yellow"];
+
+// Shuffle colors function
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+
+// Add colors to job cards
+if (Array.isArray(data.job)) {
+  data.job = data.job.map((job, index) => {
+    if (index % colors.length === 0) shuffleArray(colors);
+    return { ...job, color: colors[index % colors.length] };
+  });
+} else {
+  console.error("data.job is not defined or not an array");
+}
+
+
+
+
+    

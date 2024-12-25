@@ -1,69 +1,93 @@
 body { 
     font-family: 'Tilt Neon', sans-serif;
     background: #f5f5f5;
-    color: #333;
-    height: 100vh; /* Висота сторінки = висота вікна браузера */
- 
-}
-html, body {
-    height: 100%; /* Робимо сторінку на всю висоту вікна браузера */
-  
-   
+    color: #000;
+    height: 100vh; 
+    width: 100%; 
+    
 }
 
 .header {
-    display: flex; 
-    flex-direction: row; 
-    justify-content: space-between; 
-    align-items: center; 
+    display: flex;
+    justify-content: space-between; /* Вирівнювання між елементами */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
+
 
 .search-container input {
-    border: none; /* Прибираємо рамку вводу */
-    outline: none; /* Прибираємо обводку при фокусі */
-    font-size: 16px; /* Розмір тексту */
-    color: #292929; /* Колір тексту */
-    flex-grow: 1; /* Займає всю доступну ширину */
-    background: none; /* Фон прозорий */
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: 250px;
+    font-size: 14px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #292929;
+    gap: 10px;
 }
 
-
-.header-right .icon {
-    display: flex; /* Включаємо flexbox */
-    justify-content: center; /* Центрування */
-    align-items: center; /* Центрування */
-   
- 
-   
-    cursor: pointer; /* Курсор-рука */
-}
 .search-container .search-icon {
-    position: absolute; /* Абсолютне позиціонування */
-    left: 15px; /* Відступ від лівого краю контейнера */
-    top: 50%; /* Вирівнюємо по вертикалі */
-    transform: translateY(-50%); /* Центруємо іконку */
-    
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    stroke: #292929;
 }
 
 .header-right .username {
-    font-size: 18px; /* Розмір шрифту */
-    color: #292929; /* Колір тексту */
-    display: flex; /* Включаємо flexbox */
-    align-items: center; /* Центруємо */
-    gap: 10px; /* Відстань між іменем і іконкою */
+    font-size: 18px; 
+    color: #292929;
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
 }
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .header-right {
-    display: flex; /* Включаємо flexbox */
-    flex-direction: row; /* Елементи в ряд */
-    align-items: center; /* Вирівнювання по центру */
-    gap: 20px; /* Проміжок між елементами */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
 }
 
 .main-content {
+    position: fixed;
+    top: 40px; /* Відступ нижче header */
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Розтягуємо на всю ширину */
     display: flex;
-    
-   
+    /* overflow: hidden;  */
+    background-color: #f5f5f5;
 }
+.main-content aside {
+    position: fixed;
+    top: 80px; /* Висота header */
+    left: 0;
+    bottom: 0;
+    width: 250px; /* Ширина aside */
+    background-color: #fff;
+    /* overflow-y: auto;  */
+    border-right: 1px solid #e0e0e0;
+}
+
 .name_firma {
     display: flex;
     justify-content: center;
@@ -72,18 +96,19 @@ html, body {
     font-size: 24px;
     padding: 0px 0px 40px 0px;
 }
+
 .search-container {
-    position: relative; /* Включаємо відносне позиціонування */
-    display: flex; /* Вирівнювання елементів в одному рядку */
-    align-items: center; /* Центруємо по вертикалі */
-    width: 700px; /* Ширина пошукового рядка */
-    height: 56px; /* Висота */
-   
-
-    padding-left: 60px; /* Відступ для тексту, щоб не перекривало іконку */
-
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    overflow: hidden;
+   left: 50px;
+    width: 900px; 
+    height: 40px; 
+    padding-left: 60px;
 }
-
 
 aside .icon {
     display: flex;
@@ -93,24 +118,24 @@ aside .icon {
     height: 30px;
     color: #000;
 }
+
 aside ul a:hover {
-    background-color: #0C0B19; 
+    background-color: #0a091779; 
     color: white;
 }
-aside li a:hover .icon svg path {
-    stroke: white; /* Колір обведення іконки */
-}
 
+aside li a:hover .icon svg path {
+    stroke: white; 
+}
 
 .Vector_167{
-  
     position: absolute;
-    pointer-events: none; /* Иконка не кликабельна */
-    z-index: 0; /* На задний план */
-    top: 16.5px;
-    left: -15px;
-    
+    pointer-events: none;
+    z-index: 0; 
+    top: -20px;
+    left: -7px;
 }
+
 .icon-TeamSpace {
     display: flex;
     align-items: center;
@@ -119,15 +144,16 @@ aside li a:hover .icon svg path {
     padding-left: 0px;
     
 }
+
 aside {
     display: flex;
     flex-direction: column;
-   
-    
-    
     padding: 10px;
     box-sizing: border-box;
+    overflow: hidden; /* Прибирає прокручування */
+    position: fixed; /* Фіксоване положення */
 }
+
 aside li a {
     display: flex;
     align-items: center;
@@ -135,7 +161,7 @@ aside li a {
     width: 100%;
     padding: 5px 20px;
     border-radius: 10px;
-    background-color: #f8f9fa; /* Колір фону */
+    background-color: #f8f9fa; 
     color: #292929;
     text-decoration: none;
 }
@@ -150,18 +176,271 @@ aside ul {
     align-items: flex-start;
     width: 100%;
 }
+
 aside a {
     text-decoration: none;
     color: #91918F;
+    
 }
-aside li.Overview a {
+
+aside li.My_Tasks a {
     background: #0C0B19;
     color: white;
+    width: 100%;
 }
 main {
-    flex: 1;
+    margin-left: 250px; /* Відступ для aside */
     padding: 20px;
+    flex: 1;
+    overflow-y: auto; /* Дозволяємо прокручування тільки всередині */
+    background-color: #f8f8f8;
+    height: calc(100vh - 80px); /* Висота сторінки без header */
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    padding: 15px 28px;
+    gap: 20px;
+}
+
+
+
+.basesort {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%;
+    padding: 0px 0;
+}
+
+.filters {
+    display: flex;
+    align-items: center; 
+    gap: 20px;  
+}
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    cursor: pointer;
+}
+
+.filter-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+.filter-button {
+    padding: 5px 5px;
+    font-family: 'Tilt Neon', sans-serif;
+    font-size: 12px;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+}
+
+.filter-chip {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 6px 6px;
+    width: 70px;
+    height: 30px;
+}
+
+.filter-chip .icon {
+    width: 30px;
+    height: 30px;
+}
+
+.filter-chip span {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: #000;
+}
+
+.sort-button {
+    padding: 10px 6px;
+    font-family: 'Tilt Neon', sans-serif;
+    font-size: 12px;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.clear-all {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    width: 120px;
+    height: 50px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-all span {
+    text-align: center;
+}
+
+.clear-all:hover {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), rgba(255, 255, 255, 0.4);
+    color: #333;
+}
+
+.clear-all .label-text {
+    width: 114px;
+    height: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+}
+.basesort {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin-top: 40px; /* Adjust to match the height of the header */
+    padding: 0px 0;
+}
+ 
+.project-table th,
+.project-table td {
+    text-align: left;
+    padding: 15px;
+   
+    font-size: 16px;
+    padding: 15px;
+    border-bottom: 1px solid #000;
+    
+}
+
+  .project-table td {
+    border-bottom: 1px dashed #000;
+    
+  }
   
+  .project-table {
+  
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-container {
+    width: 300px; 
+    height: 10px;
+    background: #D9DACA; 
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden; 
+   right: 14px;
+   
+}
+.project-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.project-table tr:hover {
+    background-color: #efefef;
+}
+.project-table table {
+    /* width: 100%; */
+    border-collapse: collapse;
+}
+.project-table th {
+    width: 25%; /* Each column takes 2 parts (33.33% of 6 parts) */
+    font-weight: bold;
+    background-color: #f1f1f1;
+}
+
+.dashboard {
+    display: grid;
+   
+    gap: 20px;
+   
+}
+
+.progress {
+    display: flex;
+    width: 400px;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    
+}
+
+.progress-text {
+    display: flex;
+    width: 100%;
+    position: relative;
+    left: 35px; 
+}
+
+.progress-percentage {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    height: 100%; 
+    border-radius: 8px; 
+    transition: width 0.5s ease-in-out;
+    background-color: transparent; 
+    
+}
+
+.red {
+    background: linear-gradient(90deg, #DA1E28 0%, #FF000E 75%, #D9DACA 0%);
+}
+
+.green {
+    background-color: #198038;
+}
+
+.yellow {
+    background: linear-gradient(90deg, #F1C21B 0%, #F1C21B 75%, #D9DACA 76%);
+}
+
+.blue {
+    background: linear-gradient(90deg, #0043CE 0%, #0043CE 75%, #D9DACA 76%);
+}
+
+.progress-icon {
+    position: absolute;
+    left: 0px;
+    top: 5px;
 }
 
 
@@ -173,3 +452,29 @@ main {
 
 
 
+
+
+@media (max-width: 1563px) {
+    .progress-container {
+        width: 200px; 
+        height: 10px;
+        
+       left: 35px;
+       
+    }
+    .progress {
+        
+        width: 200px;
+      
+        
+    }
+    .project-table th,
+    .project-table td {
+       
+    
+        font-size: 14px;
+        padding-right: 30px;
+        
+        
+    }
+}

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/settings.css">
-
+    <script src="/js/script.js"></script>
+    <script src='./public/js/data.js'></script> 
     <title>TeamSpace</title>
 </head>
 <body>
@@ -53,14 +54,14 @@
                 </div>
             </header>
     
-                <span class="Vector_167">
+                <!-- <span class="Vector_167">
                     
                         <svg width="200" height="800" viewBox="0 0 428 1945" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M52 90.5C39.5 42.5 4.83333 9.16667 -11.5 0L-24 1952H428C428 1952 177.218 1540.44 109 1245.5C78.9566 1115.61 71.4691 1040.41 61 907.5C52.9005 804.673 53.114 746.646 53 643.5C52.8817 536.451 58 369.5 58 369.5V356.5C62.5 317.5 77 299 77 299V223C70.7516 209.917 64 208.5 61 189.5C58 170.5 60.3402 122.526 52 90.5Z" fill="#0C0B19"/>
                             </svg>
                         
                         
-                </span> 
+                </span>  -->
               
             
                 <ul>
@@ -191,91 +192,102 @@
                         </svg>
                         
                   </div>
-              
+               
                   <!-- Profile Form -->
-                  <form class="profile-form">
+                  <form class="profile-form" id="profile-form">
                     <div class="form-group">
-                      <label for="name">Your Name</label>
-                      <input type="text" id="name" value="Charlene Reed">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" value="<%= data.name %>" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="username">User Name</label>
-                      <input type="text" id="username" value="Charlene Reed">
+                        <label for="username">User Name</label>
+                        <input type="text" id="username" value="<%= data.username %>" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="email">Email</label>
-                      <input type="email" id="email" value="charlenereed@gmail.com">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" value="<%= data.email %>" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="password">Password</label>
-                      <input type="password" id="password" value="**********">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" value="<%= data.password %>" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="dob">Date of Birth</label>
-                      <input type="text" id="dob" value="25 January 1990">
+                        <label for="dob">Date of Birth</label>
+                        <input type="text" id="dob" value="<%= data.dob %>" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="verified">Verified</label>
-                      <div class="verification">
-                        <span>No</span>
-                        <a href="#">Get verification</a>
-                      </div>
+                        <label for="verified">Verified</label>
+                        <div class="verification" id="verification">
+                            <span id="verification-status"></span>
+                            <a href="#" id="verify-link">Get verification</a>
+                            <div id="email-confirmation-modal" class="modal">
+                              <div class="modal-content">
+                                <div class="modal-image">
+                                  
+                                    
+                                </div>
+                                <h2 class="modal-title">Hi! <span id="modal-username">{Username}</span></h2>
+                                <p class="modal-text">Please confirm your email address</p>
+                                <input type="email" id="email-input" class="modal-email-input" placeholder="Enter your email" />
+                                <button id="confirm-button" class="modal-confirm-button">Confirm</button>
+                              </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                      <label for="address">Permanent Address</label>
-                      <input type="text" id="address" value="San Jose, California, USA">
+                        <label for="address">Permanent Address</label>
+                        <input type="text" id="address" value="<%= data.address %>">
                     </div>
                     <div class="form-group">
-                      <label for="city">City</label>
-                      <input type="text" id="city" value="San Jose">
+                        <label for="city">City</label>
+                        <input type="text" id="city" value="<%= data.city %>">
                     </div>
                     <div class="form-group">
-                      <label for="postal">Postal Code</label>
-                      <input type="text" id="postal" value="45962">
+                        <label for="postal">Postal Code</label>
+                        <input type="text" id="postal" value="<%= data.postal %>">
                     </div>
                     <div class="form-group">
-                      <label for="country">Country</label>
-                      <input type="text" id="country" value="USA">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" value="<%= data.country %>">
                     </div>
-                  </form>
+                </form>
+                
+                  
+                 
                 </div>
               
                 
               </div>
             
 
-            <div id="preferences" class="section">
+              <div id="preferences" class="section">
                 <div class="time-zone">
                     <span class="time-zone-label">Time Zone</span>
                     <div class="time-zone-value">(GMT-12:00) International Date Line West</div>
                 </div>
-            
                 <div class="notification">Notification</div>
             
                 <div class="notification-item">
-                    <div class="switch on" onclick="toggleSwitch(this)">
+                    <div class="switch">
                         <div class="toggle"></div>
                     </div>
                     <div class="notification-label">When I submit an assignment for review</div>
                 </div>
             
                 <div class="notification-item">
-                    <div class="switch" onclick="toggleSwitch(this)">
+                    <div class="switch">
                         <div class="toggle"></div>
                     </div>
                     <div class="notification-label">When I get a task</div>
                 </div>
             
                 <div class="notification-item">
-                    <div class="switch on" onclick="toggleSwitch(this)">
+                    <div class="switch">
                         <div class="toggle"></div>
                     </div>
                     <div class="notification-label">There are recommendations for my account</div>
                 </div>
-          
-              <!-- Save Button -->
-             
-              </div>
+            </div>
 
 
 
@@ -306,8 +318,141 @@
             <div class="save-button-container">
                 <button class="save-button">Save</button>
             </div>
-        
-<script src="\js\script.js">
-</script>
+             
 
+<script>
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    checkVerificationStatus();
+    initializeVerificationModal();
+    initializeNotificationSettings();
+    checkVerificationStatus();
+    
+});
+
+async function fetchSettings() {
+    try {
+        const response = await fetch('/api/settings'); // Fetch settings data from the server
+        if (!response.ok) throw new Error('Failed to fetch settings data');
+        return await response.json(); // Return JSON data
+    } catch (error) {
+        console.error('Error fetching settings:', error);
+        return null;
+    }
+}
+
+
+async function checkVerificationStatus() {
+    const settingsData = await fetchSettings();
+    if (!settingsData) return;
+
+    const verificationStatusElement = document.getElementById('verification-status');
+    const verificationLink = document.getElementById('verify-link');
+
+    if (settingsData.isVerified === 1) {
+        verificationStatusElement.textContent = "yes";
+        verificationLink.style.display = "none"; // Hide the link if verified
+    } else {
+        verificationStatusElement.textContent = "no";
+        verificationLink.style.display = "inline"; // Show the link if not verified
+    }
+}
+
+function initializeVerificationModal() {
+    const modal = document.getElementById('email-confirmation-modal');
+    const confirmButton = document.getElementById('confirm-button');
+    const verifyLink = document.getElementById('verify-link');
+
+    verifyLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'block'; // Show modal when "Get verification" is clicked
+    });
+
+    confirmButton.addEventListener('click', () => {
+        modal.style.display = 'none'; // Close modal when "Confirm" is clicked
+        alert('Email confirmed successfully!');
+        // Additional logic for email confirmation can be added here
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none'; // Close modal on outside click
+        }
+    });
+
+    
+}
+
+
+
+async function fetchSettings() {
+    try {
+        const response = await fetch('/api/settings'); // Fetch settings data from the server
+        if (!response.ok) throw new Error('Failed to fetch settings data');
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching settings:', error);
+        return null;
+    }
+}
+
+async function initializeNotificationSettings() {
+    try {
+        const settings = await fetchSettings();
+        if (!settings) {
+            console.error('Settings data could not be loaded.');
+            return;
+        }
+
+        // Map the settings data to the corresponding switches
+        const notificationItems = document.querySelectorAll(".notification-item");
+        const notificationKeys = Object.keys(settings);
+
+        notificationItems.forEach((item, index) => {
+            const toggle = item.querySelector(".switch");
+            const currentSetting = settings[notificationKeys[index]];
+
+            // Initialize the switch state
+            if (currentSetting === 1) {
+                toggle.classList.add("on");
+            } else {
+                toggle.classList.remove("on");
+            }
+
+            // Add event listener to handle switch toggle
+            toggle.addEventListener("click", () => {
+                const isOn = toggle.classList.contains("on");
+                toggle.classList.toggle("on");
+                const updatedValue = isOn ? 0 : 1;
+
+                // Update the settings object dynamically
+                settings[notificationKeys[index]] = updatedValue;
+                console.log(`${notificationKeys[index]} updated to ${updatedValue}`);
+            });
+        });
+    } catch (error) {
+        console.error('Error initializing notification settings:', error);
+    }
+}
+
+async function checkVerificationStatus() {
+    const settingsData = await fetchSettings();
+    if (!settingsData) return;
+
+    const verificationStatusElement = document.getElementById('verification-status');
+    const verificationLink = document.getElementById('verify-link');
+
+    if (settingsData.isVerified === 1) {
+        verificationStatusElement.textContent = "yes";
+        verificationLink.style.display = "none"; // Hide the link if verified
+    } else {
+        verificationStatusElement.textContent = "no";
+        verificationLink.style.display = "inline"; // Show the link if not verified
+    }
+}
+
+
+
+
+</script>
 </html>

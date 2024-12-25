@@ -66,7 +66,33 @@ body {
     gap: 10px;
     font-size: 14px;
 }
+.profile-pic img {
+  width: 100%; /* Автоматично підганяє під ширину контейнера */
+  height: auto; /* Зберігає пропорції */
+  border-radius: 50%; /* Робить зображення круглим */
+  max-width: 100px; /* Максимальна ширина, щоб уникнути занадто великих зображень */
+}
+.profile-links .link {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
+.profile-links .link img {
+  width: 40px; /* Set a consistent size for icons */
+  height: 40px;
+  margin-right: 10px;
+}
+
+.profile-links .link a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}
+
+.profile-links .link a:hover {
+  text-decoration: underline;
+}
 .main-content {
     position: fixed;
     top: 40px; /* Відступ нижче header */
@@ -430,7 +456,7 @@ main {
   }
 /* Модальне вікно */
 .modal {
-  display: none; /* Початково приховано */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -439,7 +465,6 @@ main {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
-
   
 .modal-content {
   position: relative;
@@ -595,3 +620,141 @@ main {
       padding: 3px 10px;
     }
   }
+  @media (max-width: 1370px) {
+    .search-container {
+        width: 800px;  
+    }
+}
+@media (max-width: 1267px) {
+    .search-container {
+        width: 700px;  
+    }
+   
+}
+@media (max-width: 1169px) {
+    .search-container {
+        width: 600px;  
+    }
+}
+
+@media (max-width: 1070px) {
+
+   
+    .search-container {
+        width: 550px;  
+    }
+   
+}
+@media (max-width: 1300px) {
+  .cards-container {
+      grid-template-columns: repeat(2, 1fr); /* Show 2 cards per row */
+      gap: 12px; /* Smaller gap between cards */
+  }
+
+  .card {
+      height: 200px; /* Reduce card height */
+      border-radius: 15px; /* Adjust border radius */
+  }
+
+  .card-header {
+      gap: 8px; /* Smaller gap between logo and info */
+      padding: 8px; /* Less padding */
+  }
+
+  .card-logo {
+      width: 35px; /* Reduce logo size */
+      height: 35px;
+      font-size: 18px; /* Adjust font size */
+  }
+
+  .card-title {
+      font-size: 14px; /* Smaller title font */
+  }
+
+  .card-company {
+      font-size: 9px; /* Adjust company name font */
+  }
+
+  .card-tags {
+      gap: 4px; /* Reduce gap between tags */
+      padding: 6px 10px; /* Smaller padding for tags */
+  }
+
+  .tag {
+      font-size: 10px; /* Smaller font size for tags */
+      padding: 3px 8px;
+  }
+
+  .card-description {
+      font-size: 12px; /* Adjust description font */
+      padding: 8px;
+  }
+
+  .card-footer {
+      font-size: 12px; /* Adjust footer font size */
+      padding: 8px; /* Less padding */
+  }
+
+  .card-button {
+      width: 100px; /* Reduce button width */
+      height: 40px; /* Reduce button height */
+      font-size: 12px; /* Smaller font */
+  }
+}
+
+/* Adjustments for screens with max width 900px */
+@media (max-width: 900px) {
+  .cards-container {
+      grid-template-columns: 1fr; /* 1 card per row */
+      gap: 10px; /* Smaller gap */
+  }
+
+  .card {
+      height: 180px; /* Further reduce height */
+  }
+
+  .card-header {
+      gap: 6px;
+      padding: 6px;
+  }
+
+  .card-logo {
+      width: 30px; /* Smaller logo */
+      height: 30px;
+      font-size: 16px;
+  }
+
+  .card-title {
+      font-size: 12px; /* Smaller title font */
+  }
+
+  .card-company {
+      font-size: 8px;
+  }
+
+  .card-tags {
+      gap: 2px; /* Smaller gap */
+      padding: 4px 8px;
+  }
+
+  .tag {
+      font-size: 8px; /* Smaller tag font */
+      padding: 2px 6px;
+  }
+
+  .card-description {
+      font-size: 10px;
+      padding: 6px;
+  }
+
+  .card-footer {
+      font-size: 10px; /* Smaller footer font */
+      padding: 6px;
+  }
+
+  .card-button {
+      width: 80px;
+      height: 35px;
+      font-size: 10px; /* Smaller font */
+  }
+}
