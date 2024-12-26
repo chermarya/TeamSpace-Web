@@ -29,7 +29,7 @@ data.job = data.job.map((job, index) => {
   return { ...job, color: colors[index % colors.length] }; 
 });
 
-
+app.get("/", (req, res) => res.render("index", { data }));
 app.get("/index", (req, res) => res.render("index", { data }));
 app.get("/blog", (req, res) => res.render("blog", { data, blogData }));
 app.get("/my_projects", (req, res) => res.render("my_projects", { data }));
@@ -82,6 +82,6 @@ app.get('/api/settings', (req, res) => {
 
 // Start the server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
