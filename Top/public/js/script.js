@@ -47,37 +47,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function showTab(tabId) {
-  // Знаходимо всі секції
-  const sections = document.querySelectorAll('.section');
 
-  // Ховаємо всі секції
-  sections.forEach(section => section.classList.remove('active'));
-
-  // Показуємо обрану секцію
-  const activeSection = document.getElementById(tabId);
-  if (activeSection) {
-    activeSection.classList.add('active');
-  }
-
-  // Видаляємо клас active з усіх табів
-  const tabs = document.querySelectorAll('.tab-bar .tab');
-  tabs.forEach(tab => tab.classList.remove('active'));
-
-  // Встановлюємо клас active для вибраного таба
-  const activeTab = document.querySelector(`.tab[onclick="showTab('${tabId}')"]`);
-  if (activeTab) {
-    activeTab.classList.add('active');
-  }
-}
 
 // Ініціалізація: показуємо вкладку 'edit-profile' за замовчуванням
 // window.onload = () => {
 //   showTab('edit-profile');
 // };
-function toggleSwitch(element) {
-  element.classList.toggle("on");
-}
+// function toggleSwitch(element) {
+//   element.classList.toggle("on");
+// }
 
 
 // Set up EJS as the template engine

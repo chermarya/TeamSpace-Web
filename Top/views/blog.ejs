@@ -161,18 +161,13 @@
             <main>
                 
         <base>
-   
         <div class="filters">
-            <div class="filter-button active" data-filter="Php">New</div>
-            <div class="filter-button" data-filter="Ui">Favorite</div>
-           
-          </div>
+            <button id="filter-favorites" class="filter-button">Favorite</button>
+        </div>
         
-
-        <!-- Blog Cards -->
-        <div class="blog-cards">
+        <div id="blog-cards" class="blog-cards">
             <% blogData.forEach((post) => { %>
-                <div class="card">
+                <div class="card" data-favorite="<%= post.favorite %>">
                     <img src="/images/<%= post.image %>" alt="<%= post.title %>">
                     <h3><%= post.title %></h3>
                     <p><%= post.description %></p>
@@ -182,25 +177,86 @@
                             <div class="header1"><%= post.author %></div>
                             <div class="subhead"><%= post.date %></div>
                         </div>
-                        <div class="icon"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.6924 0C16.708 0 17.5674 0.859375 17.5674 1.875V18.75C17.5674 19.7266 16.5127 20.3125 15.6533 19.8438L10.0674 16.5625L4.44238 19.8438C3.58301 20.3125 2.56738 19.7266 2.56738 18.75V1.875C2.56738 0.859375 3.3877 0 4.44238 0H15.6924ZM15.6924 17.6562V2.10938C15.6924 1.99219 15.5752 1.875 15.4189 1.875H4.6377C4.52051 1.875 4.44238 1.99219 4.44238 2.10938V17.6562L10.0674 14.375L15.6924 17.6562Z" fill="#3E3232" fill-opacity="0.5"/>
+                        <div class="icon">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.6924 0C16.708 0 17.5674 0.859375 17.5674 1.875V18.75C17.5674 19.7266 16.5127 20.3125 15.6533 19.8438L10.0674 16.5625L4.44238 19.8438C3.58301 20.3125 2.56738 19.7266 2.56738 18.75V1.875C2.56738 0.859375 3.3877 0 4.44238 0H15.6924ZM15.6924 17.6562V2.10938C15.6924 1.99219 15.5752 1.875 15.4189 1.875H4.6377C4.52051 1.875 4.44238 1.99219 4.44238 2.10938V17.6562L10.0674 14.375L15.6924 17.6562Z"
+                                fill="<%= post.favorite === 1 ? '#FF0000' : '#3E3232' %>"/>
                             </svg>
-                            </div>
+                        </div>
                     </div>
                 </div>
             <% }) %>
         </div>
+        
+<script>
+   document.addEventListener('DOMContentLoaded', () => {
+    renderBlogCards(blogData); // Initial rendering of all blog cards
 
-          <script src="/js/tabs.js">
-             // Tab functionality
-        // Tab functionality
-        document.querySelectorAll(".filter-button").forEach(button => {
-            button.addEventListener("click", () => {
-                document.querySelectorAll(".filter-button").forEach(b => b.classList.remove("active"));
-                button.classList.add("active");
-            });
-        });
-          </script>
+    const favoriteButton = document.getElementById('filter-favorites');
+    favoriteButton.addEventListener('click', () => {
+        const onlyFavorites = favoriteButton.classList.toggle('active');
+        if (onlyFavorites) {
+            renderBlogCards(blogData.filter(blog => blog.favorite === 1)); // Show only favorites
+        } else {
+            renderBlogCards(blogData); // Show all cards
+        }
+    });
+});
+
+function renderBlogCards(data) {
+    const blogContainer = document.querySelector('.blog-cards');
+    blogContainer.innerHTML = ''; // Clear existing cards
+
+    data.forEach(blog => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <img src="${blog.image}" alt="${blog.title}">
+            <h3>${blog.title}</h3>
+            <p>${blog.description}</p>
+            <div class="info">
+                <img src="${blog.avatar}" alt="${blog.author}">
+                <div class="text">
+                    <div class="header">${blog.author}</div>
+                    <div class="subhead">${blog.date}</div>
+                </div>
+                <div class="icon ${blog.favorite === 1 ? 'favorite-icon' : ''}">
+                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+                        <path d="M15.6924 0C16.708 0 17.5674 0.859375 17.5674 1.875V18.75C17.5674 19.7266 16.5127 20.3125 15.6533 19.8438L10.0674 16.5625L4.44238 19.8438C3.58301 20.3125 2.56738 19.7266 2.56738 18.75V1.875C2.56738 0.859375 3.3877 0 4.44238 0H15.6924ZM15.6924 17.6562V2.10938C15.6924 1.99219 15.5752 1.875 15.4189 1.875H4.6377C4.52051 1.875 4.44238 1.99219 4.44238 2.10938V17.6562L10.0674 14.375L15.6924 17.6562Z" fill="${blog.favorite === 1 ? '#FF0000' : '#3E3232'}" />
+                    </svg>
+                </div>
+            </div>
+        `;
+        blogContainer.appendChild(card);
+    });
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const favoriteButton = document.getElementById('filter-favorites');
+    const blogCardsContainer = document.getElementById('blog-cards');
+
+    favoriteButton.addEventListener('click', () => {
+        const isFavoriteFilterActive = favoriteButton.classList.toggle('active');
+
+        if (isFavoriteFilterActive) {
+            // Filter and display only favorite cards
+            const favoriteCards = Array.from(blogCardsContainer.children).filter(card => 
+                card.getAttribute('data-favorite') === '1'
+            );
+
+            // Clear container and append only favorite cards
+            blogCardsContainer.innerHTML = '';
+            favoriteCards.forEach(card => blogCardsContainer.appendChild(card));
+
+            favoriteButton.textContent = 'Show All';
+        } else {
+            // Reload all cards when the filter is toggled off
+            window.location.reload(); // Optional: Use this if you fetch or re-render the page
+        }
+    });
+});
+
+</script>
+        
       
             </main>
     </base> </div>

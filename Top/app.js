@@ -58,15 +58,44 @@ app.get("/schedule", (req, res) => res.render("schedule", { data }));
 app.get("/recruiters", (req, res) => res.render("recruiters", { data }));
 app.get("/login", (req, res) => res.render("login", { data }));
 app.get("/settings", (req, res) => res.render("settings", { data , settings}));
+app.get("/create_an-account", (req, res) => res.render("create_an-account", {  }));
+app.get("/forgot_password", (req, res) => res.render("forgot_password", {  }));
+
 
 app.get('/api/profile', (req, res) => {
   // Возвращаем данные профиля
   res.json(data);
 });
 
+
 app.get('/api/settings', (req, res) => {
   res.json(settings); // Ensure settings is imported and structured correctly
 });
+
+// app.post('/api/settings/update', (req, res) => {
+//   const keys = Object.keys(req.body);
+
+//   keys.forEach(key => {
+//     if (settings.hasOwnProperty(key)) {
+//       settings[key] = req.body[key];
+//     }
+//   });
+
+//   res.json({ success: true, message: 'Settings updated', updatedKeys: keys });
+// });
+
+// app.post('/api/settings/change-password', (req, res) => {
+//   const { currentPassword, newPassword } = req.body;
+
+//   // Replace this with your actual password validation and update logic
+//   if (currentPassword === settings.password) { // Assuming you store the current password in settings
+//     settings.password = newPassword;
+//     res.json({ success: true, message: 'Password changed successfully' });
+//   } else {
+//     res.status(400).json({ success: false, message: 'Current password is incorrect' });
+//   }
+// });
+
 
 
 

@@ -76,6 +76,7 @@ const blogData = [
       author: "James",
       date: "August 18, 2022",
       avatar: "img_avatar_12.png",
+      favorite: 1,
     },
     {
       image: "image2.png",
@@ -84,6 +85,7 @@ const blogData = [
       author: "Louis Hoebregts",
       date: "July 25, 2022",
       avatar: "img_avatar_01.png",
+      favorite: 0,
     },
     {
       image: "image3.png",
@@ -92,6 +94,7 @@ const blogData = [
       author: "Louis Hoebregts",
       date: "July 25, 2022",
       avatar: "img_avatar_01.png",
+      favorite: 1,
     },
     {
       image: "image4.png",
@@ -100,6 +103,7 @@ const blogData = [
       author: "Louis Hoebregts",
       date: "July 25, 2022",
       avatar: "img_avatar_01.png",
+      favorite: 1,
     },
     {
       image: "image.png",
@@ -108,6 +112,7 @@ const blogData = [
       author: "Louis Hoebregts",
       date: "July 25, 2022",
       avatar: "img_avatar_01.png",
+      favorite: 0,
     },
     {
       image: "image2.png",
@@ -116,6 +121,7 @@ const blogData = [
       author: "Louis Hoebregts",
       date: "July 25, 2022",
       avatar: "img_avatar_01.png",
+      favorite: 1,
     },
     {
       image: "image3.png",
@@ -124,6 +130,7 @@ const blogData = [
       author: "Louis Hoebregts",
       date: "July 25, 2022",
       avatar: "img_avatar_01.png",
+      favorite: 0,
     },
     {
       image: "image4.png",
@@ -132,6 +139,7 @@ const blogData = [
       author: "Louis Hoebregts",
       date: "July 25, 2022",
       avatar: "img_avatar_01.png",
+      favorite: 0,
     },
     {
       image: "image.png",
@@ -140,6 +148,7 @@ const blogData = [
       author: "Louis Hoebregts",
       date: "July 25, 2022",
       avatar: "img_avatar_01.png",
+      favorite: 0,
     },
     {
       image: "image2.png",
@@ -148,6 +157,7 @@ const blogData = [
       author: "Louis Hoebregts",
       date: "July 25, 2022",
       avatar: "img_avatar_01.png",
+      favorite: 0,
     },
     {
       image: "image3.png",
@@ -156,6 +166,7 @@ const blogData = [
       author: "Louis Hoebregts",
       date: "July 25, 2022",
       avatar: "img_avatar_01.png",
+      favorite: 0,
     },
     {
       image: "image4.png",
@@ -164,13 +175,15 @@ const blogData = [
       author: "Louis Hoebregts",
       date: "July 25, 2022",
       avatar: "img_avatar_01.png",
+      favorite: 0,
     }
   ];
  const settings = {
     isVerified: 0,
-    When_I_submit_an_assignment_for_review: 0,
+    When_I_submit_an_assignment_for_review: 1,
     When_I_get_a_task: 0,
     There_are_recommendations_for_my_account:1,
+    Enable_or_disable_two_factor_authentication: 1,
   };
  
   module.exports = { data, blogData, settings };
