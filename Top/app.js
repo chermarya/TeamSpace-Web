@@ -11,27 +11,7 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 // Додаємо папку images як статичну
 app.use('/images', express.static(path.join(__dirname, 'images')));
-// Array of colors for jobs
-// const colors = ["blue", "orange", "pink", "yellow"];
 
-// Shuffle colors function
-// function shuffleArray(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-// }
-
-
-// Add colors to job cards
-// if (Array.isArray(data.job)) {
-//   data.job = data.job.map((job, index) => {
-//     if (index % colors.length === 0) shuffleArray(colors);
-//     return { ...job, color: colors[index % colors.length] };
-//   });
-// } else {
-//   console.error("data.job is not defined or not an array");
-// }
       // Масив кольорів
 const colors = ["blue", "orange", "pink", "yellow"];
 
@@ -39,14 +19,14 @@ const colors = ["blue", "orange", "pink", "yellow"];
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Обмін елементів
+    [array[i], array[j]] = [array[j], array[i]]; 
   }
 }
 
 // Додаємо кольори до карток без повторень у рядку
 data.job = data.job.map((job, index) => {
-  if (index % colors.length === 0) shuffleArray(colors); // Перемішати кольори на початку кожного ряду
-  return { ...job, color: colors[index % colors.length] }; // Додаємо кольори по індексу
+  if (index % colors.length === 0) shuffleArray(colors); 
+  return { ...job, color: colors[index % colors.length] }; 
 });
 
 
@@ -69,7 +49,7 @@ app.get('/api/profile', (req, res) => {
 
 
 app.get('/api/settings', (req, res) => {
-  res.json(settings); // Ensure settings is imported and structured correctly
+  res.json(settings); 
 });
 
 // app.post('/api/settings/update', (req, res) => {
