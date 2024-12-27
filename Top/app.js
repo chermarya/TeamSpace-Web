@@ -40,6 +40,7 @@ app.get("/login", (req, res) => res.render("login", { data }));
 app.get("/settings", (req, res) => res.render("settings", { data , settings}));
 app.get("/create_an-account", (req, res) => res.render("create_an-account", {  }));
 app.get("/forgot_password", (req, res) => res.render("forgot_password", {  }));
+app.get("/project_details", (req, res) => res.render("project_details", { data }));
 
 
 app.get('/api/profile', (req, res) => {
@@ -50,6 +51,9 @@ app.get('/api/profile', (req, res) => {
 
 app.get('/api/settings', (req, res) => {
   res.json(settings); 
+});
+app.get('/api/project_details', (req, res) => {
+  res.json(project_details); 
 });
 
 // app.post('/api/settings/update', (req, res) => {

@@ -12,14 +12,35 @@ const data = {
     postal: '45962',
     country: 'USA',
     activeProjects: [
-      { name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 100, deadline: "12 September 2024" , description:"One frustrating experience for users is being left in the dark during app loading times." },
-      { name: "TeamSpace", members: 12,join_at: "12 July 2024, 15:30", progress: 25, deadline: "12 September 2024", description:"One frustrating experience for users is being left in the dark during app loading times." },
-      { name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 75, deadline: "12 September 2024" , description:"One frustrating experience for users is being left in the dark during app loading times."},
+      {  projectId: 1, name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 100, deadline: "12 September 2024" , description:"One frustrating experience for users is being left in the dark during app loading times." },
+      { id: 2,name: "TeamSpace", members: 12,join_at: "12 July 2024, 15:30", progress: 25, deadline: "12 September 2024", description:"One frustrating experience for users is being left in the dark during app loading times." },
+      { id: 3,name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 75, deadline: "12 September 2024" , description:"One frustrating experience for users is being left in the dark during app loading times."},
+      {id: 4, name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 100, deadline: "12 September 2024" , description:"One frustrating experience for users is being left in the dark during app loading times." },
+      { id: 5,name: "TeamSpace", members: 12,join_at: "12 July 2024, 15:30", progress: 25, deadline: "12 September 2024", description:"One frustrating experience for users is being left in the dark during app loading times." },
+      { id: 6,name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 75, deadline: "12 September 2024" , description:"One frustrating experience for users is being left in the dark during app loading times."},
+    ], 
+    
+    project: [
+      { projectId: 1,name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 100, deadline: "12 September 2024" , description:"One frustrating experience for users is being left in the dark during app loading times."},
+      { projectId: 2,name: "TeamSpace", members: 12,join_at: "12 July 2024, 15:30", progress: 25, deadline: "12 September 2024", description:"One frustrating experience for users is being left in the dark during app loading times." },
+      { id: 1,name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 75, deadline: "12 September 2024" , description:"One frustrating experience for users is being left in the dark during app loading times."},
+      { id: 2,name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 100, deadline: "12 September 2024" , description:"One frustrating experience for users is being left in the dark during app loading times." },
+      { id: 3,name: "TeamSpace", members: 12,join_at: "12 July 2024, 15:30", progress: 25, deadline: "12 September 2024", description:"One frustrating experience for users is being left in the dark during app loading times." },
+      { id: 4,name: "TeamSpace", members: 12, join_at: "12 July 2024, 15:30", progress: 75, deadline: "12 September 2024" , description:"One frustrating experience for users is being left in the dark during app loading times."},
     ],
+    // tasks: [
+    //   { title: 1,status: "TeamSpace", },
+    //   { title: 1,status: "TeamSpace", },
+    // ],
     colleagues: [
       { name: "Tony", project: "TeamSpace" },
       { name: "Kirill", project: "TeamSpace" },
       { name: "Momo", project: "TeamSpace" },
+    ],
+  
+    tasks: [
+      { id: 1, title: "Implement UI", status: "In Progress" },
+      { id: 2, title: "Finalize Backend", status: "Pending" },
     ],
     requests: [
       { name: "TeamSpace",  status: "awaiting" },

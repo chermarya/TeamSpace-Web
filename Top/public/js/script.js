@@ -1,5 +1,5 @@
 
-const { data, blogData, settings  } = require('./data.js');
+const { data, blogData, settings  } = require('/js/data.js');
 console.log("Settings object loaded:", settings);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 

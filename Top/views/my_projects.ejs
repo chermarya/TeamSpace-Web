@@ -204,7 +204,7 @@
                                 <th>Progress</th>
                             </tr>
                         </thead>
-            <tbody>
+                        <tbody id="project-list">
                 <% data.activeProjects.forEach((project) => { %>
                 <tr>
                     <td><%= project.name %></td>
@@ -251,6 +251,8 @@
                 </tr>
                 <% }); %>
             </tbody>
+            
+              
          </table>
             </div>
             <div class="right-panel">
@@ -413,6 +415,24 @@
             </div>
             </section>
             <script src="/js/script.js"></script>
+
+            <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const projectRows = document.querySelectorAll('#project-list tr');
+
+  projectRows.forEach((row) => {
+    row.addEventListener('click', () => {
+      const projectId = row.getAttribute('project_details');
+      window.location.href = `project_details`;
+    });
+  });
+});
+
+
+
+
+
+            </script>
             </main>
     </base> </div>
 </body>

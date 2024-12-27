@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/project_details.css">
+
+    <title>TeamSpace</title>
+</head>
+<body>
+   
+    <div class="main-content">
+        <!-- <div class="main-content1"> -->
+        <aside>
+            <header class="header">
+                <div class="header-left">
+                    <div class="logo">
+                        <span class="icon-TeamSpace">
+                            <svg width="33" height="33" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="50" fill="#D9D9D9"/>
+                            </svg>
+                        </span>
+                        TeamSpace
+                    </div>
+                    <div class="search-container">
+                        <svg class="search-icon" width="30" height="30" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M53 53L40.9357 40.9357M40.9357 40.9357C44.9571 36.9143 47.4444 31.3587 47.4444 25.2222C47.4444 12.9492 37.4952 3 25.2222 3C12.9492 3 3 12.9492 3 25.2222C3 37.4952 12.9492 47.4444 25.2222 47.4444C31.3587 47.4444 36.9143 44.9571 40.9357 40.9357Z" stroke="#292929" stroke-opacity="0.3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>   
+                        <input type="text" placeholder="Search Tasks, People...">
+                    </div>
+                </div>
+                <div class="header-right">
+                    <span class="icon">
+                        <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M35 11C35.8284 11 36 10.855 36 10.5C36 10.145 35.8284 9 35 9C34.1716 9 34 10.145 34 10.5C34 10.855 34.1716 11 35 11Z" stroke="#292929" stroke-opacity="0.7" stroke-width="3"/>
+                            <path d="M20.75 50V21C20.75 17.6863 23.4363 15 26.75 15H43.25C46.5637 15 49.25 17.6863 49.25 21V50M20.75 50H49.25M20.75 50H16M49.25 50H54" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M34 59L38 59" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="35" cy="35" r="31" stroke="#292929" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg> 
+                    </span>
+                </span> 
+                <span class="icon">
+                    <svg width="30" height="30" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M66 35C66 41.3961 64.0629 47.3397 60.7435 52.2763C55.1775 60.5539 45.7247 66 35 66C24.2753 66 14.8225 60.5539 9.25653 52.2763C5.93705 47.3397 4 41.3961 4 35C4 17.8792 17.8792 4 35 4C52.1208 4 66 17.8792 66 35Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                        <path d="M41 21C41 24.3137 38.3137 27 35 27C31.6863 27 29 24.3137 29 21C29 17.6863 31.6863 15 35 15C38.3137 15 41 17.6863 41 21Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                        <path d="M44.4989 38H26.5011C21.0665 38 16.4757 41.6135 15 46.5692C19.9513 52.3424 27.2985 56 35.5 56C43.7015 56 51.0487 52.3424 56 46.5692C54.5243 41.6135 49.9335 38 44.4989 38Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                        </svg>                                                                                                                  
+                </span> 
+                <a href="login" class="username">
+                    <%= data.username %>
+                   
+                </a>
+                </div>
+            </header>
+    
+                <!-- <span class="Vector_167">
+                    
+                        <svg width="200" height="800" viewBox="0 0 428 1945" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M52 90.5C39.5 42.5 4.83333 9.16667 -11.5 0L-24 1952H428C428 1952 177.218 1540.44 109 1245.5C78.9566 1115.61 71.4691 1040.41 61 907.5C52.9005 804.673 53.114 746.646 53 643.5C52.8817 536.451 58 369.5 58 369.5V356.5C62.5 317.5 77 299 77 299V223C70.7516 209.917 64 208.5 61 189.5C58 170.5 60.3402 122.526 52 90.5Z" fill="#0C0B19"/>
+                            </svg>
+                        
+                        
+                </span>  -->
+              
+            
+                <ul>
+                    <li class="Overview">
+                        <a href="index" class="index">
+                            <span class="icon">
+                                <svg width="20" height="20" viewBox="0 0 59 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M49 18C49 22.1421 45.6421 25.5 41.5 25.5C37.3579 25.5 34 22.1421 34 18C34 13.8579 37.3579 10.5 41.5 10.5C45.6421 10.5 49 13.8579 49 18Z" stroke="#91918F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 5"/>
+                                    <circle cx="17.5" cy="42" r="7.5" stroke="#91918F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 5"/>
+                                    <path d="M34 34.5H49V48.5C49 49.0523 48.5523 49.5 48 49.5H35C34.4477 49.5 34 49.0523 34 48.5V34.5Z" stroke="#91918F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10"/>
+                                    <path d="M10 10.5H25V24.5C25 25.0523 24.5523 25.5 24 25.5H11C10.4477 25.5 10 25.0523 10 24.5V10.5Z" stroke="#91918F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10"/>
+                                    </svg>
+                                    
+                            </span> Overview
+                        </a>
+                    </li>
+                    <li class="My_Projects">
+                        <a href="my_projects" class="my_projects">
+                            <span class="icon">
+                               
+                                <svg width="20" height="20" viewBox="0 0 63 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M29.5321 3.31513C30.6189 2.22829 32.3811 2.22829 33.4679 3.31513L41.4063 11.2536C42.4932 12.3404 42.4932 14.1025 41.4063 15.1893L33.4679 23.1278C32.3811 24.2146 30.6189 24.2146 29.5321 23.1278L21.5937 15.1893C20.5068 14.1025 20.5068 12.3404 21.5937 11.2536L29.5321 3.31513Z" stroke="#91918F" stroke-width="4" stroke-dasharray="8 8"/>
+                                    <path d="M48.3107 22.0937C49.3975 21.0068 51.1596 21.0068 52.2464 22.0937L60.1849 30.0321C61.2717 31.1189 61.2717 32.8811 60.1849 33.9679L52.2464 41.9063C51.1596 42.9932 49.3975 42.9932 48.3107 41.9063L40.3722 33.9679C39.2854 32.8811 39.2854 31.1189 40.3722 30.0321L48.3107 22.0937Z" stroke="#91918F" stroke-width="4" stroke-dasharray="8 8"/>
+                                    <path d="M10.7536 22.0937C11.8404 21.0068 13.6025 21.0068 14.6893 22.0937L22.6278 30.0321C23.7146 31.1189 23.7146 32.8811 22.6278 33.9679L14.6893 41.9063C13.6025 42.9932 11.8404 42.9932 10.7536 41.9063L2.81513 33.9679C1.72829 32.8811 1.72829 31.1189 2.81513 30.0321L10.7536 22.0937Z" stroke="#91918F" stroke-width="4" stroke-dasharray="8 8"/>
+                                    <path d="M29.5321 40.8722C30.6189 39.7854 32.3811 39.7854 33.4679 40.8722L41.4063 48.8107C42.4932 49.8975 42.4932 51.6596 41.4063 52.7464L33.4679 60.6849C32.3811 61.7717 30.6189 61.7717 29.5321 60.6849L21.5937 52.7464C20.5068 51.6596 20.5068 49.8975 21.5937 48.8107L29.5321 40.8722Z" stroke="#91918F" stroke-width="4" stroke-dasharray="8 8"/>
+                                </svg>
+                            </span>
+                            My Projects
+                        </a>
+                    </li>
+                    <li class="My_Tasks">
+                        <a href="my_tasks" class="my_tasks">
+                            <span class="icon">                              
+                                <svg width="20" height="20" viewBox="0 0 59 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.2913 39.8333L9.83301 49.6667L19.6663 47.2083L50.2105 16.6642C50.9915 15.8832 50.9915 14.6168 50.2105 13.8358L45.6639 9.28921C44.8828 8.50817 43.6165 8.50817 42.8355 9.28921L12.2913 39.8333Z" stroke="#292929" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 8"/>
+                                    <path d="M37 14L46 23" stroke="#292929" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 8"/>
+                                    <path d="M31.958 49.6665H51.6247" stroke="#292929" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 8"/>
+                                    </svg>                                                                                           
+                            </span>
+                            My Tasks
+                        </a>
+                    </li>
+                    <li class="Schedule">
+                        <a href="schedule" class="schedule">
+                            <span class="icon">                              
+                                <svg width="20" height="20" viewBox="0 0 59 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 8H56V58C56 59.1046 55.1046 60 54 60H6C4.89543 60 4 59.1046 4 58V8Z" stroke="#292929" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 5"/>
+                                    <path d="M9 21H51.5" stroke="#292929" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 5"/>
+                                    <path d="M43 2V14" stroke="#292929" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 5"/>
+                                    <path d="M17 2V13.5" stroke="#292929" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 5"/>
+                                    </svg>                                                                                                                             
+                            </span>
+                            Schedule
+                        </a>
+                    </li>
+                    <li class="recruiters">
+                        <a href="recruiters" class="recruiters">
+                            <span class="icon">                              
+                                <svg width="20" height="20" viewBox="0 0 65 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 57C6.37604 49.1887 13.7752 43.8425 25.319 43.8425C36.8627 43.8425 44.2619 49.1887 47.6379 57M49.7736 37.9193C55.8868 42.1593 58.9434 46.3993 62 54.8793M43.4156 5.51065C46.2921 7.65712 48.2475 11.8719 48.2475 16.7201C48.2475 21.4283 46.4035 25.5391 43.6626 27.7384M34.4887 16.72C34.4887 23.7451 30.3833 29.44 25.319 29.44C20.2546 29.44 16.1492 23.7451 16.1492 16.72C16.1492 9.69494 20.2546 4 25.319 4C30.3833 4 34.4887 9.69494 34.4887 16.72Z" stroke="#949494" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
+                                    </svg>                                                                                                                                                                
+                            </span>
+                            Recruiters
+                        </a>
+                    </li>
+                    <li class="Blog">
+                        <a href="blog" class="blog">
+                            <span class="icon">                              
+                                <svg width="20" height="20" viewBox="0 0 67 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M38 20.5L19 20.5" stroke="#292929" stroke-opacity="0.5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M38 33.5H25" stroke="#292929" stroke-opacity="0.5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8 3H50V50.5" stroke="#292929" stroke-opacity="0.5" stroke-width="5" stroke-linecap="square" stroke-linejoin="round"/>
+                                    <path d="M3 3V53.5C3 54.6046 3.89543 55.5 5 55.5H50.4444H62C63.1046 55.5 64 54.6046 64 53.5V16.5H55" stroke="#292929" stroke-opacity="0.5" stroke-width="5" stroke-linecap="square" stroke-linejoin="round"/>
+                                    </svg>
+                                                                                                                                                                                                    
+                            </span>
+                            Blog
+                        </a>
+                    </li>
+                    <li class="Settings">
+                        <a href="settings" class="settings">
+                            <span class="icon">                              
+                                <svg width="20" height="20" viewBox="0 0 59 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="31" cy="30" r="5" stroke="#292929" stroke-opacity="0.5" stroke-width="5"/>
+                                    <path d="M13.6391 14.6333C11.3381 17.1789 9.6904 20.2214 8.76018 23.4976L17.6242 28.847C18.9277 29.6336 18.9093 31.5302 17.5909 32.2914L9.02226 37.2385C9.54754 38.8781 10.2562 40.4909 11.1553 42.0481C12.0543 43.6052 13.0966 45.0253 14.2539 46.3L22.8226 41.3529C24.141 40.5917 25.7927 41.524 25.8222 43.0462L26.0229 53.3975C29.3253 54.23 32.784 54.3243 36.1391 53.6044L35.9429 43.4837C35.9123 41.9097 37.628 40.9192 38.9759 41.7326L47.6426 46.9629C49.9436 44.4172 51.5913 41.3747 52.5215 38.0986L43.6573 32.7491C42.3538 31.9624 42.3722 30.0659 43.6907 29.3047L52.2594 24.3575C51.7341 22.718 51.0254 21.1052 50.1264 19.5481C49.2274 17.9909 48.185 16.5707 47.0277 15.296L38.4591 20.2431C37.1406 21.0043 35.4889 20.072 35.4594 18.5499L35.2587 8.1986C31.9564 7.36613 28.4977 7.27184 25.1426 7.99174L25.3388 18.1125C25.3693 19.6864 23.6536 20.677 22.3058 19.8636L13.6391 14.6333Z" stroke="#292929" stroke-opacity="0.5" stroke-width="5" stroke-linejoin="round"/>
+                                    </svg>                                                                                                                                                                                                                                       
+                            </span>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+                
+        </aside>
+
+        <main>
+            
+            <div class="basesort">
+                <div class="filters">
+                    <div class="filter-item">
+                        <div class="filter-content">
+                            <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.98 0C8.94 0 0 8.96 0 20C0 31.04 8.94 40 19.98 40C31.04 40 40 31.04 40 20C40 8.96 31.04 0 19.98 0ZM20 36C11.16 36 4 28.84 4 20C4 11.16 11.16 4 20 4C28.84 4 36 11.16 36 20C36 28.84 28.84 36 20 36ZM21 10H18V22L28.5 28.3L30 25.84L21 20.5V10Z" fill="black" fill-opacity="0.5"/>
+                            </svg>
+                            <button class="filter-button">Posted At</button>
+                            <span>
+                                <svg width="11" height="6" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0.5L11 11.5L22 0.5H0Z" fill="black" fill-opacity="0.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <div class="filter-content">
+                            <svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.0130005 2.6C0.0130005 1.17 1.17 0 2.6 0H23.4C24.83 0 26 1.17 26 2.6V18.2C26 19.63 24.83 20.8 23.4 20.8H5.2L0 26L0.0130005 2.6ZM2.6 2.6V19.721L4.121 18.2H23.4V2.6H2.6Z" fill="black" fill-opacity="0.5"/>
+                            </svg>
+                            <button class="filter-button">Content Type</button>
+                            <svg width="11" height="6" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0.5L11 11.5L22 0.5H0Z" fill="black" fill-opacity="0.5"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <svg width="33" height="48" viewBox="0 0 66 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M37.3244 5.19562H63M37.3244 22.0473H55.6641M37.3244 38.8991H48.3282M14.4169 3V45M14.4169 45L3 32.161M14.4169 45L26.2698 32.161" stroke="black" stroke-opacity="0.5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                    <button class="clear-all">
+                        <span>Clear All</span>
+                     </button>
+                </div>     
+                <section class="dashboard">
+                    <div class="project-table">
+                        <h2>Tasks</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Manage Members</th>
+                                    <th>Progress</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                <tbody>
+                    <% data.activeProjects.forEach((project, index) => { %>
+                    <tr>
+                        <td><%= project.name %></td>
+                        <td>
+                            <button onclick="openModal(<%= project.id %>)">Manage Members</button>
+                        </td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-text">
+                                    <span class="progress-percentage"><%= project.progress %>% 
+                                    <%= project.progress === 100 ? 'Completed' : project.progress >= 75 ? 'Not Confirmed!' : project.progress >= 50 ? 'Processing Tasks' : 'Distribution of tasks' %></span>
+                                </div>
+                                <div class="progress-container">
+                                    <div class="progress-bar <%= project.progress === 100 ? 'green' : project.progress >= 75 ? 'red' : (project.progress >= 50 ? 'blue' : 'yellow') %>"
+                                         style="width: <%= project.progress %>%"></div>
+                                </div>
+                                <div class="progress-icon">
+                                    <% if (project.progress === 100) { %>
+                                        <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="20" cy="20.5" r="20" fill="#198038"/>
+                                            <path d="M18.3663 26.2513C18.0663 26.2513 17.7813 26.1313 17.5713 25.9213L13.3263 21.6763C12.8913 21.2413 12.8913 20.5213 13.3263 20.0863C13.7613 19.6513 14.4812 19.6513 14.9162 20.0863L18.3663 23.5363L26.0763 15.8263C26.5113 15.3913 27.2313 15.3913 27.6663 15.8263C28.1013 16.2613 28.1013 16.9812 27.6663 17.4162L19.1613 25.9213C18.9513 26.1313 18.6663 26.2513 18.3663 26.2513Z" fill="white"/>
+                                        </svg>
+                                    <% } else if (project.progress >= 75) { %>
+                                        <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="20" cy="20.5" r="20" fill="#DA1E28"/>
+                                            <path d="M15.2834 26.4668C14.9668 26.4668 14.6501 26.3501 14.4001 26.1001C13.9168 25.6168 13.9168 24.8168 14.4001 24.3334L23.8334 14.9001C24.3168 14.4168 25.1168 14.4168 25.6001 14.9001C26.0834 15.3834 26.0834 16.1834 25.6001 16.6668L16.1668 26.1001C15.9334 26.3501 15.6001 26.4668 15.2834 26.4668Z" fill="white"/>
+                                            <path d="M24.7168 26.4668C24.4001 26.4668 24.0834 26.3501 23.8334 26.1001L14.4001 16.6668C13.9168 16.1834 13.9168 15.3834 14.4001 14.9001C14.8834 14.4168 15.6834 14.4168 16.1668 14.9001L25.6001 24.3334C26.0834 24.8168 26.0834 25.6168 25.6001 26.1001C25.3501 26.3501 25.0334 26.4668 24.7168 26.4668Z" fill="white"/>
+                                        </svg>
+                                    <% } else if (project.progress >= 50) { %>
+                                        <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="20" cy="20.5" r="19" stroke="#0043CE" stroke-width="2"/>
+                                            <circle cx="20" cy="20.5" r="8" fill="#0043CE"/>
+                                        </svg>
+                                    <% } else { %>
+                                        <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="20" cy="20.5" r="20" fill="#F1C21B"/>
+                                            <path d="M20 23.125C19.385 23.125 18.875 22.615 18.875 22V14.5C18.875 13.885 19.385 13.375 20 13.375C20.615 13.375 21.125 13.885 21.125 14.5V22C21.125 22.615 20.615 23.125 20 23.125Z" fill="#262626"/>
+                                            <path d="M20 27.9998C19.805 27.9998 19.61 27.9548 19.43 27.8798C19.25 27.8048 19.085 27.6998 18.935 27.5648C18.8 27.4148 18.695 27.2648 18.62 27.0698C18.545 26.8898 18.5 26.6948 18.5 26.4998C18.5 26.3048 18.545 26.1098 18.62 25.9298C18.695 25.7498 18.8 25.5848 18.935 25.4348C19.085 25.2998 19.25 25.1948 19.43 25.1198C19.79 24.9698 20.21 24.9698 20.57 25.1198C20.75 25.1948 20.915 25.2998 21.065 25.4348C21.2 25.5848 21.305 25.7498 21.38 25.9298C21.455 26.1098 21.5 26.3048 21.5 26.4998C21.5 26.6948 21.455 26.8898 21.38 27.0698C21.305 27.2648 21.2 27.4148 21.065 27.5648C20.915 27.6998 20.75 27.8048 20.57 27.8798C20.39 27.9548 20.195 27.9998 20 27.9998Z" fill="#262626"/>
+                                        </svg>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </td>
+                        <td><%= project.description %></td>
+                        </div>
+                       
+                    </tr>
+                    <% }); %>
+                </tbody>
+             </table>
+                </div>   
+                
+        </main>
+    </div>
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="profile-card">
+                <div class="profile-pic">
+                    <img src="" alt="Profile Picture" />
+                </div>
+                <div class="profile-name" id="profile-name"></div>
+                <div class="profile-tags"></div>
+                <div class="profile-links"></div>
+                <div class="profile-description">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/js/script.js"></script>
+    <script type="module">
+        import { data } from './public/js/data.js';
+        window.data = data;
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            initializeViewButtons();
+        });
+    
+        window.openModal = function (profileId) {
+            const modal = document.getElementById("profileModal");
+            const profileData = data.activeProjects.find((project) => project.id === parseInt(profileId));
+    
+            if (!profileData) {
+                console.error("Project not found");
+                return;
+            }
+    
+            populateModal(profileData);
+            modal.style.display = "block";
+        };
+    
+        function initializeViewButtons() {
+            const closeButton = document.querySelector(".modal .close");
+            const modal = document.getElementById("profileModal");
+    
+            closeButton.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+    
+            window.addEventListener("click", (event) => {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+    
+        function populateModal(data) {
+            const modal = document.getElementById("profileModal");
+    
+            // Populate profile card fields
+            modal.querySelector(".profile-pic img").src = `/images/${data.image}`;
+            modal.querySelector("#profile-name").textContent = data.name;
+            modal.querySelector(".profile-tags").innerHTML = data.tags.map(tag => `<div class="tag">${tag}</div>`).join("");
+            modal.querySelector(".profile-links").innerHTML = data.links.map(link => `
+                <div class="link">
+                    <img src="/images/${link.icon}" alt="${link.name} Icon" width="24" height="24">
+                    <a href="${link.url}" target="_blank">${link.name}</a>
+                </div>
+            `).join("");
+            modal.querySelector(".profile-description p").textContent = data.description;
+        }
+    </script>
+</html>
