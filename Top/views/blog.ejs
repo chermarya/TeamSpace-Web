@@ -47,10 +47,21 @@
                         <path d="M44.4989 38H26.5011C21.0665 38 16.4757 41.6135 15 46.5692C19.9513 52.3424 27.2985 56 35.5 56C43.7015 56 51.0487 52.3424 56 46.5692C54.5243 41.6135 49.9335 38 44.4989 38Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
                         </svg>                                                                                                                  
                 </span> 
-                <a href="login" class="username">
-                    <%= data.username %>
-                   
-                </a>
+                <ul>
+                    <% if (full_name) { %>
+                        
+                        <p><strong><%= full_name %></strong>!</p>
+                        
+                    <% } else { %>
+                      
+                        <p>
+                            
+                            <a href="/login" class="login-link">Вхід</a>
+                        </p>
+                    <% } %>
+                     
+    
+                </ul>
                 </div>
             </header>
             
@@ -163,30 +174,35 @@
         <base>
         <div class="filters">
             <button id="filter-favorites" class="filter-button">Favorite</button>
-        </div>
-        
-        <div id="blog-cards" class="blog-cards">
-            <% blogData.forEach((post) => { %>
+          </div>
+          
+          <div id="blog-cards" class="blog-cards">
+            <% if (blogData && blogData.length > 0) { %>
+              <% blogData.forEach(post => { %>
                 <div class="card" data-favorite="<%= post.favorite %>">
-                    <img src="/images/<%= post.image %>" alt="<%= post.title %>">
-                    <h3><%= post.title %></h3>
-                    <p><%= post.description %></p>
-                    <div class="info">
-                        <img src="/images/<%= post.avatar %>" alt="<%= post.author %>">
-                        <div class="text">
-                            <div class="header1"><%= post.author %></div>
-                            <div class="subhead"><%= post.date %></div>
-                        </div>
-                        <div class="icon">
-                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15.6924 0C16.708 0 17.5674 0.859375 17.5674 1.875V18.75C17.5674 19.7266 16.5127 20.3125 15.6533 19.8438L10.0674 16.5625L4.44238 19.8438C3.58301 20.3125 2.56738 19.7266 2.56738 18.75V1.875C2.56738 0.859375 3.3877 0 4.44238 0H15.6924ZM15.6924 17.6562V2.10938C15.6924 1.99219 15.5752 1.875 15.4189 1.875H4.6377C4.52051 1.875 4.44238 1.99219 4.44238 2.10938V17.6562L10.0674 14.375L15.6924 17.6562Z"
-                                fill="<%= post.favorite === 1 ? '#FF0000' : '#3E3232' %>"/>
-                            </svg>
-                        </div>
+                  <img src="/images/<%= post.image %>" alt="<%= post.title %>">
+                  <h3><%= post.title %></h3>
+                  <p><%= post.description %></p>
+                  <div class="info">
+                    <img src="/images/<%= post.avatar %>" alt="<%= post.author %>">
+                    <div class="text">
+                      <div class="header1"><%= post.author %></div>
+                      <div class="subhead"><%= new Date(post.date).toLocaleDateString() %></div>
                     </div>
+                    <div class="icon">
+                      <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M15.6924 0C16.708 0 17.5674 0.859375 17.5674 1.875V18.75C17.5674 19.7266 16.5127 20.3125 15.6533 19.8438L10.0674 16.5625L4.44238 19.8438C3.58301 20.3125 2.56738 19.7266 2.56738 18.75V1.875C2.56738 0.859375 3.3877 0 4.44238 0H15.6924ZM15.6924 17.6562V2.10938C15.6924 1.99219 15.5752 1.875 15.4189 1.875H4.6377C4.52051 1.875 4.44238 1.99219 4.44238 2.10938V17.6562L10.0674 14.375L15.6924 17.6562Z"
+                          fill="<%= post.favorite ? '#FF0000' : '#3E3232' %>" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-            <% }) %>
-        </div>
+              <% }) %>
+            <% } else { %>
+              <p>No blogs available.</p>
+            <% } %>
+          </div>
         
 <script>
    document.addEventListener('DOMContentLoaded', () => {
@@ -235,25 +251,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const blogCardsContainer = document.getElementById('blog-cards');
 
     favoriteButton.addEventListener('click', () => {
-        const isFavoriteFilterActive = favoriteButton.classList.toggle('active');
+      const isFilterActive = favoriteButton.classList.toggle('active');
+      const cards = Array.from(blogCardsContainer.children);
 
-        if (isFavoriteFilterActive) {
-            // Filter and display only favorite cards
-            const favoriteCards = Array.from(blogCardsContainer.children).filter(card => 
-                card.getAttribute('data-favorite') === '1'
-            );
+      cards.forEach(card => {
+        const isFavorite = card.getAttribute('data-favorite') === 'true';
+        card.style.display = isFilterActive && !isFavorite ? 'none' : 'block';
+      });
 
-            // Clear container and append only favorite cards
-            blogCardsContainer.innerHTML = '';
-            favoriteCards.forEach(card => blogCardsContainer.appendChild(card));
-
-            favoriteButton.textContent = 'Show All';
-        } else {
-            // Reload all cards when the filter is toggled off
-            window.location.reload(); // Optional: Use this if you fetch or re-render the page
-        }
+      favoriteButton.textContent = isFilterActive ? 'Show All' : 'Favorite';
     });
-});
+  });
 
 </script>
         

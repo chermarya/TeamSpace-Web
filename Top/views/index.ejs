@@ -46,10 +46,21 @@
                         <path d="M44.4989 38H26.5011C21.0665 38 16.4757 41.6135 15 46.5692C19.9513 52.3424 27.2985 56 35.5 56C43.7015 56 51.0487 52.3424 56 46.5692C54.5243 41.6135 49.9335 38 44.4989 38Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
                         </svg>                                                                                                                  
                 </span> 
-                <a href="login" class="username">
-                    <%= data.username %>
-                   
-                </a>
+                <ul>
+                    <% if (full_name) { %>
+                        
+                        <p><strong><%= full_name %></strong>!</p>
+                        
+                    <% } else { %>
+                      
+                        <p>
+                            
+                            <a href="/login" class="login-link">Вхід</a>
+                        </p>
+                    <% } %>
+                     
+    
+                </ul>
                 </div>
             </header>
     
@@ -154,10 +165,9 @@
                 </ul>
                 
         </aside>
-
-        <main>
+          <main>
         <section class="stats">
-            <!-- Tasks -->
+            
             <div class="stat-item stat-item_tasks">
                 <div class="stat-content">
                     <div class="stat-icon">
@@ -167,13 +177,13 @@
                         </svg>
                     </div> 
                     <div class="stat-text">
-                        <p class="stat-number"><%= data.tasks %></p>
+                        <p class="stat-number"><%= stats.tasks %></p>
                         <p class="stat-label">Tasks</p>
                     </div>
                 </div>
             </div>
         
-            <!-- Friends -->
+            
             <div class="stat-item stat-item_friends">
                 <div class="stat-content">
                     <div class="stat-icon">
@@ -183,13 +193,11 @@
                         </svg>
                     </div>
                     <div class="stat-text">
-                        <p class="stat-number"><%= data.friends %></p>
+                        <p class="stat-number"><%= stats.friends_count %></p>
                         <p class="stat-label">Friends</p>
                     </div>
                 </div>
             </div>
-        
-            <!-- Done Projects -->
             <div class="stat-item stat-item_projects">
                 <div class="stat-content">
                      <div class="stat-icon">
@@ -201,142 +209,153 @@
                             
                     </div>
                         <div class="stat-text">
-                            <p class="stat-number"><%= data.doneProjects %></p>
+                            <p class="stat-number"><%= stats.done_projects %></p>
                              <p class="stat-label">Done Projects</p>
                         </div>
                  </div>  
             </div>
         </section>
         
+        <section class="projects-overview">
 
-           
+            <div class="projects-column">
+                <h3>Active Projects</h3>
+                <div class="Active_Projects">
+                    <% activeProjects.forEach(project => { %>
+                    <div class="project">
+                        <!-- Project icon and details -->
+                        <div class="project-details">
+                            <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="50" fill="#D9D9D9" />
+                            </svg>
+                            <div class="project-info">
+                                <p class="project-name"><%= project.name %></p>
+                                <p class="project-deadline">
+                                    <%= project.members %> members, <%= project.deadline %>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Project progress -->
+                        <span class="project-progress" data-progress="<%= project.progress %>">
+                            <%= project.progress %>% complete
+                        </span>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        <div class="colleagues-column">
+            <h3>Colleagues</h3>
+            <div class="Active_Colleagues">
+                <% colleagues.forEach(colleague => { %>
+                <div class="colleague">
+                    <div class="colleague-details">
+                        <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="50" fill="#D9D9D9" />
+                        </svg>
+                        <div class="colleague-info">
+                            <p class="colleague-name"><%= colleague.name %></p>
+                            <p class="colleague-project"><%= colleague.project_name %></p>
+                        </div>
+                    </div>
+                    <!-- <span class="colleague-status">Active</span> -->
+                </div>
+                <% }) %>
+            </div>
+        </div>
+        
+        <div class="requests-column">
+            <h3>Requests</h3>
+            <div class="Active_Requests">
+                <% requests.forEach(request => { %>
+                <div class="request">
+                    <div class="request-details">
+                        <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="50" fill="#D9D9D9" />
+                        </svg>
+                        <div class="request-info">
+                            <p class="request-name"><%= request.project_name %></p>
+                        </div>
+                    </div>
+                    <div class="request-status <%= request.status %>">
+                        <span><%= request.status %></span>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+        
+       
 
-            <section class="projects-overview">
-                <div class="projects-column">
-                    <h3>Active Projects</h3>
-                    <div class="Active_Projects">
-                        <% data.activeProjects.forEach(project => { %>
-                        <div class="project">
-                            <!-- Project icon and details -->
-                            <div class="project-details">
-                                <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="50" cy="50" r="50" fill="#D9D9D9" />
-                                </svg>
-                                <div class="project-info">
-                                    <p class="project-name"><%= project.name %></p>
-                                    <p class="project-deadline">
-                                        <%= project.members %> members, <%= project.deadline %>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- Project progress -->
-                            <span class="project-progress" data-progress="<%= project.progress %>">
-                                <%= project.progress %>%
-                            </span>
-                        </div>
-                        <% }) %>
-                    </div>
-                </div>
+        
+        
             
-                <div class="colleagues-column">
-                    <h3>Colleagues</h3>
-                    <div class="Active_Colleagues">
-                        <% data.colleagues.forEach(colleague => { %>
-                        <div class="colleague">
-                            <!-- Colleague icon and details -->
-                            <div class="colleague-details">
-                                <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="50" cy="50" r="50" fill="#D9D9D9" />
-                                </svg>
-                                <div class="colleague-info">
-                                    <p class="colleague-name"><%= colleague.name %></p>
-                                    <p class="colleague-project"><%= colleague.project %></p>
-                                </div>
-                            </div>
-                            <!-- Colleague status -->
-                            <span class="colleague-status">
-                                <%= colleague.status %>
-                            </span>
-                        </div>
-                        <% }) %>
-                    </div>
-                </div>
+        
             
-                <div class="requests-column">
-                    <h3>Requests</h3>
-                    <div class="Active_Requests">
-                        <% data.requests.forEach(request => { %>
-                        <div class="request">
-                            <div class="request-details">
-                                <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="50" cy="50" r="50" fill="#D9D9D9" />
-                                </svg>
-                                <div class="request-info">
-                                    <p class="request-name"><%= request.name %></p>
-                                </div>
-                            </div>
-                            <div class="request-status <%= request.status %>">
-                                <span><%= request.status %></span>
-                            </div>
-                        </div>
-                        <% }) %>
+       
+        
+       
+        <section class="recent-tasks">
+            <h3>Recent Tasks</h3>
+            <div class="task">
+                <div class="task-content">
+                    <svg width="12" height="12" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12.5" cy="12.5" r="12.5" fill="black"/>
+                        </svg>
+                        
+                    <div class="task-details">
+                        <p class="task-title">Pre-loader and white space UI design from Userpilot</p>
+                        <p class="task-subtitle">TeamSpace</p>
                     </div>
-                </div>
-            </section>
-            
-           
-            <section class="recent-tasks">
-                <h3>Recent Tasks</h3>
-                <div class="task">
-                    <div class="task-content">
-                        <svg width="12" height="12" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12.5" cy="12.5" r="12.5" fill="black"/>
-                            </svg>
-                            
-                        <div class="task-details">
-                            <p class="task-title">Pre-loader and white space UI design from Userpilot</p>
-                            <p class="task-subtitle">TeamSpace</p>
-                        </div>
-                        <div class="separator"></div>
-                        <p class="task-description">
-                            <a href="https://userpilot.com/blog/user-frustration/" target="_blank" style="color: black;">One frustrating experience</a> for users is being left in the dark during app loading times. For more details, check out
-                        </p>
-                        <div class="separator"></div>
-                        <div class="task-progress">
-                            <div class="progress-container">
-                                <span>50%</span>
-                            </div>
+                    <div class="separator"></div>
+                    <p class="task-description">
+                        <a href="https://userpilot.com/blog/user-frustration/" target="_blank" style="color: black;">One frustrating experience</a> for users is being left in the dark during app loading times. For more details, check out
+                    </p>
+                    <div class="separator"></div>
+                    <div class="task-progress">
+                        <div class="progress-container">
+                            <span>50%</span>
                         </div>
                     </div>
                 </div>
-                <div class="task">
-                    <div class="task-content">
-                        <svg width="12" height="12" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12.5" cy="12.5" r="12.5" fill="black"/>
-                            </svg>
-                        <div class="task-details">
-                            <p class="task-title">Pre-loader and white space UI design from Userpilot</p>
-                            <p class="task-subtitle">TeamSpace</p>
-                        </div>
-                        <div class="separator"></div>
-                        <p class="task-description">
-                            <a href="https://userpilot.com/blog/user-frustration/" target="_blank" style="color: black;">One frustrating experience</a> for users is being left in the dark during app loading times. For more details, check out
-                        </p>
-                        <div class="separator"></div>
-                        <div class="task-progress">
-                            <div class="progress-container completed">
-                                <span>Completed</span>
-                            </div>
+            </div>
+            <div class="task">
+                <div class="task-content">
+                    <svg width="12" height="12" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12.5" cy="12.5" r="12.5" fill="black"/>
+                        </svg>
+                    <div class="task-details">
+                        <p class="task-title">Pre-loader and white space UI design from Userpilot</p>
+                        <p class="task-subtitle">TeamSpace</p>
+                    </div>
+                    <div class="separator"></div>
+                    <p class="task-description">
+                        <a href="https://userpilot.com/blog/user-frustration/" target="_blank" style="color: black;">One frustrating experience</a> for users is being left in the dark during app loading times. For more details, check out
+                    </p>
+                    <div class="separator"></div>
+                    <div class="task-progress">
+                        <div class="progress-container completed">
+                            <span>Completed</span>
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
+    </main> 
+      
     </div>
 </body>
 
 <script src="\js\script.js">
-     console.log(data.tasks );
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const user_id = localStorage.getItem('user_id');
+        if (!user_id) {
+            window.location.href = '/login';
+        }
+    });
+
+
 </script>
 
 </html>

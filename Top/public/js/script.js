@@ -1,26 +1,63 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('loginForm');
 
-const { data, blogData, settings  } = require('/js/data.js');
-console.log("Settings object loaded:", settings);
-app.use('/images', express.static(path.join(__dirname, 'images')));
+  if (loginForm) {
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
 
-document.addEventListener("DOMContentLoaded", () => {
-    const progressElements = document.querySelectorAll(".project-progress");
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
 
-    progressElements.forEach((element) => {
-        const progress = parseInt(element.getAttribute("data-progress"), 10);
+      if (!email || !password) {
+        alert('Email та пароль обов’язкові.');
+        return;
+      }
 
-        // Устанавливаем цвет фона в зависимости от значения процентов
-        if (progress >= 0 && progress <= 25) {
-            element.style.background = "rgba(255, 26, 26, 0.4)"; // Красный с прозрачностью
-        } else if (progress > 25 && progress <= 50) {
-            element.style.background = "rgba(255, 133, 26, 0.4)"; // Оранжевый с прозрачностью
-        } else if (progress > 50 && progress <= 100) {
-            element.style.background = "rgba(45, 255, 26, 0.4)"; // Зеленый с прозрачностью
-        }  
-        
+      const API_BASE_URL = "https://b2e6-2a01-c23-94c7-3400-f896-19e7-4b9d-b308.ngrok-free.app";
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const result = await response.json();
+        console.log('Login API response:', result); // Debugging log
+
+        // Adjust to handle the new response format
+        if (response.ok && result.user_id) {
+          document.cookie = `user_id=${result.user_id}; path=/;`;
+          window.location.href = '/index';
+        } else {
+          console.error('Invalid response format:', result);
+          alert('Помилка входу. Спробуйте знову.');
+        }
+      } catch (error) {
+        console.error('Помилка під час входу:', error);
+        alert('Виникла помилка. Спробуйте пізніше.');
+      }
     });
+  }
 });
-console.log("script.js loaded successfully!");
+
+document.addEventListener('DOMContentLoaded', () => {
+  const user_id = localStorage.getItem('user_id');
+  if (!user_id) {
+    window.location.href = '/login';
+  }
+
+  const projectRows = document.querySelectorAll('.project');
+  projectRows.forEach((project) => {
+    project.addEventListener('click', () => {
+      const projectId = project.getAttribute('data-project-id'); // Ensure `data-project-id` is set server-side
+      window.location.href = `/project_details/${projectId}`;
+    });
+  });
+});
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const verifyLink = document.getElementById("verify-link");
@@ -58,16 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // }
 
 
-// Set up EJS as the template engine
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
 
-// Serve static files (CSS, JS, Images)
-app.use(express.static(path.join(__dirname, "public")));
-// Додаємо папку images як статичну
-app.use('/images', express.static(path.join(__dirname, 'images')));
-// Array of colors for jobs
-// const colors = ["blue", "orange", "pink", "yellow"];
+
+
 
 // Shuffle colors function
 function shuffleArray(array) {
@@ -91,4 +121,3 @@ if (Array.isArray(data.job)) {
 
 
 
-    

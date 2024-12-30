@@ -44,10 +44,25 @@
                         <path d="M44.4989 38H26.5011C21.0665 38 16.4757 41.6135 15 46.5692C19.9513 52.3424 27.2985 56 35.5 56C43.7015 56 51.0487 52.3424 56 46.5692C54.5243 41.6135 49.9335 38 44.4989 38Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
                         </svg>                                                                                                                  
                 </span> 
-                <a href="login" class="username">
-                    <%= data.username %>
-                   
-                </a>
+                <ul>
+                    <ul>
+                        <% if (full_name) { %>
+                            
+                            <p><strong><%= full_name %></strong>!</p>
+                            
+                        <% } else { %>
+                          
+                            <p>
+                                
+                                <a href="/login" class="login-link">Вхід</a>
+                            </p>
+                        <% } %>
+                         
+        
+                    </ul>
+                     
+    
+                </ul>
                 </div>
             </header>
     
@@ -195,224 +210,214 @@
             </div>     
             <section class="dashboard">
                 <div class="project-table">
-                    <h2>Your Projects</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Join at</th>
-                                <th>Progress</th>
-                            </tr>
-                        </thead>
-                        <tbody id="project-list">
-                <% data.activeProjects.forEach((project) => { %>
-                <tr>
-                    <td><%= project.name %></td>
-                    <td><%= project.join_at %></td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-text">
-                                <span class="progress-percentage"><%= project.progress %>% 
-                                <%= project.progress === 100 ? 'Completed' : project.progress >= 75 ? 'Not Confirmed!' : project.progress >= 50 ? 'Processing Tasks' : 'Distribution of tasks' %></span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-bar <%= project.progress === 100 ? 'green' : project.progress >= 75 ? 'red' : (project.progress >= 50 ? 'blue' : 'yellow') %>"
-                                     style="width: <%= project.progress %>%"></div>
-                            </div>
-                            <div class="progress-icon">
-                                <% if (project.progress === 100) { %>
+                  <h2>Your Projects</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Join Date</th>
+                        <th>Progress</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% if (activeProjects.length > 0) { %>
+                        <% activeProjects.forEach(project => { %>
+                          <tr>
+                            <td><%= project.name %></td>
+                            <td><%= new Date(project.join_date).toLocaleDateString() %></td>
+                            <td>
+                              <div class="progress">
+                                <div class="progress-text">
+                                  <span class="progress-percentage">
+                                    <%= project.progress %>% 
+                                    <%= project.progress === 100 ? 'Completed' : project.progress >= 75 ? 'Not Confirmed!' : project.progress >= 50 ? 'Processing Tasks' : 'Distribution of tasks' %>
+                                  </span>
+                                </div>
+                                <div class="progress-container">
+                                  <div class="progress-bar <%= project.progress === 100 ? 'green' : project.progress >= 75 ? 'red' : (project.progress >= 50 ? 'blue' : 'yellow') %>" 
+                                       style="width: <%= project.progress %>%"></div>
+                                </div>
+                                <div class="progress-icon">
+                                  <% if (project.progress === 100) { %>
                                     <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="20" cy="20.5" r="20" fill="#198038"/>
-                                        <path d="M18.3663 26.2513C18.0663 26.2513 17.7813 26.1313 17.5713 25.9213L13.3263 21.6763C12.8913 21.2413 12.8913 20.5213 13.3263 20.0863C13.7613 19.6513 14.4812 19.6513 14.9162 20.0863L18.3663 23.5363L26.0763 15.8263C26.5113 15.3913 27.2313 15.3913 27.6663 15.8263C28.1013 16.2613 28.1013 16.9812 27.6663 17.4162L19.1613 25.9213C18.9513 26.1313 18.6663 26.2513 18.3663 26.2513Z" fill="white"/>
+                                      <circle cx="20" cy="20.5" r="20" fill="#198038"/>
+                                      <path d="M18.3663 26.2513C18.0663 26.2513 17.7813 26.1313 17.5713 25.9213L13.3263 21.6763C12.8913 21.2413 12.8913 20.5213 13.3263 20.0863C13.7613 19.6513 14.4812 19.6513 14.9162 20.0863L18.3663 23.5363L26.0763 15.8263C26.5113 15.3913 27.2313 15.3913 27.6663 15.8263C28.1013 16.2613 28.1013 16.9812 27.6663 17.4162L19.1613 25.9213C18.9513 26.1313 18.6663 26.2513 18.3663 26.2513Z" fill="white"/>
                                     </svg>
-                                <% } else if (project.progress >= 75) { %>
+                                  <% } else if (project.progress >= 75) { %>
                                     <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="20" cy="20.5" r="20" fill="#DA1E28"/>
-                                        <path d="M15.2834 26.4668C14.9668 26.4668 14.6501 26.3501 14.4001 26.1001C13.9168 25.6168 13.9168 24.8168 14.4001 24.3334L23.8334 14.9001C24.3168 14.4168 25.1168 14.4168 25.6001 14.9001C26.0834 15.3834 26.0834 16.1834 25.6001 16.6668L16.1668 26.1001C15.9334 26.3501 15.6001 26.4668 15.2834 26.4668Z" fill="white"/>
-                                        <path d="M24.7168 26.4668C24.4001 26.4668 24.0834 26.3501 23.8334 26.1001L14.4001 16.6668C13.9168 16.1834 13.9168 15.3834 14.4001 14.9001C14.8834 14.4168 15.6834 14.4168 16.1668 14.9001L25.6001 24.3334C26.0834 24.8168 26.0834 25.6168 25.6001 26.1001C25.3501 26.3501 25.0334 26.4668 24.7168 26.4668Z" fill="white"/>
+                                      <circle cx="20" cy="20.5" r="20" fill="#DA1E28"/>
+                                      <path d="M15.2834 26.4668C14.9668 26.4668 14.6501 26.3501 14.4001 26.1001C13.9168 25.6168 13.9168 24.8168 14.4001 24.3334L23.8334 14.9001C24.3168 14.4168 25.1168 14.4168 25.6001 14.9001C26.0834 15.3834 26.0834 16.1834 25.6001 16.6668L16.1668 26.1001C15.9334 26.3501 15.6001 26.4668 15.2834 26.4668Z" fill="white"/>
+                                      <path d="M24.7168 26.4668C24.4001 26.4668 24.0834 26.3501 23.8334 26.1001L14.4001 16.6668C13.9168 16.1834 13.9168 15.3834 14.4001 14.9001C14.8834 14.4168 15.6834 14.4168 16.1668 14.9001L25.6001 24.3334C26.0834 24.8168 26.0834 25.6168 25.6001 26.1001C25.3501 26.3501 25.0334 26.4668 24.7168 26.4668Z" fill="white"/>
                                     </svg>
-                                <% } else if (project.progress >= 50) { %>
+                                  <% } else if (project.progress >= 50) { %>
                                     <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="20" cy="20.5" r="19" stroke="#0043CE" stroke-width="2"/>
-                                        <circle cx="20" cy="20.5" r="8" fill="#0043CE"/>
+                                      <circle cx="20" cy="20.5" r="19" stroke="#0043CE" stroke-width="2"/>
+                                      <circle cx="20" cy="20.5" r="8" fill="#0043CE"/>
                                     </svg>
-                                <% } else { %>
+                                  <% } else { %>
                                     <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="20" cy="20.5" r="20" fill="#F1C21B"/>
-                                        <path d="M20 23.125C19.385 23.125 18.875 22.615 18.875 22V14.5C18.875 13.885 19.385 13.375 20 13.375C20.615 13.375 21.125 13.885 21.125 14.5V22C21.125 22.615 20.615 23.125 20 23.125Z" fill="#262626"/>
-                                        <path d="M20 27.9998C19.805 27.9998 19.61 27.9548 19.43 27.8798C19.25 27.8048 19.085 27.6998 18.935 27.5648C18.8 27.4148 18.695 27.2648 18.62 27.0698C18.545 26.8898 18.5 26.6948 18.5 26.4998C18.5 26.3048 18.545 26.1098 18.62 25.9298C18.695 25.7498 18.8 25.5848 18.935 25.4348C19.085 25.2998 19.25 25.1948 19.43 25.1198C19.79 24.9698 20.21 24.9698 20.57 25.1198C20.75 25.1948 20.915 25.2998 21.065 25.4348C21.2 25.5848 21.305 25.7498 21.38 25.9298C21.455 26.1098 21.5 26.3048 21.5 26.4998C21.5 26.6948 21.455 26.8898 21.38 27.0698C21.305 27.2648 21.2 27.4148 21.065 27.5648C20.915 27.6998 20.75 27.8048 20.57 27.8798C20.39 27.9548 20.195 27.9998 20 27.9998Z" fill="#262626"/>
+                                      <circle cx="20" cy="20.5" r="20" fill="#F1C21B"/>
+                                      <path d="M20 23.125C19.385 23.125 18.875 22.615 18.875 22V14.5C18.875 13.885 19.385 13.375 20 13.375C20.615 13.375 21.125 13.885 21.125 14.5V22C21.125 22.615 20.615 23.125 20 23.125Z" fill="#262626"/>
+                                      <path d="M20 27.9998C19.805 27.9998 19.61 27.9548 19.43 27.8798C19.25 27.8048 19.085 27.6998 18.935 27.5648C18.8 27.4148 18.695 27.2648 18.62 27.0698C18.545 26.8898 18.5 26.6948 18.5 26.4998C18.5 26.3048 18.545 26.1098 18.62 25.9298C18.695 25.7498 18.8 25.5848 18.935 25.4348C19.085 25.2998 19.25 25.1948 19.43 25.1198C19.79 24.9698 20.21 24.9698 20.57 25.1198C20.75 25.1948 20.915 25.2998 21.065 25.4348C21.2 25.5848 21.305 25.7498 21.38 25.9298C21.455 26.1098 21.5 26.3048 21.5 26.4998C21.5 26.6948 21.455 26.8898 21.38 27.0698C21.305 27.2648 21.2 27.4148 21.065 27.5648C20.915 27.6998 20.75 27.8048 20.57 27.8798C20.39 27.9548 20.195 27.9998 20 27.9998Z" fill="#262626"/>
                                     </svg>
-                                <% } %>
-                            </div>
-                        </div>
-                    </td>
-                    </div>
-                   
-                </tr>
-                <% }); %>
-            </tbody>
-            
-              
+                                  <% } %>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        <% }); %>
+                      <% } else { %>
+                        <tr>
+                          <td colspan="3">No active projects found.</td>
+                        </tr>
+                      <% } %>
+                    </tbody>
          </table>
             </div>
             <div class="right-panel">
                 <div class="user-info">
-                    <div class="profile">
-                        <div class="avatar"></div>
-                        <h3><%= data.username %></h3>
-                        <p class="status-1"><%= data.UserInfo[0].status %></p>
-                    </div>
-                    <div class="details">
-                        <p><span>Email:</span> <%= data.UserInfo[0].email %></p>
-                        <p><span>Phone:</span> <%= data.UserInfo[0].phone %></p>
-                        <p><span>Status:</span> <%= data.UserInfo[0].status %></p>
-                    </div>
+                  <div class="profile">
+                    <div class="avatar"></div>
+                    <h3><%= full_name %></h3>
+                    <p class="status-1"><%= contactInfo.status || 'N/A' %></p>
+                  </div>
+                  <div class="details">
+                    <p><span>Email:</span> <%= contactInfo.email || 'Not Provided' %></p>
+                    <p><span>Phone:</span> <%= contactInfo.phone || 'Not Provided' %></p>
+                    <p><span>Status:</span> <%= contactInfo.status || 'N/A' %></p>
+                  </div>
                 </div>
         
-            <div class="t_panels">
-                <div class="card red1">
-                <div class="panel_active-projects">
-                    
+                <div class="t_panels">
+                    <div class="card red1">
+                      <div class="panel_active-projects">
                         <div class="analytics_active-projects">
-                            <% if (data.activeProjects.length > 0) { %>
-                                <% const latestProject = data.activeProjects[0]; %>
-                                <div class="project-card_active-projects">
-                                    <h4>Project Progress</h4>
-                                    <div class="progress-container_active-projects">
-                                        <div class="progress-textactive-projects">
-                                            <span class="progress-percentage_active-projects">
-                                                <%= latestProject.progress %>% 
-                                                
-                                                   
-                                                    
-                                            </span>
-                                        </div>
-                                        <div 
-                                            class="progress-bar_active-projects <%= latestProject.progress === 100 
-                                                ? 'green' 
-                                                : latestProject.progress >= 75 
-                                                ? 'red' 
-                                                : latestProject.progress >= 50 
-                                                ? 'blue' 
-                                                : 'yellow' %>" 
-                                            style="width: <%= latestProject.progress %>%">
-                                        </div>
-                                        <div class="progress-icon_active-projects">
-                                            <% if (latestProject.progress === 100) { %>
-                                                <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="20" cy="20.5" r="20" fill="#198038"/>
-                                                    <path d="M18.3663 26.2513C18.0663 26.2513 17.7813 26.1313 17.5713 25.9213L13.3263 21.6763C12.8913 21.2413 12.8913 20.5213 13.3263 20.0863C13.7613 19.6513 14.4812 19.6513 14.9162 20.0863L18.3663 23.5363L26.0763 15.8263C26.5113 15.3913 27.2313 15.3913 27.6663 15.8263C28.1013 16.2613 28.1013 16.9812 27.6663 17.4162L19.1613 25.9213C18.9513 26.1313 18.6663 26.2513 18.3663 26.2513Z" fill="white"/>
-                                                </svg>
-                                            <% } else if (latestProject.progress >= 75) { %>
-                                                <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="20" cy="20.5" r="20" fill="#DA1E28"/>
-                                                    <path d="M15.2834 26.4668C14.9668 26.4668 14.6501 26.3501 14.4001 26.1001C13.9168 25.6168 13.9168 24.8168 14.4001 24.3334L23.8334 14.9001C24.3168 14.4168 25.1168 14.4168 25.6001 14.9001C26.0834 15.3834 26.0834 16.1834 25.6001 16.6668L16.1668 26.1001C15.9334 26.3501 15.6001 26.4668 15.2834 26.4668Z" fill="white"/>
-                                                    <path d="M24.7168 26.4668C24.4001 26.4668 24.0834 26.3501 23.8334 26.1001L14.4001 16.6668C13.9168 16.1834 13.9168 15.3834 14.4001 14.9001C14.8834 14.4168 15.6834 14.4168 16.1668 14.9001L25.6001 24.3334C26.0834 24.8168 26.0834 25.6168 25.6001 26.1001C25.3501 26.3501 25.0334 26.4668 24.7168 26.4668Z" fill="white"/>
-                                                </svg>
-                                            <% } else if (latestProject.progress >= 50) { %>
-                                                <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="20" cy="20.5" r="19" stroke="#0043CE" stroke-width="2"/>
-                                                    <circle cx="20" cy="20.5" r="8" fill="#0043CE"/>
-                                                </svg>
-                                            <% } else { %>
-                                                <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="20" cy="20.5" r="20" fill="#F1C21B"/>
-                                                    <path d="M20 23.125C19.385 23.125 18.875 22.615 18.875 22V14.5C18.875 13.885 19.385 13.375 20 13.375C20.615 13.375 21.125 13.885 21.125 14.5V22C21.125 22.615 20.615 23.125 20 23.125Z" fill="#262626"/>
-                                                    <path d="M20 27.9998C19.805 27.9998 19.61 27.9548 19.43 27.8798C19.25 27.8048 19.085 27.6998 18.935 27.5648C18.8 27.4148 18.695 27.2648 18.62 27.0698C18.545 26.8898 18.5 26.6948 18.5 26.4998C18.5 26.3048 18.545 26.1098 18.62 25.9298C18.695 25.7498 18.8 25.5848 18.935 25.4348C19.085 25.2998 19.25 25.1948 19.43 25.1198C19.79 24.9698 20.21 24.9698 20.57 25.1198C20.75 25.1948 20.915 25.2998 21.065 25.4348C21.2 25.5848 21.305 25.7498 21.38 25.9298C21.455 26.1098 21.5 26.3048 21.5 26.4998C21.5 26.6948 21.455 26.8898 21.38 27.0698C21.305 27.2648 21.2 27.4148 21.065 27.5648C20.915 27.6998 20.75 27.8048 20.57 27.8798C20.39 27.9548 20.195 27.9998 20 27.9998Z" fill="#262626"/>
-                                                </svg>
-                                            <% } %>
-                                        </div>
-                                    </div>
+                          <% if (activeProjects.length > 0) { %>
+                            <% const latestProject = activeProjects[0]; %>
+                            <div class="project-card_active-projects">
+                              <h4>Project Progress</h4>
+                              <div class="progress-container_active-projects">
+                                <div class="progress-textactive-projects">
+                                  <span class="progress-percentage_active-projects">
+                                    <%= latestProject.progress %>% 
+                                  </span>
                                 </div>
-                            <% } else { %>
-                                <p>No active projects available.</p>
-                            <% } %>
+                                <div 
+                                  class="progress-bar_active-projects <%= latestProject.progress === 100 
+                                    ? 'green' 
+                                    : latestProject.progress >= 75 
+                                    ? 'red' 
+                                    : latestProject.progress >= 50 
+                                    ? 'blue' 
+                                    : 'yellow' %>" 
+                                  style="width: <%= latestProject.progress %>%">
+                                </div>
+                                <div class="progress-icon_active-projects">
+                                  <% if (latestProject.progress === 100) { %>
+                                    <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <circle cx="20" cy="20.5" r="20" fill="#198038"/>
+                                      <path d="M18.3663 26.2513C18.0663 26.2513 17.7813 26.1313 17.5713 25.9213L13.3263 21.6763C12.8913 21.2413 12.8913 20.5213 13.3263 20.0863C13.7613 19.6513 14.4812 19.6513 14.9162 20.0863L18.3663 23.5363L26.0763 15.8263C26.5113 15.3913 27.2313 15.3913 27.6663 15.8263C28.1013 16.2613 28.1013 16.9812 27.6663 17.4162L19.1613 25.9213C18.9513 26.1313 18.6663 26.2513 18.3663 26.2513Z" fill="white"/>
+                                    </svg>
+                                  <% } else if (latestProject.progress >= 75) { %>
+                                    <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <circle cx="20" cy="20.5" r="20" fill="#DA1E28"/>
+                                      <path d="M15.2834 26.4668C14.9668 26.4668 14.6501 26.3501 14.4001 26.1001C13.9168 25.6168 13.9168 24.8168 14.4001 24.3334L23.8334 14.9001C24.3168 14.4168 25.1168 14.4168 25.6001 14.9001C26.0834 15.3834 26.0834 16.1834 25.6001 16.6668L16.1668 26.1001C15.9334 26.3501 15.6001 26.4668 15.2834 26.4668Z" fill="white"/>
+                                    </svg>
+                                  <% } else if (latestProject.progress >= 50) { %>
+                                    <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <circle cx="20" cy="20.5" r="19" stroke="#0043CE" stroke-width="2"/>
+                                      <circle cx="20" cy="20.5" r="8" fill="#0043CE"/>
+                                    </svg>
+                                  <% } else { %>
+                                    <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <circle cx="20" cy="20.5" r="20" fill="#F1C21B"/>
+                                      <path d="M20 23.125C19.385 23.125 18.875 22.615 18.875 22V14.5C18.875 13.885 19.385 13.375 20 13.375C20.615 13.375 21.125 13.885 21.125 14.5V22C21.125 22.615 20.615 23.125 20 23.125Z" fill="#262626"/>
+                                    </svg>
+                                  <% } %>
+                                </div>
+                              </div>
+                            </div>
+                          <% } else { %>
+                            <p>No active projects available.</p>
+                          <% } %>
                         </div>
+                      </div>
                     </div>
-                </div>
         
                 <!-- Панель поточного завдання -->
                 
-                    <div class="card blue1">
-                       
-                        <div class="panel_active-projects">
-                    
-                            <div class="analytics_active-projects">
-                                <% if (data.activeProjects.length > 0) { %>
-                                    <% const latestProject = data.activeProjects[0]; %>
-                                    <div class="project-card_active-projects">
-                                        <h4> Current Task</h4>
-                                        <div class="progress-container_active-projects">
-                                            <div class="progress-textactive-projects">
-                                                <span class="progress-percentage_active-projects">
-                                                    <%= latestProject.progress %>% 
-                                                    
-                                                       
-                                                        
-                                                </span>
-                                            </div>
-                                            <div 
-                                                class="progress-bar_active-projects <%= latestProject.progress === 100 
-                                                    ? 'green' 
-                                                    : latestProject.progress >= 75 
-                                                    ? 'red' 
-                                                    : latestProject.progress >= 50 
-                                                    ? 'blue' 
-                                                    : 'yellow' %>" 
-                                                style="width: <%= latestProject.progress %>%">
-                                            </div>
-                                            <div class="progress-icon_active-projects">
-                                                <% if (latestProject.progress === 100) { %>
-                                                    <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <circle cx="20" cy="20.5" r="20" fill="#198038"/>
-                                                        <path d="M18.3663 26.2513C18.0663 26.2513 17.7813 26.1313 17.5713 25.9213L13.3263 21.6763C12.8913 21.2413 12.8913 20.5213 13.3263 20.0863C13.7613 19.6513 14.4812 19.6513 14.9162 20.0863L18.3663 23.5363L26.0763 15.8263C26.5113 15.3913 27.2313 15.3913 27.6663 15.8263C28.1013 16.2613 28.1013 16.9812 27.6663 17.4162L19.1613 25.9213C18.9513 26.1313 18.6663 26.2513 18.3663 26.2513Z" fill="white"/>
-                                                    </svg>
-                                                <% } else if (latestProject.progress >= 75) { %>
-                                                    <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <circle cx="20" cy="20.5" r="20" fill="#DA1E28"/>
-                                                        <path d="M15.2834 26.4668C14.9668 26.4668 14.6501 26.3501 14.4001 26.1001C13.9168 25.6168 13.9168 24.8168 14.4001 24.3334L23.8334 14.9001C24.3168 14.4168 25.1168 14.4168 25.6001 14.9001C26.0834 15.3834 26.0834 16.1834 25.6001 16.6668L16.1668 26.1001C15.9334 26.3501 15.6001 26.4668 15.2834 26.4668Z" fill="white"/>
-                                                        <path d="M24.7168 26.4668C24.4001 26.4668 24.0834 26.3501 23.8334 26.1001L14.4001 16.6668C13.9168 16.1834 13.9168 15.3834 14.4001 14.9001C14.8834 14.4168 15.6834 14.4168 16.1668 14.9001L25.6001 24.3334C26.0834 24.8168 26.0834 25.6168 25.6001 26.1001C25.3501 26.3501 25.0334 26.4668 24.7168 26.4668Z" fill="white"/>
-                                                    </svg>
-                                                <% } else if (latestProject.progress >= 50) { %>
-                                                    <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <circle cx="20" cy="20.5" r="19" stroke="#0043CE" stroke-width="2"/>
-                                                        <circle cx="20" cy="20.5" r="8" fill="#0043CE"/>
-                                                    </svg>
-                                                <% } else { %>
-                                                    <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <circle cx="20" cy="20.5" r="20" fill="#F1C21B"/>
-                                                        <path d="M20 23.125C19.385 23.125 18.875 22.615 18.875 22V14.5C18.875 13.885 19.385 13.375 20 13.375C20.615 13.375 21.125 13.885 21.125 14.5V22C21.125 22.615 20.615 23.125 20 23.125Z" fill="#262626"/>
-                                                        <path d="M20 27.9998C19.805 27.9998 19.61 27.9548 19.43 27.8798C19.25 27.8048 19.085 27.6998 18.935 27.5648C18.8 27.4148 18.695 27.2648 18.62 27.0698C18.545 26.8898 18.5 26.6948 18.5 26.4998C18.5 26.3048 18.545 26.1098 18.62 25.9298C18.695 25.7498 18.8 25.5848 18.935 25.4348C19.085 25.2998 19.25 25.1948 19.43 25.1198C19.79 24.9698 20.21 24.9698 20.57 25.1198C20.75 25.1948 20.915 25.2998 21.065 25.4348C21.2 25.5848 21.305 25.7498 21.38 25.9298C21.455 26.1098 21.5 26.3048 21.5 26.4998C21.5 26.6948 21.455 26.8898 21.38 27.0698C21.305 27.2648 21.2 27.4148 21.065 27.5648C20.915 27.6998 20.75 27.8048 20.57 27.8798C20.39 27.9548 20.195 27.9998 20 27.9998Z" fill="#262626"/>
-                                                    </svg>
-                                                <% } %>
-                                            </div>
-                                        </div>
-                                    </div>
+                <div class="card blue1">
+                    <div class="panel_active-projects">
+                      <div class="analytics_active-projects">
+                        <% if (activeProjects.length > 0) { %>
+                          <% const latestProject = activeProjects[0]; %>
+                          <div class="project-card_active-projects">
+                            <h4>Current Task</h4>
+                            <div class="progress-container_active-projects">
+                              <div class="progress-textactive-projects">
+                                <span class="progress-percentage_active-projects">
+                                  <%= latestProject.progress %>%
+                                </span>
+                              </div>
+                              <div 
+                                class="progress-bar_active-projects <%= latestProject.progress === 100 
+                                  ? 'green' 
+                                  : latestProject.progress >= 75 
+                                  ? 'red' 
+                                  : latestProject.progress >= 50 
+                                  ? 'blue' 
+                                  : 'yellow' %>" 
+                                style="width: <%= latestProject.progress %>%">
+                              </div>
+                              <div class="progress-icon_active-projects">
+                                <% if (latestProject.progress === 100) { %>
+                                  <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20.5" r="20" fill="#198038"/>
+                                    <path d="M18.3663 26.2513C18.0663 26.2513 17.7813 26.1313 17.5713 25.9213L13.3263 21.6763C12.8913 21.2413 12.8913 20.5213 13.3263 20.0863C13.7613 19.6513 14.4812 19.6513 14.9162 20.0863L18.3663 23.5363L26.0763 15.8263C26.5113 15.3913 27.2313 15.3913 27.6663 15.8263C28.1013 16.2613 28.1013 16.9812 27.6663 17.4162L19.1613 25.9213C18.9513 26.1313 18.6663 26.2513 18.3663 26.2513Z" fill="white"/>
+                                  </svg>
+                                <% } else if (latestProject.progress >= 75) { %>
+                                  <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20.5" r="20" fill="#DA1E28"/>
+                                    <path d="M15.2834 26.4668C14.9668 26.4668 14.6501 26.3501 14.4001 26.1001C13.9168 25.6168 13.9168 24.8168 14.4001 24.3334L23.8334 14.9001C24.3168 14.4168 25.1168 14.4168 25.6001 14.9001C26.0834 15.3834 26.0834 16.1834 25.6001 16.6668L16.1668 26.1001C15.9334 26.3501 15.6001 26.4668 15.2834 26.4668Z" fill="white"/>
+                                    <path d="M24.7168 26.4668C24.4001 26.4668 24.0834 26.3501 23.8334 26.1001L14.4001 16.6668C13.9168 16.1834 13.9168 15.3834 14.4001 14.9001C14.8834 14.4168 15.6834 14.4168 16.1668 14.9001L25.6001 24.3334C26.0834 24.8168 26.0834 25.6168 25.6001 26.1001C25.3501 26.3501 25.0334 26.4668 24.7168 26.4668Z" fill="white"/>
+                                  </svg>
+                                <% } else if (latestProject.progress >= 50) { %>
+                                  <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20.5" r="19" stroke="#0043CE" stroke-width="2"/>
+                                    <circle cx="20" cy="20.5" r="8" fill="#0043CE"/>
+                                  </svg>
                                 <% } else { %>
-                                    <p>No active projects available.</p>
+                                  <svg width="25" height="25" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20.5" r="20" fill="#F1C21B"/>
+                                    <path d="M20 23.125C19.385 23.125 18.875 22.615 18.875 22V14.5C18.875 13.885 19.385 13.375 20 13.375C20.615 13.375 21.125 13.885 21.125 14.5V22C21.125 22.615 20.615 23.125 20 23.125Z" fill="#262626"/>
+                                  </svg>
                                 <% } %>
+                              </div>
                             </div>
-                        </div>
+                          </div>
+                        <% } else { %>
+                          <p>No active projects available.</p>
+                        <% } %>
+                      </div>
                     </div>
+                  </div>
+                  
                 
         
-                <div class="card yellow1">
-                <div class="panel tasks-completed">
-                    
-                        <h4>Tasks Completed</h4>
-                        <p><%= data.UserInfo[1].tasks_completed %></p>
+                  <div class="card yellow1">
+                    <div class="panel tasks-completed">
+                      <h4>Tasks Completed</h4>
+                      <p><%= taskSummaries.tasks_completed || 0 %></p>
                     </div>
-                </div>
-        
-                <div class="card orange1">
-                <div class="panel tasks-left">
-                    
-                        <h4>Tasks Left</h4>
-                        <p><%= data.UserInfo[1].tasks_left %></p>
+                  </div>
+                  
+                  <div class="card orange1">
+                    <div class="panel tasks-left">
+                      <h4>Tasks Left</h4>
+                      <p><%= taskSummaries.tasks_left || 0 %></p>
                     </div>
-                </div>
-            </div>
-            </div>
+                  </div>
+                  
             </section>
             <script src="/js/script.js"></script>
 
@@ -427,6 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 
 
