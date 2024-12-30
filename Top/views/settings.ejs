@@ -172,6 +172,8 @@
                     <div class="profile-section">
                   <!-- Profile Picture -->
                   <div class="profile-picture">
+                 
+                  </div>
                     
                 </div>
                 <!-- Profile Form -->
@@ -199,23 +201,23 @@
                     <div class="form-group">
                         <label for="verified">Verified</label>
                         <div class="verification" id="verification">
-                            <span id="verification-status"></span>
-                            <a href="#" id="verify-link">Get verification</a>
+                            <span id="verification-status"><%= settings.is_verified ? 'Verified' : 'Not Verified' %></span>
+                            <% if (!settings.is_verified) { %>
+                                <a href="#" id="verify-link">Get verification</a>
+                            <% } %>
                             <div id="email-confirmation-modal" class="modal">
-                              <div class="modal-content">
-                                <div class="modal-image">
-                                   
-                                        
-                                    
+                                <div class="modal-content">
+                                    <div class="modal-image"></div>
+                                    <h2 class="modal-title">Hi! <span id="modal-username"><%= user.username %></span></h2>
+                                    <p class="modal-text">Please confirm your email address</p>
+                                    <input type="email" id="email-input" class="modal-email-input" placeholder="Enter your email" />
+                                    <button id="confirm-button" class="modal-confirm-button">Confirm</button>
                                 </div>
-                                <h2 class="modal-title">Hi! <span id="modal-username">{Username}</span></h2>
-                                <p class="modal-text">Please confirm your email address</p>
-                                <input type="email" id="email-input" class="modal-email-input" placeholder="Enter your email" />
-                                <button id="confirm-button" class="modal-confirm-button">Confirm</button>
-                              </div>
                             </div>
                         </div>
                     </div>
+                    
+                    
                     <div class="form-group">
                         <label for="address">Permanent Address</label>
                         <input type="text" id="address" value="<%= user.address %>">
@@ -240,8 +242,69 @@
               
                 
               </div>
-            
+              <div id="preferences" class="section">
+                <div class="time-zone">
+                <span class="time-zone-label">Time Zone</span>
+                <div class="time-zone-value">(GMT-12:00) International Date Line West</div>
+                </div>
+                <div class="notification-item">
+                    <div
+                        class="switch <%= settings.submit_review ? 'on' : '' %>"
+                        id="review-switch"
+                        onclick="toggleSwitch(this, 'submit_review')"
+                    >
+                        <div class="toggle"></div>
+                    </div>
+                    <div class="notification-label">When I submit an assignment for review</div>
+                </div>
+                
+                <div class="notification-item">
+                    <div
+                        class="switch <%= settings.get_task ? 'on' : '' %>"
+                        id="task-switch"
+                        onclick="toggleSwitch(this, 'get_task')"
+                    >
+                        <div class="toggle"></div>
+                    </div>
+                    <div class="notification-label">When I get a task</div>
+                </div>
+                
+                <div class="notification-item">
+                    <div
+                        class="switch <%= settings.recommendations ? 'on' : '' %>"
+                        id="recommendations-switch"
+                        onclick="toggleSwitch(this, 'recommendations')"
+                    >
+                        <div class="toggle"></div>
+                    </div>
+                    <div class="notification-label">There are recommendations for my account</div>
+                </div>
 
+            </div>
+            <div id="security" class="section">
+                <div class="section-title">Two-factor Authentication</div>
+                <div class="notification-item">
+                    <div class="switch <%= settings.two_factor_auth ? 'on' : '' %>"
+                         id="two-factor-switch"
+                         onclick="toggleSwitch(this, 'Enable_or_disable_two_factor_authentication')">
+                        <div class="toggle"></div>
+                    </div>
+                    <div class="notification-label">Enable or disable two-factor authentication</div>
+                </div>
+                
+            
+                <div class="section-title">Change Password</div>
+                <div class="form-group">
+                    <label for="current-password">Current Password</label>
+                    <input type="password" id="current-password" placeholder="**********">
+                </div>
+                <div class="form-group">
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" placeholder="**********">
+                </div>
+            </div>
+            
+    </div>
               
         </div>
         <div class="save-button-container">
@@ -283,79 +346,9 @@
 
 
 
+  
 
-  async function fetchSettings() {
-    try {
-        const userId = '<%= user.user_id %>'; // Dynamically pass user_id
-        const response = await fetch(`${API_BASE_URL}/api/getAllSettingsByUserId/${userId}`); // Fetch settings data from the API
-        if (!response.ok) throw new Error('Failed to fetch settings data');
-        const settingsData = await response.json();
-        console.log('Settings fetched:', settingsData); // Debugging log
-        return settingsData[0]; // Return the first object (user's settings)
-    } catch (error) {
-        console.error('Error fetching settings:', error);
-        return null;
-    }
-}
 
-async function checkVerificationStatus() {
-    const settingsData = await fetchSettings();
-    if (!settingsData) return;
-
-    const verificationStatusElement = document.getElementById('verification-status');
-    const verificationLink = document.getElementById('verify-link');
-
-    if (settingsData.is_verified  === true) {
-        verificationStatusElement.textContent = "Verified";
-        verificationLink.style.display = "none"; // Hide the link if verified
-    } else {
-        verificationStatusElement.textContent = "Not Verified";
-        verificationLink.style.display = "inline"; // Show the link if not verified
-    }
-}
-
-function initializeVerificationModal() {
-    const modal = document.getElementById('email-confirmation-modal');
-    const confirmButton = document.getElementById('confirm-button');
-    const verifyLink = document.getElementById('verify-link');
-
-    verifyLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.style.display = 'block'; // Show modal when "Get verification" is clicked
-    });
-
-    confirmButton.addEventListener('click', () => {
-        modal.style.display = 'none'; // Close modal when "Confirm" is clicked
-        alert('Email confirmed successfully!');
-        // Additional logic for email confirmation can be added here
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none'; // Close modal on outside click
-        }
-    });
-}
-
-function toggleSwitch(element, settingKey) {
-    element.classList.toggle("on");
-    const isOn = element.classList.contains("on") ? true : false;
-
-    fetch(`${API_BASE_URL}/api/settings/update`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ user_id: '<%= user.user_id %>', [settingKey]: isOn }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(`Updated ${settingKey}:`, data);
-    })
-    .catch((error) => {
-        console.error(`Error updating ${settingKey}:`, error);
-    });
-}
 
 function showTab(tabId) {
     const sections = document.querySelectorAll('.section');
@@ -374,13 +367,6 @@ function showTab(tabId) {
         activeTab.classList.add('active');
     }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    checkVerificationStatus();
-    initializeVerificationModal();
-    showTab('edit-profile');
-});
-
 
 
 

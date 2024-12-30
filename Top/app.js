@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://b2e6-2a01-c23-94c7-3400-f896-19e7-4b9d-b308.ngrok-free.app";
+const API_BASE_URL = "https://6f0d-2a02-3100-7fac-7800-4cdd-15a3-5083-e836.ngrok-free.app";
 import express from 'express';
 import fetch from "node-fetch";
 import cors from 'cors';
@@ -9,9 +9,12 @@ import cookieParser from "cookie-parser";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+
+
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: 'http://localhost:3000', // Вкажіть свій домен
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -67,52 +70,70 @@ app.use((req, res, next) => {
 
 
 
+app.get('/create_an-account', (req, res) => {
+  res.render('create_an-account', { title: 'Create an Account' });
+});
 
 
+// app.post('/register', async (req, res) => {
+//   const { name, username, email, password, dob, address, city, postal, country } = req.body;
 
-// const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-//   body: JSON.stringify({ email, password }),
-//   credentials: 'include', 
-// });
-// document.cookie = `user_id=${data.user.user_id}; path=/;`;
-
-// app.set("views", path.join(__dirname, "views"));
-// app.set("view engine", "ejs");
-// app.get('/example', (req, res) => {
-//   const user_id = req.cookies.user_id;
-//   res.send(`User ID from cookie: ${user_id}`);
-// });
-
-
-// app.use('/images', express.static(path.join(__dirname, 'images')));
-
-
-
-
-
-// async function fetchData(endpoint) {
-//   try {
-//     const response = await fetch(`${API_BASE_URL}${endpoint}`);
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-//     return await response.json();
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//     return null;
+//   if (!name || !username || !email || !password || !dob || !address || !city || !postal || !country) {
+//       return res.status(400).json({ error: 'All fields are required' });
 //   }
-// }
 
-// Маршрути для рендерингу сторінок
-// app.get("/", async (req, res) => {
-//   const data = await fetchData("/api/profile");
-//   res.render("index", { data });
+//   try {
+//       const response = await fetch(`${API_BASE_URL}/api/createUser`, {
+//           method: 'POST',
+//           headers: { 'Content-Type': 'application/json' },
+//           body: JSON.stringify(req.body),
+//       });
+
+//       if (!response.ok) {
+//           const errorDetails = await response.text();
+//           throw new Error(`Failed to create user: ${errorDetails}`);
+//       }
+
+//       const result = await response.json();
+//       res.redirect('/login'); // Redirect to login after successful registration
+//   } catch (error) {
+//       console.error('Error during registration:', error.message);
+//       res.status(500).send('An error occurred during registration');
+//   }
 // });
 
+app.post('/api/createUser', async (req, res) => {
+  const {
+      username, full_name, email, password, dob,
+      address, city, postal_code, country,
+  } = req.body;
+
+  if (!username || !full_name || !email || !password || !dob || !address || !city || !postal_code || !country) {
+      return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  try {
+      // Replace this with actual database logic
+      const newUser = {
+          username,
+          full_name,
+          email,
+          password: hashPassword(password), // Add a hashing function
+          dob,
+          address,
+          city,
+          postal_code,
+          country,
+      };
+
+      // Simulate successful database insertion
+      console.log('User created:', newUser);
+      res.status(201).json({ message: 'User created successfully' });
+  } catch (error) {
+      console.error('Error creating user:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
 
 
@@ -170,6 +191,7 @@ if (!colleaguesResponse.ok) {
 
     // Рендер сторінки
     res.render('index', {
+      
       title: 'Головна сторінка',
       full_name: user.full_name,
       stats: stats[0],
@@ -269,6 +291,10 @@ app.get('/my_tasks', ensureUser, async (req, res) => {
   }
 });
 
+
+
+
+
 app.get('/recruiters', ensureUser, async (req, res) => {
   const user_id = req.user_id; // Retrieve user ID from middleware
  
@@ -332,7 +358,7 @@ app.get('/blog', ensureUser, async (req, res) => {
 });
 
 app.get('/settings', ensureUser, async (req, res) => {
-  const user_id = req.user_id; // Retrieve user ID from middleware
+  const user_id = req.user_id; 
 
   try {
     const userResponse = await fetch(`${API_BASE_URL}/api/getUserById/${user_id}`);
@@ -349,7 +375,7 @@ app.get('/settings', ensureUser, async (req, res) => {
 
     res.render('settings', {
       user: {
-        user_id: user.user_id, // Pass user_id
+        user_id: user.user_id, 
         full_name: user.full_name,
         username: user.username,
         email: user.email,
@@ -365,7 +391,7 @@ app.get('/settings', ensureUser, async (req, res) => {
     console.error('Error fetching data for settings:', error.message);
     res.render('settings', {
       user: {
-        user_id: '', // Default empty value
+        user_id: '',
         full_name: 'User',
         username: '',
         email: '',
@@ -381,7 +407,55 @@ app.get('/settings', ensureUser, async (req, res) => {
 });
 
 
+// app.get('/settings', async (req, res) => {
+//   try {
+//     const userId = req.cookies.user_id; // Assuming user_id is stored in a cookie
+//     const userResponse = await fetch(`${API_BASE_URL}/api/getUserById/${userId}`);
+//     const settingsResponse = await fetch(`${API_BASE_URL}/api/getAllSettingsByUserId/${userId}`);
 
+//     if (!userResponse.ok || !settingsResponse.ok) {
+//       throw new Error('Failed to fetch user or settings data');
+//     }
+
+//     const user = await userResponse.json();
+//     const settings = await settingsResponse.json();
+
+//     res.render('settings', { user, settings });
+//   } catch (error) {
+//     console.error('Error fetching user or settings data:', error);
+//     res.status(500).send('Internal Server Error');
+//   }
+// });
+
+
+app.post('/api/updateUserSettings', async (req, res) => {
+  const { settingKey, value } = req.body;
+  const userId = req.cookies.user_id;
+
+  if (!userId || !settingKey) {
+      return res.status(400).json({ error: 'Missing user ID or setting key' });
+  }
+
+  try {
+      const response = await fetch(`${API_BASE_URL}/api/updateUserSetting`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ user_id: userId, settingKey, value }),
+      });
+
+      if (!response.ok) {
+          throw new Error('Failed to update setting on the server');
+      }
+
+      const updatedSetting = await response.json();
+      res.json(updatedSetting);
+  } catch (error) {
+      console.error('Error updating user setting:', error);
+      res.status(500).json({ error: 'Failed to update setting' });
+  }
+});
 
 
 

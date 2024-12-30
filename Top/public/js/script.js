@@ -1,3 +1,4 @@
+const API_BASE_URL = "https://6f0d-2a02-3100-7fac-7800-4cdd-15a3-5083-e836.ngrok-free.app";
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
 
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const API_BASE_URL = "https://b2e6-2a01-c23-94c7-3400-f896-19e7-4b9d-b308.ngrok-free.app";
+      
 
       try {
         const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
@@ -40,24 +41,152 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+document.getElementById('save-changes').addEventListener('click', async () => {
+  const userId = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('user_id'))
+    ?.split('=')[1]; // Extract user_id from cookie
 
-document.addEventListener('DOMContentLoaded', () => {
-  const user_id = localStorage.getItem('user_id');
-  if (!user_id) {
-    window.location.href = '/login';
-  }
+  const address = document.getElementById('address').value;
+  const city = document.getElementById('city').value;
+  const postal = document.getElementById('postal').value;
+  const country = document.getElementById('country').value;
 
-  const projectRows = document.querySelectorAll('.project');
-  projectRows.forEach((project) => {
-    project.addEventListener('click', () => {
-      const projectId = project.getAttribute('data-project-id'); // Ensure `data-project-id` is set server-side
-      window.location.href = `/project_details/${projectId}`;
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/updateUser/${userId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ address, city, postal_code: postal, country }),
     });
-  });
+
+    if (response.ok) {
+      alert('Profile updated successfully!');
+    } else {
+      const error = await response.json();
+      console.error('Error:', error);
+      alert(`Failed to update profile: ${error.message}`);
+    }
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    alert('An error occurred while updating the profile.');
+  }
 });
 
 
+const formData = new FormData(registrationForm);
+const userData = Object.fromEntries(formData.entries());
+console.log('Зібрані дані:', userData);
 
+
+async function fetchSettings() {
+  const userId = localStorage.getItem('user_id'); // Retrieve user ID from localStorage
+  try {
+      const response = await fetch(`${API_BASE_URL}/api/getAllSettingsByUserId/${userId}`);
+      if (!response.ok) {
+          throw new Error('Failed to fetch settings data');
+      }
+      return await response.json();
+  } catch (error) {
+      console.error('Error fetching settings:', error);
+      return null;
+  }
+}
+
+async function initializeSwitches() {
+  const settingsData = await fetchSettings();
+  if (!settingsData) {
+      console.error('No settings data available');
+      return;
+  }
+
+  const switches = [
+      { id: 'review-switch', key: 'submit_review' },
+      { id: 'task-switch', key: 'get_task' },
+      { id: 'recommendations-switch', key: 'recommendations' },
+      { id: 'two-factor-switch', key: 'Enable_or_disable_two_factor_authentication' },
+  ];
+
+  switches.forEach(({ id, key }) => {
+      const element = document.getElementById(id);
+      if (settingsData[key]) {
+          element.classList.add('on');
+      } else {
+          element.classList.remove('on');
+      }
+
+      element.addEventListener('click', () => toggleSwitch(element, key));
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initializeSwitches);
+
+function toggleSwitch(element, settingKey) {
+  element.classList.toggle('on');
+  const isOn = element.classList.contains('on') ? true : false;
+
+  fetch(`${API_BASE_URL}/api/updateUserSettings`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ settingKey, value: isOn }),
+  })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Failed to update setting');
+          }
+          return response.json();
+      })
+      .then(data => {
+          console.log(`Updated ${settingKey}:`, data);
+      })
+      .catch(error => {
+          console.error(`Error updating ${settingKey}:`, error);
+      });
+}
+// Initialize two-factor authentication switch on page load
+document.addEventListener("DOMContentLoaded", () => {
+  fetch(`${API_BASE_URL}/api/getAllSettingsByUserId/${userId}`)
+      .then(response => response.json())
+      .then(settings => {
+          const twoFactorSwitch = document.getElementById('two-factor-switch');
+          if (settings.Enable_or_disable_two_factor_authentication) {
+              twoFactorSwitch.classList.add('on');
+          } else {
+              twoFactorSwitch.classList.remove('on');
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching settings:', error);
+      });
+});
+document.addEventListener('DOMContentLoaded', () => {
+  initializeSwitches();
+});
+
+
+async function checkVerificationStatus(userId) {
+  const settingsData = await fetchSettings(userId);
+  if (!settingsData) {
+      console.error('No settings data available');
+      return;
+  }
+
+  const verificationStatusElement = document.getElementById('verification-status');
+  const verificationLink = document.getElementById('verify-link');
+
+  if (settingsData.is_verified) {
+      verificationStatusElement.textContent = "Verified";
+      verificationLink.style.display = "none"; // Hide the link if verified
+  } else {
+      verificationStatusElement.textContent = "Not Verified";
+      verificationLink.style.display = "inline"; // Show the link if not verified
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  checkVerificationStatus();
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const verifyLink = document.getElementById("verify-link");
@@ -83,16 +212,63 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const saveButton = document.getElementById('save-changes');
+  if (saveButton) {
+      saveButton.addEventListener('click', () => {
+          console.log('Save button clicked');
+          // Your save logic here
+      });
+  } else {
+      console.error('Save button not found in the DOM');
+  }
+});
 
 
 
-// Ініціалізація: показуємо вкладку 'edit-profile' за замовчуванням
-// window.onload = () => {
-//   showTab('edit-profile');
-// };
-// function toggleSwitch(element) {
-//   element.classList.toggle("on");
-// }
+document.addEventListener('DOMContentLoaded', () => {
+  const registrationForm = document.getElementById('registration-form');
+
+  registrationForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(registrationForm);
+      const userData = {
+          username: formData.get('username'),
+          full_name: formData.get('name'),
+          email: formData.get('email'),
+          password: formData.get('password'),
+          dob: formData.get('dob'),
+          address: formData.get('address'),
+          city: formData.get('city'),
+          postal_code: formData.get('postal'),
+          country: formData.get('country'),
+      };
+
+      try {
+          const response = await fetch(`${API_BASE_URL}/api/createUser`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(userData),
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+              alert('Registration successful!');
+              window.location.href = '/login'; // Redirect to login page
+          } else {
+              console.error('Registration error:', result.error || result.message);
+              alert(`Error: ${result.error || result.message}`);
+          }
+      } catch (error) {
+          console.error('Error during registration:', error);
+          alert('Failed to register. Please try again later.');
+      }
+  });
+});
+
+
 
 
 
