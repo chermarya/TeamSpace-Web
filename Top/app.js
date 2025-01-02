@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://6f0d-2a02-3100-7fac-7800-4cdd-15a3-5083-e836.ngrok-free.app";
+const API_BASE_URL = "https://2592-2a02-3100-7fac-7800-4cdd-15a3-5083-e836.ngrok-free.app";
 import express from 'express';
 import fetch from "node-fetch";
 import cors from 'cors';
@@ -15,6 +15,7 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(cors({
   origin: 'http://localhost:3000', // Вкажіть свій домен
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -102,38 +103,42 @@ app.get('/create_an-account', (req, res) => {
 //   }
 // });
 
-app.post('/api/createUser', async (req, res) => {
-  const {
-      username, full_name, email, password, dob,
-      address, city, postal_code, country,
-  } = req.body;
+app.post('/api/auth/register', async (req, res) => {
+  const { username, full_name, email, password, dob, address, city, postal_code, country } = req.body;
 
+  // Перевірка заповнення обов'язкових полів
   if (!username || !full_name || !email || !password || !dob || !address || !city || !postal_code || !country) {
-      return res.status(400).json({ error: 'All fields are required' });
+    return res.status(400).json({ error: 'All fields are required' });
   }
 
   try {
-      // Replace this with actual database logic
-      const newUser = {
-          username,
-          full_name,
-          email,
-          password: hashPassword(password), // Add a hashing function
-          dob,
-          address,
-          city,
-          postal_code,
-          country,
-      };
+    // Виклик функції для створення користувача
+    const newUser = await createUser({
+      username,
+      full_name,
+      email,
+      password,
+      dob,
+      address,
+      city,
+      postal_code,
+      country,
+    });
 
-      // Simulate successful database insertion
-      console.log('User created:', newUser);
-      res.status(201).json({ message: 'User created successfully' });
-  } catch (error) {
-      console.error('Error creating user:', error);
-      res.status(500).json({ message: 'Internal server error' });
+    res.status(201).json({ message: 'User created successfully', user: newUser });
+  } catch (err) {
+    console.error('Error during user creation:', err.message);
+
+    // Обробка помилки відсутності колонки `profile_image`
+    if (err.message.includes('column "profile_image"')) {
+      res.status(500).json({ error: 'Database schema mismatch: column "profile_image" does not exist' });
+    } else {
+      res.status(500).json({ error: 'Internal server error' });
+    }
   }
 });
+
+
 
 
 
@@ -475,6 +480,7 @@ app.get('/api/getUserById/:id', (req, res) => {
 });
 
 
+
 app.post('/api/auth/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -493,6 +499,39 @@ app.post('/api/auth/login', async (req, res) => {
   }
 });
 
+app.get('/api/getAllLinks/:id', async (req, res) => {
+  try {
+      const linkId = req.params.id;
+      // Replace with actual database or API call
+      const linkData = {
+          id: linkId,
+          name: "Example Link",
+          full_description: "This is an example description.",
+          url: "https://example.com",
+          user_id: 1, // Example user ID
+      };
+      res.json(linkData);
+  } catch (error) {
+      console.error('Error fetching link details:', error.message);
+      res.status(500).json({ error: 'Failed to fetch link details' });
+  }
+});
+
+app.get('/api/getAllUserTagsByUserId/:userId', async (req, res) => {
+  try {
+      const userId = req.params.userId;
+      // Replace with actual database or API call
+      const tagsData = [
+          { tag_name: "Design" },
+          { tag_name: "Development" },
+      ];
+      res.json(tagsData);
+  } catch (error) {
+      console.error('Error fetching user tags:', error.message);
+      res.status(500).json({ error: 'Failed to fetch user tags' });
+  }
+});
+
 
 
 // Запуск сервера
@@ -500,5 +539,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
 
 

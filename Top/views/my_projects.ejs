@@ -116,19 +116,7 @@
                             My Tasks
                         </a>
                     </li>
-                    <li class="Schedule">
-                        <a href="schedule" class="schedule">
-                            <span class="icon">                              
-                                <svg width="20" height="20" viewBox="0 0 59 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 8H56V58C56 59.1046 55.1046 60 54 60H6C4.89543 60 4 59.1046 4 58V8Z" stroke="#292929" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 5"/>
-                                    <path d="M9 21H51.5" stroke="#292929" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 5"/>
-                                    <path d="M43 2V14" stroke="#292929" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 5"/>
-                                    <path d="M17 2V13.5" stroke="#292929" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0 5"/>
-                                    </svg>                                                                                                                             
-                            </span>
-                            Schedule
-                        </a>
-                    </li>
+                   
                     <li class="recruiters">
                         <a href="recruiters" class="recruiters">
                             <span class="icon">                              
@@ -179,7 +167,8 @@
                         <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19.98 0C8.94 0 0 8.96 0 20C0 31.04 8.94 40 19.98 40C31.04 40 40 31.04 40 20C40 8.96 31.04 0 19.98 0ZM20 36C11.16 36 4 28.84 4 20C4 11.16 11.16 4 20 4C28.84 4 36 11.16 36 20C36 28.84 28.84 36 20 36ZM21 10H18V22L28.5 28.3L30 25.84L21 20.5V10Z" fill="black" fill-opacity="0.5"/>
                         </svg>
-                        <button class="filter-button">Posted At</button>
+                        
+                        <button class="filter-button" id="sort-by-date">Posted At</button>
                         <span>
                             <svg width="11" height="6" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0 0.5L11 11.5L22 0.5H0Z" fill="black" fill-opacity="0.5"/>
@@ -192,7 +181,8 @@
                         <svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.0130005 2.6C0.0130005 1.17 1.17 0 2.6 0H23.4C24.83 0 26 1.17 26 2.6V18.2C26 19.63 24.83 20.8 23.4 20.8H5.2L0 26L0.0130005 2.6ZM2.6 2.6V19.721L4.121 18.2H23.4V2.6H2.6Z" fill="black" fill-opacity="0.5"/>
                         </svg>
-                        <button class="filter-button">Content Type</button>
+                       
+                        <button class="filter-button" id="sort-by-name">Content Type</button>
                         <svg width="11" height="6" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 0.5L11 11.5L22 0.5H0Z" fill="black" fill-opacity="0.5"/>
                         </svg>
@@ -277,7 +267,13 @@
             <div class="right-panel">
                 <div class="user-info">
                   <div class="profile">
-                    <div class="avatar"></div>
+                    <div class="avatar"><span class="icon">
+                      <svg width="60" height="60" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M66 35C66 41.3961 64.0629 47.3397 60.7435 52.2763C55.1775 60.5539 45.7247 66 35 66C24.2753 66 14.8225 60.5539 9.25653 52.2763C5.93705 47.3397 4 41.3961 4 35C4 17.8792 17.8792 4 35 4C52.1208 4 66 17.8792 66 35Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                          <path d="M41 21C41 24.3137 38.3137 27 35 27C31.6863 27 29 24.3137 29 21C29 17.6863 31.6863 15 35 15C38.3137 15 41 17.6863 41 21Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                          <path d="M44.4989 38H26.5011C21.0665 38 16.4757 41.6135 15 46.5692C19.9513 52.3424 27.2985 56 35.5 56C43.7015 56 51.0487 52.3424 56 46.5692C54.5243 41.6135 49.9335 38 44.4989 38Z" stroke="#292929" stroke-opacity="0.7" stroke-width="4"/>
+                          </svg>                                                                                                                  
+                  </span> </div>
                     <h3><%= full_name %></h3>
                     <p class="status-1"><%= contactInfo.status || 'N/A' %></p>
                   </div>

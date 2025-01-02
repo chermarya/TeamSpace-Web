@@ -424,6 +424,10 @@ main {
     justify-content: flex-end;
     margin-top: auto;
 }
+/* .save-button {
+    display: block;
+    visibility: visible;
+} */
 
 .save-button {
     padding: 10px 20px;
